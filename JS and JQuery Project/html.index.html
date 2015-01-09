@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>JS and JQuery Project</title>
+</head>
+<body>
+    <p>Max of three function</p>
+    <button onclick="maxOfThree(1, 15, 5)">The max is...</button>
+    <p id="maxNumb"></p>
+    <script>
+    function maxOfThree(a, b, c){
+        if (a >= b && a >= c){
+            document.getElementById("maxNumb").innerHTML = a;
+        }else if (b >= a && b >= c){
+            document.getElementById("maxNumb").innerHTML = b;
+        }else{
+            document.getElementById("maxNumb").innerHTML = c;
+        }
+    }
+    </script>
+    <p>Sum Function</p>
+    <script>
+        var numbers = [1, 2, 3, 4];
+        var totalAmount = 0;
+
+        for (var i = 0; i < numbers.length; i++) {
+
+            totalAmount += numbers[i];
+        }
+        document.write(totalAmount);
+    </script>
+    <p>Multiplier Function</p>
+    <script>
+        var numbers = [1, 2, 3, 4];
+        var totalAmount = 1;
+
+        for (var i = 0; i < numbers.length; i++) {
+
+            totalAmount *= numbers[i];
+        }
+        document.write(totalAmount);
+        document.write('<br>');
+    </script>
+    <!--Factorial-->
+    <p>FACTORIAL PROBLEM</p>
+    <script>
+    var n = 5;
+    var nmt = n * (n - 1);
+    for (i = n - 2; i > 1; i--) {
+        nmt = nmt * i;
+    }
+    document.write("Factorial of " + n + " is " + nmt);
+    </script>
+    <p>Is it a Palindrome?</p>
+    <script>
+        function checkPalindrome(word) {
+            var l = word.length;
+            for (var i = 0; i < l / 2; i++) {
+                if (word.charAt(i) !== word.charAt(l - 1 - i)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        if (checkPalindrome("dood")) {
+            document.write("The word is a palindrome");
+        } else {
+            document.write("The word is NOT a palindrome");
+        }
+    </script>
+    <p>Print integers, Fizz, or Buzz to Screen</p>
+    <script>
+    var hun = 100;
+
+    for (var i = 0; i < hun; i++) {
+        if (i % 5 === 0 && i % 3 === 0) {
+            document.write("FizzBuzz");
+        } else if (i % 5 === 0) {
+            document.write('Fizz');
+        } else if (i % 3 === 0) {
+            document.write('Buzz');
+        } else {
+            document.write(i);
+        }
+        document.write('<br>');
+    }
+    </script>
+    <p>Perfect Numbers</p>
+
+</body>
+</html>
