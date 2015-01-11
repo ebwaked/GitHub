@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("JS_and_JQuery_Project")]
+[assembly: AssemblyTitle("Resume")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("JS_and_JQuery_Project")]
+[assembly: AssemblyProduct("Resume")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("bde98625-d357-462e-8725-b336d3b7a6e2")]
+[assembly: Guid("ea47eb96-d5ef-484e-836b-70a1d8d8cfa2")]
 
 // Version information for an assembly consists of the following four values:
 //
