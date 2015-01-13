@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{78659A3F-4786-4F7A-B0A9-E947D33A3A59}</ProjectGuid>
+    <ProjectGuid>{10775B91-A322-456D-B4FC-183C5BBD0610}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Resume</RootNamespace>
-    <AssemblyName>Resume</AssemblyName>
+    <RootNamespace>Choose_your_own_Adventure</RootNamespace>
+    <AssemblyName>Choose your own Adventure</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -65,10 +65,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\PublishProfiles\ewaked-resume - FTP %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\ewaked-resume - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\ewaked-resume - Web Deploy %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\ewaked-resume - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -89,9 +85,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>57467</DevelopmentServerPort>
+          <DevelopmentServerPort>57397</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:57467/</IISUrl>
+          <IISUrl>http://localhost:57397/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
