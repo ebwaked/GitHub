@@ -159,12 +159,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\blogModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -183,6 +187,8 @@
     <Content Include="Content\css\orange.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\dark.css" />
+    <Content Include="Content\gitColor.png" />
+    <Content Include="Content\gitGrey.png" />
     <Content Include="Content\gototop.png" />
     <Content Include="Content\green.css" />
     <Content Include="Content\hover-1.gif" />
@@ -190,6 +196,8 @@
     <Content Include="Content\img2.jpg" />
     <Content Include="Content\img3.jpg" />
     <Content Include="Content\img4.jpg" />
+    <Content Include="Content\linkedBlue.png" />
+    <Content Include="Content\linkedDark.jpg" />
     <Content Include="Content\loader-black.gif" />
     <Content Include="Content\loader-blue.gif" />
     <Content Include="Content\loader-brown.gif" />
@@ -198,7 +206,7 @@
     <Content Include="Content\orange.css" />
     <Content Include="Content\person.jpg" />
     <Content Include="Content\separation.png" />
-    <Content Include="Content\social.png" />
+    <Content Include="Content\images\social.png" />
     <Content Include="Content\structure.jpg" />
     <Content Include="Content\structure2.jpg" />
     <Content Include="Content\style.css" />
@@ -231,7 +239,9 @@
     <Content Include="Scripts\scripts.js" />
     <Content Include="Scripts\style.css" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -266,7 +276,23 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\index.cshtml" />
-    <Content Include="Scripts\sendmail.php" />
+    <Content Include="Content\sendmail.php" />
+    <Content Include="Views\Posts\Create.cshtml" />
+    <Content Include="Views\Posts\Delete.cshtml" />
+    <Content Include="Views\Posts\Details.cshtml" />
+    <Content Include="Views\Posts\Edit.cshtml" />
+    <Content Include="Views\Posts\Index.cshtml" />
+    <Content Include="Views\Comments\Create.cshtml" />
+    <Content Include="Views\Comments\Delete.cshtml" />
+    <Content Include="Views\Comments\Details.cshtml" />
+    <Content Include="Views\Comments\Edit.cshtml" />
+    <Content Include="Views\Comments\Index.cshtml" />
+    <Content Include="Views\Home\keypoints.cshtml" />
+    <Content Include="Views\Home\experience.cshtml" />
+    <Content Include="Views\Home\portfolio.cshtml" />
+    <Content Include="Views\Home\education.cshtml" />
+    <Content Include="Views\Home\skills.cshtml" />
+    <Content Include="Views\Home\originalIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

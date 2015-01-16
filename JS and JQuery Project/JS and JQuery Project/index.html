@@ -5,7 +5,7 @@
 </head>
 <body>
     <p>Max of three function</p>
-    <button onclick="maxOfThree(1, 15, 5)">The max is...</button>
+    <button onclick="maxOfThree(55, 465456, 456)">The max is...</button>
     <p id="maxNumb"></p>
     <script>
     function maxOfThree(a, b, c){
@@ -20,7 +20,7 @@
     </script>
     <p>Sum Function</p>
     <script>
-        var numbers = [1, 2, 3, 4];
+        var numbers = [6, 7, 3, 4];
         var totalAmount = 0;
 
         for (var i = 0; i < numbers.length; i++) {
@@ -73,13 +73,13 @@
     <script>
     var hun = 100;
 
-    for (var i = 0; i < hun; i++) {
+    for (var i = 1; i < hun; i++) {
         if (i % 5 === 0 && i % 3 === 0) {
             document.write("FizzBuzz");
-        } else if (i % 5 === 0) {
-            document.write('Fizz');
         } else if (i % 3 === 0) {
             document.write('Buzz');
+        } else if (i % 5 === 0) {
+            document.write('Fizz');
         } else {
             document.write(i);
         }

@@ -1,17 +1,46 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<!--
+    :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    ::::: Contact me
+    :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    -->
+<section>
+    <div class="row">
+        <div class="span4"></div><!-- Keep this div empty to align -->
+        <div class="span8">
+            <a name="contact" class="division"></a>
+            <h2>Contact me</h2>
+        </div>
+        <div class="span4">
+            <h3>Nemo enim ipsam voluptatem quia</h3>
+        </div>
+        <div class="span8">
+            <div class="row contact">
+                <div class="span4">
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                    <address>
+                        6/7 Somewhere<br>
+                        777 Heaven St, NSW 2342<br>
+                        <abbr title="Phone">P:</abbr> (123) 456-7890<br>
+                        <abbr title="Email">E:</abbr> <a href="mailto:mail@website.com">mail@website.com</a><br>
+                        <abbr title="Website">W:</abbr> <a href="http://www.website.com">www.website.com</a><br>
+                    </address>
+                </div><!-- span4 -->
+                <div class="span4">
+                    <form class="form" id="ajax-contact-form" action="~/Content/sendmail.php">
+                        <input type="text" name="name" class="span4" placeholder="Name" required="">
+                        <input type="text" class="span4" name="email" placeholder="Email" required="">
+                        <textarea name="message" placeholder="Message" rows="8" class="span4"></textarea>
+                        <button type="submit" class="btn btn-submit bg-color">SUBMIT</button><div class="loading"></div>
+                    </form>
+                    <div class="results"></div>
+                </div><!-- span4 -->
+            </div><!-- contact -->
+        </div><!-- span8 -->
+    </div><!-- row -->
+
+</section>
