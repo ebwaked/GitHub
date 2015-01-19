@@ -66,7 +66,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Armstrong Number Problem.js" />
+    <Content Include="Factorial.js" />
+    <Content Include="FizzBuzz.js" />
     <Content Include="index.html" />
+    <Content Include="jquery-1.4.4.min.js" />
+    <Content Include="jquery.reveal.js" />
+    <Content Include="Palindrome.js" />
+    <Content Include="PerfectNumbers.js" />
+    <Content Include="reveal.css" />
+    <Content Include="SumFunction.js" />
+    <Content Include="MaxOfThree.js" />
     <Content Include="testPage.html" />
     <Content Include="testPage2.html" />
     <Content Include="Web.config" />

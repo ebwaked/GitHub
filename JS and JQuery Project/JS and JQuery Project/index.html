@@ -2,118 +2,77 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>JS and JQuery Project</title>
+
+    <script src="jquery.reveal.js"></script>
+    <script src="jquery-1.4.4.min.js"></script>
+    <link href="reveal.css" rel="stylesheet" />
+
+    <script src="MaxOfThree.js"></script>
+
+    <script src="SumFunction.js"></script>
+
+    <script src="Factorial.js"></script>
+
+    <script src="FizzBuzz.js"></script>
+
+    <script src="PerfectNumbers.js"></script>
+
+    <script src="Armstrong Number Problem.js"></script>
+        
 </head>
 <body>
-    <p>Max of three function</p>
-    <button onclick="maxOfThree(55, 465456, 456)">The max is...</button>
-    <p id="maxNumb"></p>
-    <script>
-    function maxOfThree(a, b, c){
-        if (a >= b && a >= c){
-            document.getElementById("maxNumb").innerHTML = a;
-        }else if (b >= a && b >= c){
-            document.getElementById("maxNumb").innerHTML = b;
-        }else{
-            document.getElementById("maxNumb").innerHTML = c;
-        }
-    }
-    </script>
-    <p>Sum Function</p>
-    <script>
-        var numbers = [6, 7, 3, 4];
-        var totalAmount = 0;
+    
+    <div id="myModal1" class="reveal-modal open">
+        <h1>Max Of Three Numbers</h1>
+        <p><a href="MaxOfThree.js"></a></p>
+        <a class="close-reveal-modal">&#215;</a>
+    </div>
 
-        for (var i = 0; i < numbers.length; i++) {
+    <a href="MaxOfThree.js" data-reveal-id="myModal1">Max of three</a>
 
-            totalAmount += numbers[i];
-        }
-        document.write(totalAmount);
-    </script>
-    <p>Multiplier Function</p>
-    <script>
-        var numbers = [1, 2, 3, 4];
-        var totalAmount = 1;
+    <div id="myModal" class="reveal-modal">
+        <h1>Sum and multiplication of numbers Functions</h1>
+        <p><a href ="SumFunction.js"></a></p>
+        <a class="close-reveal-modal">&#215;</a>
+    </div>
 
-        for (var i = 0; i < numbers.length; i++) {
+    <div id="myModal" class="reveal-modal">
+        <h1>Factorial of any number</h1>
+        <p><a href="Factorial.js"></a></p>
+        <a class="close-reveal-modal">&#215;</a>
+    </div>
 
-            totalAmount *= numbers[i];
-        }
-        document.write(totalAmount);
-        document.write('<br>');
-    </script>
-    <!--Factorial-->
-    <p>FACTORIAL PROBLEM</p>
-    <script>
-    var n = 5;
-    var nmt = n * (n - 1);
-    for (i = n - 2; i > 1; i--) {
-        nmt = nmt * i;
-    }
-    document.write("Factorial of " + n + " is " + nmt);
-    </script>
-    <p>Is it a Palindrome?</p>
-    <script>
-        function checkPalindrome(word) {
-            var l = word.length;
-            for (var i = 0; i < l / 2; i++) {
-                if (word.charAt(i) !== word.charAt(l - 1 - i)) {
-                    return false;
-                }
-            }
-            return true;
-        }
+    <div id="myModal" class="reveal-modal">  
+        <h1>Is this palindrome?</h1>
+        <p><a href="Palindrome.js"></a> </p>
+        <a class="close-reveal-modal">&#215;</a>
+    </div>
 
-        if (checkPalindrome("dood")) {
-            document.write("The word is a palindrome");
-        } else {
-            document.write("The word is NOT a palindrome");
-        }
-    </script>
-    <p>Print integers, Fizz, or Buzz to Screen</p>
-    <script>
-    var hun = 100;
+    <div id="myModal" class="reveal-modal">
+        <h1>Print Fizz if divisible by 3, print Buzz if divisible by 5, if divisible by both print FizzBuzz; from numbers 1 to 100.</h1>
+        <p><a href ="FizzBuzz.js"></a></p>
+        <a class="close-reveal-modal">&#215;</a>
+    </div>
 
-    for (var i = 1; i < hun; i++) {
-        if (i % 5 === 0 && i % 3 === 0) {
-            document.write("FizzBuzz");
-        } else if (i % 3 === 0) {
-            document.write('Buzz');
-        } else if (i % 5 === 0) {
-            document.write('Fizz');
-        } else {
-            document.write(i);
-        }
-        document.write('<br>');
-    }
-    </script>
-    <p>Perfect Numbers</p>
-    <label label id="per">Is this number perfect?</label>
-    <button onclick="perfect()" href="javascript:;">Enter</button>
-    <input type="number" id="perfect" />
-    <p id="answer"></p>
-    <script>
-        var userInput = document.getElementById('perfect');
-        var perfect = function (x) {
-            var sumOfPositiveIntergers = 0;
-            var perfNumbPossible = parseInt(userInput.value);
-            for (var i = 1; i <= perfNumbPossible - 1; i++) {
-                var modEquation = perfNumbPossible % i;
-                if (modEquation === 0) {
-                    sumOfPositiveIntergers += i;
-                }
-            }
+    <div id="myModal" class="reveal-modal">
+        <h1>Perfect Numbers</h1>
+        <p><a href="PerfectNumbers.js"></a></p>
+        <a class="close-reveal-modal">&#215;</a>
+    </div>
 
-            // if the sum of positive intergers is equal to perfectnumbpossible(user input) than it is
-            if (sumOfPositiveIntergers === perfNumbPossible) {
-                document.getElementById('answer').innerHTML = perfNumbPossible + " " + "is a perfect number";
-                // if not user input is not perfect number
-            } else {
-                document.getElementById('answer').innerHTML = perfNumbPossible + " " + "is not a perfect number";
-            }
-        }
-    </script>
+    <div id="myModal" class="reveal-modal">
+        <h1>The first 5 Happy Numbers</h1>
+        <p>In progress</p>
+        <a class="close-reveal-modal">&#215;</a>
+    </div>
 
+    <div id="myModal" class="reveal-modal">
+        <h1>Find all 3 digit Armstrong Numbers</h1>
+        <p><a href="Armstrong Number Problem.js"></a></p>
+        <a class="close-reveal-modal">&#215;</a>
+    </div>
+    
 
-
+    
 </body>
 </html>

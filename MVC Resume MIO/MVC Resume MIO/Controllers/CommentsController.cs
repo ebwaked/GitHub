@@ -37,7 +37,8 @@ namespace MVC_Resume_MIO.Controllers
         }
 
         // GET: Comments/Create
-        public ActionResult Create()
+        [Authorize]
+        public ActionResult Create()           
         {
             //ViewBag.AuthorID = new SelectList(db.ApplicationUsers, "Id", "FirstName");
             ViewBag.PostID = new SelectList(db.Posts, "ID", "Title");
@@ -48,6 +49,7 @@ namespace MVC_Resume_MIO.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,PostID,AuthorID,Body,Created,Updated,UpdateReason")] Comment comment)
         {

@@ -50,13 +50,14 @@
               	<a class="brand me-name" href="#top">Edward Waked</a><!-- This text displays when the screen has been scrolled -->                
                 <div class="nav-collapse collapse pull-right navigation">
                     <ul class="nav">
-                      <li class="active first"><a href="#keypoints">Keypoints</a></li>
-                      <li><a href="#experience">Work Experience</a></li>
-                      <li><a href="#portfolio">Portfolio</a></li>
-                      <li><a href="#education">Education</a></li>
-                      <li><a href="#skills">Skills</a></li>
-                      <li><a href="#contact">Contact Me</a></li>
-                    </ul>
+                      <li>@Html.ActionLink("Keypoints", "Index", "Home")</li>
+                      <li>@Html.ActionLink("Experience", "Index", "Home")</li>
+                      <li>@Html.ActionLink("Portfolio", "Index", "Home")</li>
+                      <li>@Html.ActionLink("Education", "Index", "Home")</li>
+                      <li>@Html.ActionLink("Skills", "Index", "Home")</li>
+                      <li>@Html.ActionLink("Blog", "Index", "Posts")</li>
+                      <li>@Html.ActionLink("Contact", "Index", "Home")</li>
+                    </ul>   
                 </div><!-- nav-collapse -->
                 
             </div><!-- container -->
