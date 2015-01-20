@@ -1,6 +1,4 @@
-﻿<p>Is it a Palindrome?</p>
-
-    function checkPalindrome(word) {
+﻿    function checkPalindrome(word) {
         var l = word.length;
         for (var i = 0; i < l / 2; i++) {
             if (word.charAt(i) !== word.charAt(l - 1 - i)) {

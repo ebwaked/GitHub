@@ -74,12 +74,13 @@
 		}
 	})
 	
-	/* Animate Name on nav var */
+	/* Animate Name on nav var 
 	var $me =  $('.me-name'),
 	    brandW = - $me.width() - 10,
 		paddingLeft = 10;
 	
 	$me.css('left', brandW);
+    */
 	
 	//$me.click(function(e){
 		//return false;

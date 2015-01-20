@@ -1,5 +1,4 @@
-﻿<p>Perfect Numbers</p>
-    <label label id="per">Is this number perfect?</label>
+﻿    <label label id="per">Is this number perfect?</label>
     <button onclick="perfect()" href="javascript:;">Enter</button>
     <input type="number" id="perfect" />
     <p> id="answer"></p>

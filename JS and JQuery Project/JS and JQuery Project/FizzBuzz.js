@@ -1,5 +1,4 @@
-﻿<p>Print integers, Fizz, or Buzz to Screen</p>
-    <script>
+﻿
     var hun = 100;
 
 for (var i = 1; i < hun; i++) {
@@ -14,4 +13,3 @@ for (var i = 1; i < hun; i++) {
     }
     document.write('<br>');
 }
-</script>
