@@ -22,57 +22,30 @@
 </head>
 <body>
     
-    <div id="myModal1" class="reveal-modal open">
-        <h1>Max Of Three Numbers</h1>
-        <p><a href="MaxOfThree.js"></a></p>
-        <a class="close-reveal-modal">&#215;</a>
+    <center>
+        <a href="#modalMax" data-toggle="modal" class="btn btn-large">Display Window</a
+    </center>
+
+    /*<!-- first modal window --> */
+    <div id="modalMax" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <header class="modal-header">
+            <a href="MaxOfThree.js" class="close" data-dismiss="modal">x</a>
+            <h3>The max of 3 numbers</h3>
+        </header>
+        <div class="modal-body">
+            <p>This will find the maximum value of three numbers.</p>
+            <p><a href="MaxOfThree.js"></a></p>
+            <p>Close me by clicking anywhere outside the window, or by clicking the blue button.</p>
+            <p></p>
+        </div>
+        <footer class="modal-footer">
+            <a href="#" class="btn btn-primary" id="okwin01">Congratulations!</a>
+        </footer>
     </div>
+    /*<!-- @end @modalMax -->*/
 
-    <a href="MaxOfThree.js" data-reveal-id="myModal1">Max of three</a>
 
-    <div id="myModal" class="reveal-modal">
-        <h1>Sum and multiplication of numbers Functions</h1>
-        <p><a href ="SumFunction.js"></a></p>
-        <a class="close-reveal-modal">&#215;</a>
-    </div>
 
-    <div id="myModal" class="reveal-modal">
-        <h1>Factorial of any number</h1>
-        <p><a href="Factorial.js"></a></p>
-        <a class="close-reveal-modal">&#215;</a>
-    </div>
 
-    <div id="myModal" class="reveal-modal">  
-        <h1>Is this palindrome?</h1>
-        <p><a href="Palindrome.js"></a> </p>
-        <a class="close-reveal-modal">&#215;</a>
-    </div>
-
-    <div id="myModal" class="reveal-modal">
-        <h1>Print Fizz if divisible by 3, print Buzz if divisible by 5, if divisible by both print FizzBuzz; from numbers 1 to 100.</h1>
-        <p><a href ="FizzBuzz.js"></a></p>
-        <a class="close-reveal-modal">&#215;</a>
-    </div>
-
-    <div id="myModal" class="reveal-modal">
-        <h1>Perfect Numbers</h1>
-        <p><a href="PerfectNumbers.js"></a></p>
-        <a class="close-reveal-modal">&#215;</a>
-    </div>
-
-    <div id="myModal" class="reveal-modal">
-        <h1>The first 5 Happy Numbers</h1>
-        <p>In progress</p>
-        <a class="close-reveal-modal">&#215;</a>
-    </div>
-
-    <div id="myModal" class="reveal-modal">
-        <h1>Find all 3 digit Armstrong Numbers</h1>
-        <p><a href="Armstrong Number Problem.js"></a></p>
-        <a class="close-reveal-modal">&#215;</a>
-    </div>
-    
-
-    
 </body>
 </html>

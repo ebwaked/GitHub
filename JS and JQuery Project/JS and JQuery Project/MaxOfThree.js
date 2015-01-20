@@ -1,7 +1,5 @@
-﻿Max of three function
-    <button onclick="maxOfThree(55, 465456, 456)">The max is...</button>
-    <p> id="maxNumb"></p>
- 
+﻿
+maxOfThree(55, 465456, 456);
     function maxOfThree(a, b, c){
         if (a >= b && a >= c){
             document.getElementById("maxNumb").innerHTML = a;
@@ -11,4 +9,5 @@
             document.getElementById("maxNumb").innerHTML = c;
         }
     }
- 
+
+   

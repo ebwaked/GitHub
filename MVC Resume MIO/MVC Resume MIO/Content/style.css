@@ -204,7 +204,7 @@ footer{ background-color:#d4d6d5; padding:15px 0px 5px; border-top:1px solid #cc
 /* 6. Responsive */
 
 /* Large desktop */
-@media (min-width: 1200px) { ... }
+@media (min-width: 1200px) {  }
  
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) { 
@@ -233,11 +233,11 @@ footer{ background-color:#d4d6d5; padding:15px 0px 5px; border-top:1px solid #cc
 	section > .row > .span8 h2, section > .row > .span4 h3, section > .row > .span4 > h4{ margin-bottom:10px }
 	section > .row > .span4 > h4{ display:block}
 	section > .row > .span4{ text-align:left}
-	//.thumbnails-portfolio li.span6, .thumbnails-portfolio li.span3{ float:left; width:auto}
-	//.navbar{ height: 48px}
+	.thumbnails-portfolio li.span6, .thumbnails-portfolio li.span3{ float:left; width:auto}
+	.navbar{ height: 48px}
 	.current-band{ display:none}	
 	.nav-collapse .nav>li>a, .nav-collapse .dropdown-menu a{ font-weight:normal; background:none}
-	.nav-collapse, .nav-collapse.collapse{ //width:100%}
+	.nav-collapse, .nav-collapse.collapse{ width:100%}
 	.navbar-inner .container, .nav-collapse, .nav-collapse.collapse{ overflow:visible}
 	.span6 .thumbnail{ width:356px}
 	.span4 .thumbnail{ width:220px}
@@ -359,4 +359,25 @@ body {
 }
 
 
+}
+
+body {
+    margin-top: 60px;
+    height: 100%;
+    width: 100%;
+}
+
+body::after {
+    padding-top: 60px;
+  content: "";
+    background: url("/images/bg.jpg");
+    height: 100%;
+    width: 100%;
+  opacity: .1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  z-index: -1;   
 }

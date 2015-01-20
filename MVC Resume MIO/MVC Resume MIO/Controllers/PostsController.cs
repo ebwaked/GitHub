@@ -44,13 +44,14 @@ namespace MVC_Resume_MIO.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
+        
 
         // POST: Posts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "ID,Created,Updated,Title,Body,MediaURL")] Post post)
         {
             if (ModelState.IsValid)
