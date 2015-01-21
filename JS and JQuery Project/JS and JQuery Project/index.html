@@ -3,51 +3,126 @@
 <head>
     <title>JS and JQuery Project</title>
 
-    <link href="Content/bootstrap.css" rel="stylesheet" />
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
-    <link href="Content/bootstrap-theme.css" rel="stylesheet" />
-        
+    <link href="Content/reveal.css" rel="stylesheet" />
+    <link href="Content/StyleSheet1.css" rel="stylesheet" />
+    <link href="styles/shCoreMidnight.css" rel="stylesheet" />
+    <link href="styles/shCore.css" rel="stylesheet" />
+    <link href="Content/shThemeDefault.css" rel="stylesheet" />
+    
+
 </head>
 <body>
-    <!--  /* Max of 3 Modal */  -->
-
-    <button data-toggle="modal" data-target="#maxThree">Open Max of Three</button>
-
-    <div class="modal fade" id="maxThree">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
-                    <h4 class="modal-title">Max of Three</h4>
+    <div class="container-fluid">
+        <!--  /* Max of 3 Modal */ -->
+        <div class="col-lg-4">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#maxThree">Maximum of Three Numbers</button>
+            <div class="modal fade" id="maxThree" tabindex="-1" role="dialog" aria-labelledby="maxThree" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="maxThree">What is the maximum of these 3 numbers?</h4>
+                        </div>
+                            
+                                <div class="col-md-4">
+                                <div class="modal-body">
+                                <form>
+                                <div class="form-group">
+                                <input type="number" id="maxNum1" />
+                                <input type="number" id="maxNum2" />
+                                <input type="number" id="maxNum3" />
+                               </div>
+                                <div id="answer">
+                                        </div>
+                                    </form>
+                                </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <pre class="brush: js; ruler: true;">
+        function maxOfThree() {
+    var ans = 0;
+    var a = $('#maxNum1').val();
+    var b = $('#maxNum2').val();
+    var c = $('#maxNum3').val();
+        if (a >= b && a >= c){
+            ans = a;
+        } else if (b >= a && b >= c) {
+            ans = b;
+        } else {
+            ans = c;
+        }
+        ans = Number(ans);
+      $('#answer').replaceWith('<div id=\'answer\'><p>' + ans + '</p></div>');
+    }   
+                                                                            
+                                    </pre>
+                                </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button onclick="maxOfThree()">The max is...</button>
+                            </div>
+                            
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <p>$</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+            </div>
+        </div>
 
+        <!-- Modal number 2  -->
+        <div class="col-lg-4">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sumFunction">Add and Multiply Numbers</button>
+            <div class="modal fade" id="sumFunction" tabindex="-1" role="dialog" aria-labelledby="sumFunction" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="sumFunction">Add numbers</h4>
+                        </div>
 
+                        <div class="col-md-4">
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="number" id="sumNumbers" />
+                                    </div>
+                                    <div id="sumAnswer">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <pre class="brush: js; ruler: true;">
+                                        
+                                                                            
+                                    </pre>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button onclick="SumFunction()">The sum is...</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--   Modal 3  --> 
+        <div class="col-lg-4">
+           
+        </div>
+            
+    </div>
     <script src="Scripts/jquery-2.1.3.min.js"></script>
-    <script src="Scripts/jquery-2.1.3.js"></script>
-    <script src="Scripts/bootstrap.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
-    <script src="Scripts/jquery-2.1.3.intellisense.js"></script>
+    <script src="Scripts/JavaScript1.js"></script>
+    <script src="Scripts/jquery.leanModal.min.js"></script>
+    <script src="Scripts/shAutoloader.js"></script>
+    <script src="Scripts/shCore.js"></script>
+    <script src="Scripts/shBrushJScript.js"></script>
 
-    <script src="MaxOfThree.js"></script>
+    <script>SyntaxHighlighter.all();</script>
 
-
-
-
-   
-
-
+    <script src="/Scripts/MaxOfThree.js"></script>
+    <script src="/Scripts/SumFunction.js"></script>
 </body>
-
-
 </html>

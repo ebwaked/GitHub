@@ -61,6 +61,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\shThemeDefault.css" />
+    <Content Include="Content\StyleSheet1.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -71,6 +73,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="packages.config" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
+    <Content Include="Scripts\JavaScript1.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />
     <Content Include="Scripts\jquery-2.1.3.min.js" />
     <Content Include="Scripts\jquery-2.1.3.min.map" />
@@ -82,18 +85,39 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Armstrong Number Problem.js" />
-    <Content Include="Factorial.js" />
-    <Content Include="FizzBuzz.js" />
+    <Content Include="Scripts\Armstrong Number Problem.js" />
+    <Content Include="Scripts\Factorial.js" />
+    <Content Include="Scripts\FizzBuzz.js" />
     <Content Include="index.html" />
-    <Content Include="jquery-1.4.4.min.js" />
-    <Content Include="jquery.reveal.js" />
-    <Content Include="Palindrome.js" />
-    <Content Include="PerfectNumbers.js" />
-    <Content Include="reveal.css" />
+    <Content Include="Scripts\jquery-1.4.4.min.js" />
+    <Content Include="Scripts\jquery.leanModal.min.js" />
+    <Content Include="Scripts\jquery.reveal.js" />
+    <Content Include="Scripts\Palindrome.js" />
+    <Content Include="Scripts\PerfectNumbers.js" />
+    <Content Include="Content\reveal.css" />
     <Content Include="Scripts\npm.js" />
-    <Content Include="SumFunction.js" />
-    <Content Include="MaxOfThree.js" />
+    <Content Include="Scripts\shAutoloader.js" />
+    <Content Include="Scripts\shBrushJScript.js" />
+    <Content Include="Scripts\shCore.js" />
+    <Content Include="Scripts\SumFunction.js" />
+    <Content Include="Scripts\MaxOfThree.js" />
+    <Content Include="styles\shCore.css" />
+    <Content Include="styles\shCoreDefault.css" />
+    <Content Include="styles\shCoreDjango.css" />
+    <Content Include="styles\shCoreEclipse.css" />
+    <Content Include="styles\shCoreEmacs.css" />
+    <Content Include="styles\shCoreFadeToGrey.css" />
+    <Content Include="styles\shCoreMDUltra.css" />
+    <Content Include="styles\shCoreMidnight.css" />
+    <Content Include="styles\shCoreRDark.css" />
+    <Content Include="styles\shThemeDefault.css" />
+    <Content Include="styles\shThemeDjango.css" />
+    <Content Include="styles\shThemeEclipse.css" />
+    <Content Include="styles\shThemeEmacs.css" />
+    <Content Include="styles\shThemeFadeToGrey.css" />
+    <Content Include="styles\shThemeMDUltra.css" />
+    <Content Include="styles\shThemeMidnight.css" />
+    <Content Include="styles\shThemeRDark.css" />
     <Content Include="testPage.html" />
     <Content Include="testPage2.html" />
     <Content Include="Web.config" />
