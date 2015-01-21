@@ -1,17 +1,13 @@
-﻿$('#sumNumbers');
-var sumNumbers = [];
-var sumList = sumNumbers.split(",");
-totalSum = 0;
+﻿
 
 function sumNumbers(sumList) {
-    for (var i = 0; i < sumNumbers.length; i++) {
-
-        totalSum += sumList[i];
-        $('#sumAnswer').replaceWith('<div id=\'sumAnswer\'><p>' + totalSum + '</p></div>');
-    }
+    var sumList = $('#sumNumbers').val().split(',');
+    var sumTotal = 0;
+        for (i = 0; i < sumList.length; i++) {
+            sumTotal += parseInt(sumList[i]);     
+        }
+        $('#sumAnswer').replaceWith('<div id=\'sumAnswer\'><p>' + sumTotal + '</p></div>');
 }
-
-
 
 
 
