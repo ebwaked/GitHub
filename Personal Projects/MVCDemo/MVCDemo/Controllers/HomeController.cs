@@ -36,5 +36,13 @@ namespace MVCDemo.Controllers
 
             return View();
         }
+        
+        public ActionResult WordFrequency()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult WordFrequency
     }
 }
