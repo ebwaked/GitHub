@@ -15,10 +15,11 @@
 </head>
 <body>
     <div class="container-fluid">
+        <!--Page Break-->
         <div>
             </br>
         </div>
-        <!--  /* Max of 3 Modal */ -->
+        <!-- Max of 3 -->
         <div class="col-lg-4">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#maxThree">Maximum of Three Numbers</button>
             <div class="modal fade" id="maxThree" tabindex="-1" role="dialog" aria-labelledby="maxThree" aria-hidden="true">
@@ -70,7 +71,6 @@ function maxOfThree() {
                 </div>
             </div>
         </div>
-
         <!-- Addition of Numbers -->
         <div class="col-lg-4">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sumFunction">Add Numbers</button>
@@ -86,8 +86,7 @@ function maxOfThree() {
                             <div class="modal-body">
                                 <form>
                                     <div class="form-group">
-                                        <p>Seperate a list of numbers with a comma
-                                        and click "Calculate" to find the total</p>
+                                        <p>Use the "+" symbol to add a list of numbers and click "Calculate" to find the total</p>
                                         <input type="text" id="sumNumbers" />
                                     </div>
                                     <div id="sumAnswer">
@@ -117,12 +116,51 @@ function sumNumbers(sumList) {
                 </div>
             </div>
         </div>
-        <!--   Modal 3  --> 
+        <!--Multiplication of Numbers -->
         <div class="col-lg-4">
-           
-        </div>
-            
-    </div>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#multiplyFunction">Multiply Numbers</button>
+            <div class="modal fade" id="multiplyFunction" tabindex="-1" role="dialog" aria-labelledby="multiplyFunction" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="multiplyFunction">Multiply list of numbers</h4>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <p>Use the " * " symbol to multiply a list of numbers and click "Calculate" to find the total</p>
+                                        <input type="text" id="multiplyNumbers" />
+                                    </div>
+                                    <div id="multiplyAnswer">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <pre class="brush: js; ruler: true;">
+function multiplyNumbers(multiplyList) {
+    var multiplyList = $('#multiplyNumbers').val().split("*");
+    var multiplyTotal = 1;
+    for (i = 0; i < multiplyList.length; i++) {
+        multiplyTotal *= parseInt(multiplyList[i]);
+    }
+    $('#multiplyAnswer').replaceWith('<div id=\'multiplyAnswer\'><p>' + multiplyTotal + '</p></div>');
+}                                                   
+                                    </pre>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button onclick="multiplyNumbers()">Calculate</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div> 
+
     <script src="Scripts/jquery-2.1.3.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/JavaScript1.js"></script>
@@ -135,5 +173,7 @@ function sumNumbers(sumList) {
 
     <script src="/Scripts/MaxOfThree.js"></script>
     <script src="/Scripts/SumFunction.js"></script>
+    <script src="Scripts/MultiplyFunction.js"></script>
+        </div>
 </body>
 </html>

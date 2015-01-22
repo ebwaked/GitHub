@@ -92,6 +92,7 @@
     <Content Include="Scripts\jquery-1.4.4.min.js" />
     <Content Include="Scripts\jquery.leanModal.min.js" />
     <Content Include="Scripts\jquery.reveal.js" />
+    <Content Include="Scripts\MultiplyFunction.js" />
     <Content Include="Scripts\Palindrome.js" />
     <Content Include="Scripts\PerfectNumbers.js" />
     <Content Include="Content\reveal.css" />
