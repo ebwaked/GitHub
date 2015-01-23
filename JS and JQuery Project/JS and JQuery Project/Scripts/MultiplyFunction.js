@@ -5,7 +5,5 @@
         multiplyTotal *= parseInt(multiplyList[i]);
     }
     $('#multiplyAnswer').replaceWith('<div id=\'multiplyAnswer\'><p>' + multiplyTotal + '</p></div>');
-
-
 }
 

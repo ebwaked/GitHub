@@ -1,9 +1,10 @@
 ﻿   
-    var n = 5;
-var nmt = n * (n - 1);
-for (i = n - 2; i > 1; i--) {
-    nmt = nmt * i;
+function factorial(nFactor) {
+    var nFactor = $('#xFactorial').val();
+    var factorialAnswer = nFactor * (nFactor - 1);
+    for (var i = nFactor - 2; i > 1; i--) {
+        factorialAnswer *= i;
+    }
+    $('#factorialAnswer').replaceWith('<div id=\'factorialAnswer\'><p>' + "Factorial of "  + nFactor +  " is "  + factorialAnswer + '</p></div>');
 }
-document.write("Factorial of " + n + " is " + nmt);
-
 

@@ -1,15 +1,17 @@
-﻿    function checkPalindrome(word) {
-        var l = word.length;
-        for (var i = 0; i < l / 2; i++) {
-            if (word.charAt(i) !== word.charAt(l - 1 - i)) {
-                return false;
-            }
-        }
-        return true;
+﻿function checkPalindrome(word) {
+    var word = $('#word').val();
+    var wordLength = $('#word').val().length;
+    var isPal = true;
+    for (var i = 0; i < wordLength / 2; i++) {
+        if (word.charAt(i) !== word.charAt(wordLength - 1 - i)) {
+            isPal = false;
+            break;
+        } 
     }
-
-if (checkPalindrome("dood")) {
-    document.write("The word is a palindrome");
-} else {
-    document.write("The word is NOT a palindrome");
+    if (isPal) {
+        $('#palindromeAnswer').text(word + " is a palindrome");
+    } else {
+        $('#palindromeAnswer').text(word + " is not a palindrome");
+    }
 }
+

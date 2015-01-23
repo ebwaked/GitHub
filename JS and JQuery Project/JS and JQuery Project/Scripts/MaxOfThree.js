@@ -3,7 +3,6 @@
     var a = parseInt($('#maxNum1').val());
     var b = parseInt($('#maxNum2').val());
     var c = parseInt($('#maxNum3').val());
-
         if (a >= b && a >= c){
             ans = a;
         } else if (b >= a && b >= c) {
@@ -12,7 +11,6 @@
         {
             ans = c;
         }
-
       $('#answer').replaceWith('<div id=\'answer\'><p>' + ans + '</p></div>');
     }
 
