@@ -173,15 +173,15 @@
 	})
 	
 	/* Send Email */
-	$('form').submit(function(e){
-		e.preventDefault();
-		$('.loading').show();
-		$.post('sendmail.php', $('.form').serialize(), function(data){
-			$('.results').html(data);
-		}).success(function(){
-			$('.loading').hide();
-		})
-	})
+	//$('form .special-form').submit(function(e){
+	//	e.preventDefault();
+	//	$('.loading').show();
+	//	$.post('sendmail.php', $('.form').serialize(), function(data){
+	//		$('.results').html(data);
+	//	}).success(function(){
+	//		$('.loading').hide();
+	//	})
+	//})
 	
 
 })( jQuery );

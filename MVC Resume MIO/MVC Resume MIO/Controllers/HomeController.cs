@@ -15,49 +15,56 @@ namespace MVC_Resume_MIO.Controllers
 
         public ActionResult Keypoints()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Keypoints.";
 
             return View();
         }
 
         public ActionResult Experience()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Experience.";
 
             return View();
         }
 
         public ActionResult Portfolio()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Portfolio.";
 
             return View();
         }
 
         public ActionResult Education()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Education.";
 
             return View();
         }
 
         public ActionResult Skills()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Skills.";
 
             return View();
         }
 
         public ActionResult Blog()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Blog.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Contact.";
+
+            return View();
+        }
+
+        public ActionResult JavascriptExercises()
+        {
+            ViewBag.Message = "JavascriptExercises.";
 
             return View();
         }

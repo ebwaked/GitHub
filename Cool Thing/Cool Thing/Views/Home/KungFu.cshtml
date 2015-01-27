@@ -1,0 +1,33 @@
+﻿@using Cool_Thing.Models
+@model List<Description>
+@{
+    ViewBag.Title = "KungFu";
+}
+
+<h2>KungFu</h2>
+
+<form action="@Url.Action("KungFu","Home")" method="post">
+<label>Input a name to search</label><input type="text" name="username" value="@if(Model != null && Model.Count > 0){@Model.First().Username}" />
+    <br />
+    <button type="submit">Search!</button>
+</form>
+
+@if (Model != null)
+{
+    foreach (var desc in Model)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                @desc.Username <span class="pull-right">@desc.StatusCode</span>
+            </div>
+            <div>
+                @desc.Body
+            </div>
+        </div>
+    }
+
+}
+
+
+
+
