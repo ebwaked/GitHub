@@ -1,0 +1,336 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>JS and JQuery Project</title>
+
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="Content/reveal.css" rel="stylesheet" />
+    <link href="Content/StyleSheet1.css" rel="stylesheet" />
+    <link href="styles/shCoreMidnight.css" rel="stylesheet" />
+    <link href="styles/shCore.css" rel="stylesheet" />
+    <link href="Content/shThemeDefault.css" rel="stylesheet" />
+
+    <script src="Scripts/jquery-2.1.3.min.js"></script>
+    
+
+</head>
+<body>
+    <div class="container-fluid">
+        <!--Page Break-->
+        <div>
+            </br></br></br>
+        </div>
+        <!-- Max of 3 -->
+        <div class="col-lg-4">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#maxThree">Maximum of Three Numbers</button>
+            <div class="modal fade" id="maxThree" tabindex="-1" role="dialog" aria-labelledby="maxThree" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="maxThree">What is the maximum of these 3 numbers?</h4>
+                        </div>
+                            
+                                <div class="col-md-4">
+                                <div class="modal-body">
+                                <form>
+                                <div class="form-group">
+                                <input type="number" id="maxNum1" />
+                                <input type="number" id="maxNum2" />
+                                <input type="number" id="maxNum3" />
+                               </div>
+                                <div id="answer">
+                                        </div>
+                                    </form>
+                                </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <pre class="brush: js; ruler: true;">
+function maxOfThree() {
+    var ans = 0;
+    var a = parseInt($('#maxNum1').val());
+    var b = parseInt($('#maxNum2').val());
+    var c = parseInt($('#maxNum3').val());
+        if (a >= b && a >= c){
+            ans = a;
+        } else if (b >= a && b >= c) {
+            ans = b;
+        } else if (c >= a && c >= b)
+        {
+            ans = c;
+        }
+      $('#answer').replaceWith('<div id=\'answer\'><p>' + ans + '</p></div>');
+    }                         
+                                    </pre>
+                                </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button onclick="maxOfThree()">The max is...</button>
+                            </div>
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Addition of Numbers -->
+        <div class="col-lg-4">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sumFunction">Add Numbers</button>
+            <div class="modal fade" id="sumFunction" tabindex="-1" role="dialog" aria-labelledby="sumFunction" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="sumFunction">Add list of numbers</h4>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <p>Use the "+" symbol to add a list of numbers and click "Calculate" to find the total</p>
+                                        <input type="text" id="sumNumbers" />
+                                    </div>
+                                    <div id="sumAnswer">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <pre class="brush: js; ruler: true;">
+function sumNumbers(sumList) {
+    var sumList = $('#sumNumbers').val().split(',');
+    var sumTotal = 0;
+        for (i = 0; i < sumList.length; i++) {
+            sumTotal += parseInt(sumList[i]);     
+        }
+        $('#sumAnswer').replaceWith('<div id=\'sumAnswer\'><p>' + sumTotal + '</p></div>');
+}                                        
+                                                                            
+                                    </pre>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button onclick="sumNumbers()">Calculate</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Multiplication of Numbers -->
+        <div class="col-lg-4">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#multiplyFunction">Multiply Numbers</button>
+            <div class="modal fade" id="multiplyFunction" tabindex="-1" role="dialog" aria-labelledby="multiplyFunction" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="multiplyFunction">Multiply list of numbers</h4>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <p>Use the " * " symbol to multiply a list of numbers and click "Calculate" to find the total</p>
+                                        <input type="text" id="multiplyNumbers" />
+                                    </div>
+                                    <div id="multiplyAnswer">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <pre class="brush: js; ruler: true;">
+function multiplyNumbers(multiplyList) {
+    var multiplyList = $('#multiplyNumbers').val().split("*");
+    var multiplyTotal = 1;
+    for (i = 0; i < multiplyList.length; i++) {
+        multiplyTotal *= parseInt(multiplyList[i]);
+    }
+    $('#multiplyAnswer').replaceWith('<div id=\'multiplyAnswer\'><p>' + multiplyTotal + '</p></div>');
+}                                                   
+                                    </pre>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button onclick="multiplyNumbers()">Calculate</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <!--Page Break-->
+        <div>
+            </br></br></br>
+        </div>
+        <!-- Factorial of Numbers -->
+        <div class="col-lg-4">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#factorial">Factorial</button>
+            <div class="modal fade" id="factorial" tabindex="-1" role="dialog" aria-labelledby="factorial" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="factorial">Factorial of Number</h4>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <p>What is the factorial of your number?</p>
+                                        <input type="number" id="xFactorial" />
+                                    </div>
+                                    <h1 id="factorialAnswer"></h1>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <pre class="brush: js; ruler: true;">
+function factorial(nFactor) {
+    var nFactor = $('#xFactorial').val();
+    var factorialAnswer = nFactor * (nFactor - 1);
+    for (var i = nFactor - 2; i > 1; i--) {
+        factorialAnswer *= i;
+    }
+    $('#factorialAnswer').replaceWith('<div id=\'factorialAnswer\'><p>' + "Factorial of "  + nFactor +  " is "  + factorialAnswer + '</p></div>');
+}
+                                    </pre>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button onclick="factorial()">Calculate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Is this a palindrome?-->
+        <div class="col-lg-4">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#palindrome">Is this a palindrome?</button>
+            <div class="modal fade" id="palindrome" tabindex="-1" role="dialog" aria-labelledby="palindrome" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="palindrome">Is this a palindrome?</h4>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="text" id="word" />
+                                    </div>
+                                    <div id="palindromeAnswer">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <pre class="brush: js; ruler: true;">
+function checkPalindrome(word) {
+    var word = $('#word').val();
+    var wordLength = $('#word').val().length;
+    var isPal = true;
+    for (var i = 0; i < wordLength / 2; i++) {
+        if (word.charAt(i) !== word.charAt(wordLength - 1 - i)) {
+            isPal = false;
+            break;
+        } 
+    }
+    if (isPal) {
+        $('#palindromeAnswer').text(word + " is a palindrome");
+    } else {
+        $('#palindromeAnswer').text(word + " is not a palindrome");
+    }
+}
+                                    </pre>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button onclick="checkPalindrome()">Is this a palindrome?</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--FizzBuzz-->
+        <div class="col-lg-4">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fizzBuzz">FizzBuzz Exercise</button>
+            <div class="modal fade" id="fizzBuzz" tabindex="-1" role="dialog" aria-labelledby="fizzBuzz" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h5 class="modal-title" id="fizzBuzz">Iterate intergers from 1 to 100. Print numbers to the screen;
+                            if number is multiple of 3 print "Fizz" and if number is a multiple of 5 print "Buzz". If the number is a
+                            multiple of 3 AND 5 print FizzBuzz.</h5>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                       
+                                    </div>
+                                    <div id="fizzBuzzAnswer">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <pre class="brush: js; ruler: true;">
+function fizzBuzz() {
+    var result = "";
+    for (var i = 1; i <= 100; i++) {
+        if (i % 5 !== 0 && i % 3 !== 0) {
+            result += i + "<br />";
+        }
+        else if (i % 3 === 0 && i % 5 !== 0) {
+            result += "Fizz" + "<br />";
+        }
+        else if (i % 5 === 0 && i % 3 !== 0) {
+            result += "Buzz" + "<br />";
+        }
+        else {
+            result += "FizzBuzz" + "<br />";
+        }
+    }
+    $('#fizzBuzzAnswer').html(result);
+}
+                                    </pre>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button onclick="fizzBuzz()">Print FizzBuzz Exercise</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Perfect Numbers-->
+        <div class="col-lg-4">
+
+        </div>
+    
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/JavaScript1.js"></script>
+   
+    <script src="Scripts/shAutoloader.js"></script>
+    <script src="Scripts/shCore.js"></script>
+    <script src="Scripts/shBrushJScript.js"></script>
+
+    <script>SyntaxHighlighter.all();</script>
+
+    <script src="/Scripts/MaxOfThree.js"></script>
+    <script src="/Scripts/SumFunction.js"></script>
+    <script src="Scripts/MultiplyFunction.js"></script>
+    <script src="Scripts/Factorial.js"></script>
+    <script src="Scripts/Palindrome.js"></script>
+    <script src="Scripts/FizzBuzz.js"></script>
+    </div>
+</body>
+</html>
