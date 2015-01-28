@@ -175,6 +175,12 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\bootstrap-theme.css" />
+    <Content Include="Content\css\bootstrap-theme.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\reveal.css" />
+    <Content Include="Content\css\shThemeDefault.css" />
+    <Content Include="Content\css\StyleSheet1.css" />
     <Content Include="Content\images\bg-perpendicular.png" />
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -246,6 +252,8 @@
     <Content Include="Scripts\Armstrong Number Problem.js" />
     <Content Include="Scripts\bootstrap-responsive.min.css" />
     <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Content\css\bootstrap-theme.css.map" />
+    <Content Include="Content\css\bootstrap.css.map" />
     <None Include="Properties\PublishProfiles\ewaked-resume - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\ewaked-resume - FTP %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\ewaked-resume - FTP.pubxml" />
@@ -254,22 +262,40 @@
     <None Include="Properties\PublishProfiles\ewaked-resume - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Factorial.js" />
+    <Content Include="Scripts\FizzBuzz.js" />
     <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\JavaScript1.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-2.1.3.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.4.min.js" />
+    <None Include="Scripts\jquery-2.1.3.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.3.js" />
+    <Content Include="Scripts\jquery-2.1.3.min.js" />
     <Content Include="Scripts\jquery.easing.min.js" />
     <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.leanModal.min.js" />
+    <Content Include="Scripts\jquery.reveal.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MaxOfThree.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\MultiplyFunction.js" />
+    <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\Palindrome.js" />
+    <Content Include="Scripts\PerfectNumbers.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\scripts.js" />
+    <Content Include="Scripts\shAutoloader.js" />
+    <Content Include="Scripts\shBrushJScript.js" />
+    <Content Include="Scripts\shCore.js" />
     <Content Include="Scripts\style.css" />
+    <Content Include="Scripts\SumFunction.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
