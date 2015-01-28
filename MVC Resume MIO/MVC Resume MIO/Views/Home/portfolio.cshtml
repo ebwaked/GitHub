@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Portfolio" ;
+    ViewBag.Title = "Portfolio";
 }
 
 
@@ -9,38 +9,43 @@
     :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
     -->
 
-@*@*<section>
+@*<section>
     <div class="row">
         <div class="span4"></div><!-- Keep this div empty to align -->
         <div class="span8">
-            <a name="portfolio" class="division"></a><h2>Portfolio</h2>
+            <a name="portfolio" class="division"></a>
+            <h2>Portfolio</h2>
         </div><!-- span8 -->
         <div class="span4">
             <h3>JavaScript Exercises</h3>
         </div><!-- span4 -->
         <div class="span8">
             <div class="row-fluid">
-                <ul class="thumbnails thumbnails-portfolio">
-                    <li class="span6">
-                        @*<a href="~/Views/Home/JavascriptExercises" class="thumbnail">
-                            <a href="~/Views/Home/JavascriptExercises.cshtml">~/Views/Home/JavascriptExercises.cshtml>
-                            <img src="~/images/javascript.png" width="353" height="237" alt="portfolio">
+          
+                   
+                        
+                  <a href="~/Views/Home/JavascriptExercises.cshtml"><img src="/images/javascript.png"/></a>
+                    @*<a href="/Views/Home/JavascriptExercises.cshtml">
+                            <img src="/images/javascript.png" width="353" height="237" alt="portfolio">
                             <div class="hover"></div>
                             <div class="info">
                                 <h5>JavaScript Exercises</h5>
                                 <p>January 2015</p>
                             </div>
-                        </a>
+                            </a>
                         <div class="page">
-                            <!-- This is the content that comes on the lightbox -->
-
+                             This is the content that comes on the lightbox
+                            <a href="/Views/Home/JavascriptExercises.cshtml">
+                            </a>
                         </div>
-                    </li><!-- li span8 -->
-                    <li class="span6">
-                        <p>These JavaScript exercises worked on our ability to complete mathematically based challenges to enhance our understanding of JavaScript while using modals to establish a better functioning site.</p>
+                   
+                   
+                        <p>These JavaScript exercises worked on our ability to complete mathematically based 
+                        challenges to enhance our understanding of JavaScript while using modals 
+                        to establish a better functioning site.</p>
 
-                    </li><!-- li span6 -->
-                </ul>
+                   
+        
             </div><!-- row-fluid -->
         </div><!-- span8 -->
     </div><!-- row -->
@@ -50,25 +55,27 @@
 
 
 <section>
-    <div class="row">
-        <div class="span4"></div><!-- Keep this div empty to align -->
-        <div class="span8">
-        <h2>Portfolio</h2>
-        </div><!-- span8 -->
-        <div class="span4">
-            <h3>JavaScript Exercises</h3>
-        </div><!-- span4 -->
-        <div class="span8">
-            <div class="row-fluid">
-                <ul>
-                    <li class="span6">
-                       @Html.ActionLink("JavascriptExercises", "JavascriptExercises")
-                    </li><!-- li span8 -->
-                    <li class="span6">
-                        <p>These JavaScript exercises worked on our ability to complete mathematically based challenges to enhance our understanding of JavaScript while using modals to establish a better functioning site.</p>
-                    </li><!-- li span6 -->
-                </ul>
-            </div><!-- row-fluid -->
-        </div><!-- span8 -->
-    </div><!-- row -->
-</section>
+        <div class="row">
+            <div class="span4"></div><!-- Keep this div empty to align -->
+            <div class="span8">
+            <h2>Portfolio</h2>
+            </div><!-- span8 -->
+            <div class="span4">
+                <h3>JavaScript Exercises</h3>
+            </div><!-- span4 -->
+            <div class="span8">
+                <div class="row-fluid">
+                    <ul>
+                        <li class="span6">
+                           @Html.ActionLink("JavascriptExercises", "JavascriptExercises")
+                        </li><!-- li span8 -->
+                        <li class="span6">
+                            <p>These JavaScript exercises worked on our ability to complete mathematically 
+                            based challenges to enhance our understanding of JavaScript while using modals 
+                            to establish a better functioning site.</p>
+                        </li><!-- li span6 -->
+                    </ul>
+                </div><!-- row-fluid -->
+            </div><!-- span8 -->
+        </div><!-- row -->
+    </section>

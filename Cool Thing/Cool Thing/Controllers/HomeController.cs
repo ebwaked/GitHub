@@ -48,7 +48,7 @@ namespace Cool_Thing.Controllers
             var Fu = cool.Users
                      .Select(u => u)
                      .Where(m => Kung.Any(t => t.Username == m.Username));
-            
+
 
             return View(KungFu);
         }
@@ -62,7 +62,19 @@ namespace Cool_Thing.Controllers
         [HttpPost]
         public ActionResult KungFu(string username)
         {
+            var cool = new CoolThing();
+
+            var KungFu = cool.Descriptions
+                         .Select(desc => desc);
+                         .Where(u => u.Username == name || name == "")
+                         .ToList();
+                        
+            
+            
 
         }
-    
+
+
+        public object name { get; set; }
+    }
 }
