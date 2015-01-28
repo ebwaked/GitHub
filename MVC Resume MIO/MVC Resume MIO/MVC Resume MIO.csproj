@@ -175,12 +175,22 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Content Include="Content\css\bootstrap-theme.css" />
     <Content Include="Content\css\bootstrap-theme.min.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\reveal.css" />
     <Content Include="Content\css\shThemeDefault.css" />
     <Content Include="Content\css\StyleSheet1.css" />
+=======
+    <Content Include="Content\CSS2\bootstrap-theme.css" />
+    <Content Include="Content\CSS2\bootstrap-theme.min.css" />
+    <Content Include="Content\CSS2\bootstrap.css" />
+    <Content Include="Content\CSS2\bootstrap.min.css" />
+    <Content Include="Content\CSS2\reveal.css" />
+    <Content Include="Content\CSS2\shThemeDefault.css" />
+    <Content Include="Content\CSS2\StyleSheet1.css" />
+>>>>>>> parent of d7fe8ff... making big changes to all js and css files
     <Content Include="Content\images\bg-perpendicular.png" />
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -249,11 +259,15 @@
     <Content Include="images\javascript.png" />
     <Content Include="images\separation.png" />
     <Content Include="images\social.png" />
-    <Content Include="Scripts\Armstrong Number Problem.js" />
     <Content Include="Scripts\bootstrap-responsive.min.css" />
     <Content Include="Scripts\bootstrap.js" />
+<<<<<<< HEAD
     <Content Include="Content\css\bootstrap-theme.css.map" />
     <Content Include="Content\css\bootstrap.css.map" />
+=======
+    <Content Include="Content\CSS2\bootstrap-theme.css.map" />
+    <Content Include="Content\CSS2\bootstrap.css.map" />
+>>>>>>> parent of d7fe8ff... making big changes to all js and css files
     <None Include="Properties\PublishProfiles\ewaked-resume - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\ewaked-resume - FTP %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\ewaked-resume - FTP.pubxml" />
@@ -282,7 +296,31 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+<<<<<<< HEAD
     <Content Include="Scripts\MaxOfThree.js" />
+=======
+    <Content Include="Scripts\JSExercises\Armstrong Number Problem.js" />
+    <Content Include="Scripts\JSExercises\bootstrap.js" />
+    <Content Include="Scripts\JSExercises\bootstrap.min.js" />
+    <Content Include="Scripts\JSExercises\Factorial.js" />
+    <Content Include="Scripts\JSExercises\FizzBuzz.js" />
+    <Content Include="Scripts\JSExercises\JavaScript1.js" />
+    <Content Include="Scripts\JSExercises\jquery-1.4.4.min.js" />
+    <None Include="Scripts\JSExercises\jquery-2.1.3.intellisense.js" />
+    <Content Include="Scripts\JSExercises\jquery-2.1.3.js" />
+    <Content Include="Scripts\JSExercises\jquery-2.1.3.min.js" />
+    <Content Include="Scripts\JSExercises\jquery.leanModal.min.js" />
+    <Content Include="Scripts\JSExercises\jquery.reveal.js" />
+    <Content Include="Scripts\JSExercises\MaxOfThree.js" />
+    <Content Include="Scripts\JSExercises\MultiplyFunction.js" />
+    <Content Include="Scripts\JSExercises\npm.js" />
+    <Content Include="Scripts\JSExercises\Palindrome.js" />
+    <Content Include="Scripts\JSExercises\PerfectNumbers.js" />
+    <Content Include="Scripts\JSExercises\shAutoloader.js" />
+    <Content Include="Scripts\JSExercises\shBrushJScript.js" />
+    <Content Include="Scripts\JSExercises\shCore.js" />
+    <Content Include="Scripts\JSExercises\SumFunction.js" />
+>>>>>>> parent of d7fe8ff... making big changes to all js and css files
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\MultiplyFunction.js" />
     <Content Include="Scripts\npm.js" />
@@ -353,6 +391,7 @@
     <Content Include="Views\Home\originalIndex.cshtml" />
     <Content Include="Views\partialComments.cshtml" />
     <Content Include="Views\Home\JavascriptExercises.cshtml" />
+    <Content Include="Scripts\JSExercises\jquery-2.1.3.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

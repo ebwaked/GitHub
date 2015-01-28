@@ -6,7 +6,7 @@
 
 <h2>KungFu</h2>
 
-<form action="@Url.Action("LinqFu","Home")" method="post">
+<form action="@Url.Action("KungFu","Home")" method="post">
 <label>Input a name to search</label><input type="text" name="username" value="@if(Model != null && Model.Count > 0){@Model.First().Username}" />
     <br />
     <button type="submit">Search!</button>
