@@ -176,6 +176,7 @@
   </ItemGroup>
   <ItemGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Content Include="Content\css\bootstrap-theme.css" />
     <Content Include="Content\css\bootstrap-theme.min.css" />
     <Content Include="Content\css\bootstrap.css" />
@@ -183,6 +184,8 @@
     <Content Include="Content\css\shThemeDefault.css" />
     <Content Include="Content\css\StyleSheet1.css" />
 =======
+=======
+>>>>>>> parent of d7fe8ff... making big changes to all js and css files
     <Content Include="Content\CSS2\bootstrap-theme.css" />
     <Content Include="Content\CSS2\bootstrap-theme.min.css" />
     <Content Include="Content\CSS2\bootstrap.css" />
@@ -190,6 +193,9 @@
     <Content Include="Content\CSS2\reveal.css" />
     <Content Include="Content\CSS2\shThemeDefault.css" />
     <Content Include="Content\CSS2\StyleSheet1.css" />
+<<<<<<< HEAD
+>>>>>>> parent of d7fe8ff... making big changes to all js and css files
+=======
 >>>>>>> parent of d7fe8ff... making big changes to all js and css files
     <Content Include="Content\images\bg-perpendicular.png" />
     <Content Include="Content\bootstrap-responsive.min.css" />
@@ -262,8 +268,13 @@
     <Content Include="Scripts\bootstrap-responsive.min.css" />
     <Content Include="Scripts\bootstrap.js" />
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Content Include="Content\css\bootstrap-theme.css.map" />
     <Content Include="Content\css\bootstrap.css.map" />
+=======
+    <Content Include="Content\CSS2\bootstrap-theme.css.map" />
+    <Content Include="Content\CSS2\bootstrap.css.map" />
+>>>>>>> parent of d7fe8ff... making big changes to all js and css files
 =======
     <Content Include="Content\CSS2\bootstrap-theme.css.map" />
     <Content Include="Content\CSS2\bootstrap.css.map" />
@@ -297,8 +308,11 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Content Include="Scripts\MaxOfThree.js" />
 =======
+=======
+>>>>>>> parent of d7fe8ff... making big changes to all js and css files
     <Content Include="Scripts\JSExercises\Armstrong Number Problem.js" />
     <Content Include="Scripts\JSExercises\bootstrap.js" />
     <Content Include="Scripts\JSExercises\bootstrap.min.js" />
@@ -320,6 +334,9 @@
     <Content Include="Scripts\JSExercises\shBrushJScript.js" />
     <Content Include="Scripts\JSExercises\shCore.js" />
     <Content Include="Scripts\JSExercises\SumFunction.js" />
+<<<<<<< HEAD
+>>>>>>> parent of d7fe8ff... making big changes to all js and css files
+=======
 >>>>>>> parent of d7fe8ff... making big changes to all js and css files
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\MultiplyFunction.js" />
