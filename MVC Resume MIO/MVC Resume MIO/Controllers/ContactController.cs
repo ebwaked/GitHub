@@ -9,59 +9,10 @@ using System.Net;
 using System.Net.Mail;
 using MVC_Resume_MIO.Models;
 
-
 namespace MVC_Resume_MIO.Controllers
 {
-    public class HomeController : Controller
+    public class ContactController : Controller
     {
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult Keypoints()
-        {
-            ViewBag.Message = "Keypoints.";
-
-            return View();
-        }
-
-        public ActionResult Experience()
-        {
-            ViewBag.Message = "Experience.";
-
-            return View();
-        }
-
-        public ActionResult Portfolio()
-        {
-            ViewBag.Message = "Portfolio.";
-
-            return View();
-        }
-
-        public ActionResult Education()
-        {
-            ViewBag.Message = "Education.";
-
-            return View();
-        }
-
-        public ActionResult Skills()
-        {
-            ViewBag.Message = "Skills.";
-
-            return View();
-        }
-
-        public ActionResult Blog()
-        {
-            ViewBag.Message = "Blog.";
-
-            return View();
-        }
-
-        
         // GET: Contact
         public ActionResult Contact()
         {
@@ -81,7 +32,7 @@ namespace MVC_Resume_MIO.Controllers
                 mail.From = new MailAddress(ContactForm.Email);
                 mail.AddTo(MyAddress);
                 mail.Subject = ContactForm.Subject;
-                mail.Text = ContactForm.Message;
+                mail.Text = ContactForm.Email;
 
                 var credentials = new NetworkCredential(MyUsername, MyPassword);
                 var transportWeb = new Web(credentials);
@@ -91,13 +42,7 @@ namespace MVC_Resume_MIO.Controllers
 
             return View();
         }
-    
-
-        public ActionResult JavascriptExercises()
-        {
-            ViewBag.Message = "JavascriptExercises.";
-
-            return View();
-        }
     }
+
+    
 }

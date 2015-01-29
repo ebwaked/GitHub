@@ -31,10 +31,11 @@
                     </address>
                 </div><!-- span4 -->
                 <div class="span4">
-                    <form class="form" id="ajax-contact-form" action="~/Content/sendmail.php">
-                        <input type="text" name="name" class="span4" placeholder="Name" required="">
-                        <input type="text" class="span4" name="email" placeholder="Email" required="">
-                        <textarea name="message" placeholder="Message" rows="8" class="span4"></textarea>
+                    <form class="form" id="ajax-contact-form" action="@Url.Action("Contact", "Home")" method="post" name="ContactForm">
+                        <input type="text" name="Name" class="span4" placeholder="Name" required="">
+                        <input type="text" name="Subject" class="span4" placeholder="Subject" required="">
+                        <input type="text" class="span4" name="Email" placeholder="Email" required="">
+                        <textarea name="Message" placeholder="Message" rows="8" class="span4"></textarea>
                         <button type="submit" class="btn btn-submit bg-color">SUBMIT</button><div class="loading"></div>
                     </form>
                     <div class="results"></div>

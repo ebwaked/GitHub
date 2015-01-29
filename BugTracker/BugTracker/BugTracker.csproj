@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2C99354E-C52E-474F-9F1F-07D243C06472}</ProjectGuid>
+    <ProjectGuid>{82C41D7E-E476-46E2-8631-BB3FEED7DA95}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MVC_Resume_MIO</RootNamespace>
-    <AssemblyName>MVC Resume MIO</AssemblyName>
+    <RootNamespace>BugTracker</RootNamespace>
+    <AssemblyName>BugTracker</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -40,11 +40,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="SendGrid.SmtpApi">
-      <HintPath>..\packages\SendGrid.SmtpApi.1.2.1\lib\net40\SendGrid.SmtpApi.dll</HintPath>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
-    <Reference Include="SendGridMail">
-      <HintPath>..\packages\Sendgrid.5.1.0\lib\SendGridMail.dll</HintPath>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -165,110 +165,33 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CommentsController.cs" />
-    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\blogModels.cs" />
-    <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\UserHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\images\bg-perpendicular.png" />
-    <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\css\bootstrap-responsive.min.css" />
-    <Content Include="Content\css\bootstrap.min.css" />
-    <Content Include="Content\css\dark.css" />
-    <Content Include="Content\css\green.css" />
-    <Content Include="Content\css\noscript.css" />
-    <Content Include="Content\css\orange.css" />
-    <Content Include="Content\css\style.css" />
-    <Content Include="Content\dark.css" />
-    <Content Include="Content\gitColor.png" />
-    <Content Include="Content\gitGrey.png" />
-    <Content Include="Content\gototop.png" />
-    <Content Include="Content\green.css" />
-    <Content Include="Content\hover-1.gif" />
-    <Content Include="Content\img.jpg" />
-    <Content Include="Content\img2.jpg" />
-    <Content Include="Content\img3.jpg" />
-    <Content Include="Content\img4.jpg" />
-    <Content Include="Content\linkedBlue.png" />
-    <Content Include="Content\linkedDark.jpg" />
-    <Content Include="Content\loader-black.gif" />
-    <Content Include="Content\loader-blue.gif" />
-    <Content Include="Content\loader-brown.gif" />
-    <Content Include="Content\logo.png" />
-    <Content Include="Content\noscript.css" />
-    <Content Include="Content\orange.css" />
-    <Content Include="Content\person.jpg" />
-    <Content Include="Content\images\separation.png" />
-    <Content Include="Content\images\social.png" />
-    <Content Include="Content\structure.jpg" />
-    <Content Include="Content\structure2.jpg" />
-    <Content Include="Content\style.css" />
-    <Content Include="Content\Styles\shCore.css" />
-    <Content Include="Content\Styles\shCoreDefault.css" />
-    <Content Include="Content\Styles\shCoreDjango.css" />
-    <Content Include="Content\Styles\shCoreEclipse.css" />
-    <Content Include="Content\Styles\shCoreEmacs.css" />
-    <Content Include="Content\Styles\shCoreFadeToGrey.css" />
-    <Content Include="Content\Styles\shCoreMDUltra.css" />
-    <Content Include="Content\Styles\shCoreMidnight.css" />
-    <Content Include="Content\Styles\shCoreRDark.css" />
-    <Content Include="Content\Styles\shThemeDefault.css" />
-    <Content Include="Content\Styles\shThemeDjango.css" />
-    <Content Include="Content\Styles\shThemeEclipse.css" />
-    <Content Include="Content\Styles\shThemeEmacs.css" />
-    <Content Include="Content\Styles\shThemeFadeToGrey.css" />
-    <Content Include="Content\Styles\shThemeMDUltra.css" />
-    <Content Include="Content\Styles\shThemeMidnight.css" />
-    <Content Include="Content\Styles\shThemeRDark.css" />
-    <Content Include="Content\thumb_220x237-1.jpg" />
-    <Content Include="Content\thumb_220x237-2.jpg" />
-    <Content Include="Content\thumb_220x237-3.jpg" />
-    <Content Include="Content\thumb_220x237.jpg" />
-    <Content Include="Content\thumb_353x237.jpg" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="images\bg-perpendicular.png" />
-    <Content Include="images\bg.jpg" />
-    <Content Include="images\eddie.jpg" />
-    <Content Include="images\hover-1.gif" />
-    <Content Include="images\javascript.png" />
-    <Content Include="images\separation.png" />
-    <Content Include="images\social.png" />
-    <Content Include="Scripts\Armstrong Number Problem.js" />
-    <Content Include="Scripts\bootstrap-responsive.min.css" />
     <Content Include="Scripts\bootstrap.js" />
-    <None Include="Properties\PublishProfiles\ewaked-resume - FTP %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\ewaked-resume - FTP %283%29.pubxml" />
-    <None Include="Properties\PublishProfiles\ewaked-resume - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\ewaked-resume - Web Deploy %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\ewaked-resume - Web Deploy %283%29.pubxml" />
-    <None Include="Properties\PublishProfiles\ewaked-resume - Web Deploy.pubxml" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\html5shiv.js" />
-    <Content Include="Scripts\JavaScript1.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.easing.min.js" />
-    <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -276,12 +199,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\scripts.js" />
-    <Content Include="Scripts\style.css" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -294,6 +213,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -315,30 +235,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\index.cshtml" />
-    <Content Include="Content\sendmail.php" />
-    <Content Include="Views\Posts\Create.cshtml" />
-    <Content Include="Views\Posts\Delete.cshtml" />
-    <Content Include="Views\Posts\Details.cshtml" />
-    <Content Include="Views\Posts\Edit.cshtml" />
-    <Content Include="Views\Posts\Index.cshtml" />
-    <Content Include="Views\Comments\Create.cshtml" />
-    <Content Include="Views\Comments\Delete.cshtml" />
-    <Content Include="Views\Comments\Details.cshtml" />
-    <Content Include="Views\Comments\Edit.cshtml" />
-    <Content Include="Views\Comments\Index.cshtml" />
-    <Content Include="Views\Home\keypoints.cshtml" />
-    <Content Include="Views\Home\experience.cshtml" />
-    <Content Include="Views\Home\portfolio.cshtml" />
-    <Content Include="Views\Home\education.cshtml" />
-    <Content Include="Views\Home\skills.cshtml" />
-    <Content Include="Views\Home\originalIndex.cshtml" />
-    <Content Include="Views\partialComments.cshtml" />
-    <Content Include="Views\Home\JavascriptExercises.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Contact\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -363,9 +262,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>53300</DevelopmentServerPort>
+          <DevelopmentServerPort>54628</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53300/</IISUrl>
+          <IISUrl>http://localhost:54628/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
