@@ -1,22 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Web;
 
 namespace BugTracker.Models
 {
-    public class Project
+    public class TicketType
     {
-        public Project()
+        public TicketType()
         {
-            this.ProjectUsers = new HashSet<ProjectUser>();
             this.Tickets = new HashSet<Ticket>();
         }
 
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public virtual ICollection<ProjectUser> ProjectUsers { get; set; }
         public virtual ICollection<Ticket> Tickets { get; set; }
     }
+    
 }

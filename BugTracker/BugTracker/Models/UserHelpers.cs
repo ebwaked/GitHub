@@ -72,7 +72,7 @@ namespace BugTracker.Models
 
         public async Task<bool> IsOnProject(string userId, int projectId)
         {
-            if ((await db.ProjectUsers.AnyAsync(p => p.ProjectId == projectId) && p.UserId == userId))
+            if (await db.ProjectUsers.AnyAsync(p => p.ProjectId == projectId && p.UserId == userId))
             {
                 return true;
             }
@@ -84,7 +84,7 @@ namespace BugTracker.Models
             if (!await this.IsOnProject(userId, projectId))
             {
                 // add a ProjectUsers entry for this user and project
-                var pu = new ProjectUsers {ProjectId = projectId, userID = userId};
+                var pu = new ProjectUser {ProjectId = projectId, UserId = userId};
                 db.ProjectUsers.Add(pu);
                 db.SaveChanges();
             }
@@ -169,8 +169,8 @@ namespace BugTracker.Models
             }
             return userList;
         }
-
-        //  need to finish
+        
+        //  Start of the method that gives a list of users
         public async Task<IList<Project>>ListUserProjects(string userId)        
         {
             // list the projects for the user
