@@ -4,6 +4,6 @@
     for (var i = nFactor - 2; i > 1; i--) {
         factorialAnswer *= i;
     }
-    $('#factorialAnswer').html('<p>' + "Factorial of "  + nFactor +  " is "  + factorialAnswer + '</p>');
+    $('#factorialAnswer').html('<p>' + "Factorial of " + nFactor + " is " + factorialAnswer + '</p>');
 }
 

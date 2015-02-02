@@ -1,4 +1,4 @@
-﻿var userInput = $('#perfect').val();    
+﻿var userInput = $('#perfect').val();
 var perfect = function (x) {
     var sumOfPositiveIntergers = 0;
     var perfNumbPossible = parseInt(userInput.value);
