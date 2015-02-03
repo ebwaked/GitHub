@@ -64,21 +64,21 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>      
                 </button>
-                <a class="brand me-name">Edward Waked</a><!-- This text displays when the screen has been scrolled -->
-                <div class="nav-collapse collapse pull-right navigation">
+                <a class="brand me-name">Edward Waked</a> This text displays when the screen has been scrolled
+                <div class="nav-collapse collapse pull-left navigation">
                     <ul class="nav">
                         <li class="active first">@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("Keypoints", "Keypoints", "Home")</li>
+                        <li>@Html.ActionLink("Resume", "Resume", "Home")</li>
                         <li>@Html.ActionLink("Experience", "Experience", "Home")</li>
                         <li>@Html.ActionLink("Portfolio", "Portfolio", "Home")</li>
                         <li>@Html.ActionLink("Education", "Education", "Home")</li>
                         <li>@Html.ActionLink("Skills", "Skills", "Home")</li>
                         <li>@Html.ActionLink("Blog", "Index", "Posts")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-
+                        <li>@Html.Partial("_LoginPartial")</li>
                     </ul>
                 </div><!-- nav-collapse -->
-
             </div><!-- container -->
         </div><!-- navbar-inner -->
     </div><!-- navbar -->
@@ -105,6 +105,7 @@
     <!-- More Scripts -->
     <script src="/Scripts/JavaScript1.js"></script>
     <script src="/Scripts/jquery-2.1.3.min.js"></script>
+    <script src="/Scripts/Download.js"></script>
 
     @RenderSection("scripts", required: false)
 </body>

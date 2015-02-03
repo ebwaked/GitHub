@@ -16,6 +16,12 @@ namespace BugTracker.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public string LastName { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string DisplayName { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -40,5 +46,7 @@ namespace BugTracker.Models
         public virtual DbSet<Ticket> Tickets { get; set; }
         public virtual DbSet<TicketStatus> TicketStatuses { get; set; }
         public virtual DbSet<TicketType> TicketTypes { get; set; }
+
+        public System.Collections.IEnumerable ApplicationUsers { get; set; }
     }
 }

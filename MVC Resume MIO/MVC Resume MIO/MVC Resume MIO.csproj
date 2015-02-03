@@ -221,6 +221,10 @@
     <Content Include="Content\structure.jpg" />
     <Content Include="Content\structure2.jpg" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\images\cv pdf.pdf" />
+    <None Include="Scripts\jquery-2.1.3.intellisense.js" />
+    <Content Include="Scripts\Download.js" />
+    <Content Include="Scripts\jquery-2.1.3.js" />
     <Content Include="Styles\shCore.css" />
     <Content Include="Styles\shCoreDefault.css" />
     <Content Include="Styles\shCoreDjango.css" />
@@ -270,8 +274,7 @@
     <Content Include="Scripts\FizzBuzz.js" />
     <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\JavaScript1.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-2.1.3.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-2.1.3.min.js" />
     <Content Include="Scripts\jquery.easing.min.js" />
@@ -309,7 +312,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -350,6 +352,7 @@
     <Content Include="Views\Home\originalIndex.cshtml" />
     <Content Include="Views\partialComments.cshtml" />
     <Content Include="Views\Home\JavascriptExercises.cshtml" />
+    <Content Include="Views\Home\Resume.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

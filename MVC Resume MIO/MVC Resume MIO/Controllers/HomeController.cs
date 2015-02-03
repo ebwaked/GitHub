@@ -61,6 +61,13 @@ namespace MVC_Resume_MIO.Controllers
             return View();
         }
 
+        public ActionResult Resume()
+        {
+            ViewBag.Message = "Resume.";
+
+            return View();
+        }
+
         
         // GET: Contact
         public ActionResult Contact()

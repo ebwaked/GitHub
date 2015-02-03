@@ -48,7 +48,7 @@ namespace MVC_Resume_MIO.Migrations
 			        DisplayName = "Eddie" 
 		        };
 		
-		        manager.Create(user, "Password-1");
+		        manager.Create(user, "1187-Waked");
 		        // manager,AddToRole(user.Id, "Admin");
 		        //manager.AddToRole(user.Id, "Moderator");
 		        manager.AddToRoles(user.Id, new string[] { "Admin", "Moderator"});

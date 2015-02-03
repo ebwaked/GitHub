@@ -27,7 +27,7 @@ namespace MVC_Resume_MIO
             var MyPassword = ConfigurationManager.AppSettings["Password"];
 
             SendGridMessage mail = new SendGridMessage();
-            mail.From = new MailAddress("noreply");
+            mail.From = new MailAddress("noreply@ewaked-resume.com");
             mail.AddTo(message.Destination);
             mail.Subject = message.Subject;
             mail.Text = message.Body;
