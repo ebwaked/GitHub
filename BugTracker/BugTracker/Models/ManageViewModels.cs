@@ -83,4 +83,10 @@ namespace BugTracker.Models
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
+
+    public class AssignRole
+    {
+        public string IList<UserId> AssignRole { get; set; }
+        public string Role { get; set; }
+    }
 }

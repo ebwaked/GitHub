@@ -52,7 +52,7 @@ namespace MVC_Resume_MIO.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Create([Bind(Include = "ID,Created,Updated,Title,Body,MediaURL")] Post post)
+        public ActionResult Create([Bind(Include = "ID,Title,Body,MediaURL")] Post post)
         {
             if (ModelState.IsValid)
             {
@@ -61,12 +61,14 @@ namespace MVC_Resume_MIO.Controllers
                 return RedirectToAction("Index");
             }
 
+            post.Created = DateTimeOffset.Now.Date;
+            post.Updated = DateTimeOffset.Now.Date;
             return View(post);
         }
 
 
         // GET: Posts/Edit/5
-        [Authorize(Roles = "Moderator")]
+        [Authorize(Roles = "Moderator,Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)

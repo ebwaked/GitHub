@@ -15,9 +15,53 @@ namespace BugTracker.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public ManageController()
         {
+        }
+
+        public ActionResult AdminAssignRole(string RoleId/*pass in role id*/)
+        {
+
+            //var users = UserManager.Users;
+            var rolesHelper = new UserRolesHelper();
+
+           // ViewBag.UserId = new SelectList(users);
+            //ViewBag.Roles = new SelectList();
+            
+            //get users not in role
+            if (UserRolesHelper.IsInRole)
+                
+            {
+
+            }
+            
+            //create select list out of users, set in viewbag
+            //set role id in viewbag
+            return View();
+
+        }
+
+        //Post adminAssignRole
+        /*
+         * pass in role id, list of userids
+         * 
+         * for each user in userid, assign user to the role
+         * 
+         * return view
+         * 
+         */
+
+        [HttpPost]
+        public ActionResult Create([Bind(Include = "UserId, Role")] AssignRole adminAssginRole)
+        {  
+            var userId = new AssignRole(AssignRole.UserId);
+            var roleName = new AssignRole(adminAssginRole.Role);
+            var users = UserManager.Users;
+            var rolesHelper = new UserRolesHelper();var rolesHelper = new UserRolesHelper();
+            var assignList = users.ToList(rolesHelper.AddUserToRoles(userId, roleName));
+           
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)

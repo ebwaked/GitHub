@@ -20,29 +20,23 @@
 @foreach (var item in Model)
 {
     <div>
-        <div class="col-md-6">
+        <div>
             <p><b>Date Created</b></p>
-            <p>
-                @Html.DisplayFor(modelItem => item.Created)
-            </p>
+            <p>@*@Html.DisplayFor(modelItem => item.Created)*@ @item.Created.ToString("d")</p>
         </div>
-        <div class="col-md-6">
+        <div>
             <p><b>Date Updated</b></p>
-            <p>
-                @Html.DisplayFor(modelItem => item.Updated)
-            </p>
+            <p>@Html.DisplayFor(modelItem => item.Updated)@item.Created.ToString("d")</p>
         </div>
-        <p>
-            <font size="6">
-            @Html.DisplayFor(modelItem => item.Title)
-            </font>
-        </p>
-        <p>
-            @Html.DisplayFor(modelItem => item.Body)
-        </p>
-        <p>
-            @Html.DisplayFor(modelItem => item.MediaURL)
-        </p>
+        <div>
+            <p><font size="6">@Html.DisplayFor(modelItem => item.Title)</font></p>
+        </div>
+        <div>
+            <p>@Html.DisplayFor(modelItem => item.Body)</p>
+        </div>
+        <div>
+            <p>@Html.DisplayFor(modelItem => item.MediaURL)</p>
+        </div>
     </div>
 }
 

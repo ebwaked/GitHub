@@ -1936,7 +1936,7 @@ textarea.input-lg {
 @media (min-width: 768px) {
   .form-inline .form-group {
     display: inline-block;
-    margin-bottom: 0;
+    margin-bottom: 15px;
     vertical-align: middle;
   }
   .form-inline .form-control {
@@ -1967,8 +1967,8 @@ textarea.input-lg {
 }
 
 .form-horizontal .form-group {
-  margin-right: -15px;
-  margin-left: -15px;
+  margin-right: 15px;
+  margin-left: 15px;
 }
 
 .form-horizontal .form-group:before,
@@ -4309,7 +4309,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .navbar-form .form-group {
     display: inline-block;
-    margin-bottom: 0;
+    margin-bottom: 15px;
     vertical-align: middle;
   }
   .navbar-form .form-control {
@@ -4331,7 +4331,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 @media (max-width: 767px) {
   .navbar-form .form-group {
-    margin-bottom: 5px;
+    margin-bottom: 15px;
   }
 }
 

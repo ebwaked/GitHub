@@ -14,13 +14,6 @@ namespace BugTracker.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: ProjectUsers
-        public ActionResult Index()
-        {
-            var projectUsers = db.ProjectUsers.Include(p => p.Project).Include(p => p.User);
-            return View(projectUsers.ToList());
-        }
-
         // GET: ProjectUsers/Assign
         public ActionResult Assign()
         {
