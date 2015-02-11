@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC_Resume_MIO.Models;
+using Microsoft.AspNet.Identity;
 
 namespace MVC_Resume_MIO.Controllers
 {
@@ -53,6 +54,7 @@ namespace MVC_Resume_MIO.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,PostID,AuthorID,Body,Created,Updated,UpdateReason")] Comment comment)
         {
+            comment.AuthorID = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
                 db.Comments.Add(comment);

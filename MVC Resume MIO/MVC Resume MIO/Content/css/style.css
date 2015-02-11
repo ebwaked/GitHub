@@ -47,7 +47,7 @@ background-repeat: repeat-x;
 border-color: #252525;
 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222',endColorstr='#ff111111',GradientType=0);
 }
-.navigation .current-band { height: 5px; position: absolute; z-index: 0; background: #08c;}
+.navigation .current-band { height: 5px; position:page; z-index: 0; background: #08c;}
 .navbar-inverse .btn-navbar { color: #fff; text-shadow: none; background-color: #333; background-image: none; border-radius:0px; border:none; margin-right:15px; margin-top:6px }
 
 /* 3. Hero */

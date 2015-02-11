@@ -42,7 +42,7 @@ namespace MVC_Resume_MIO.Models
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Post>().HasMany(c => c.Comments);
+            modelBuilder.Entity<Post>().HasMany(c => c.Comment);
             modelBuilder.Entity<ApplicationUser>().HasMany(u => u.BlogComments);
         }
 

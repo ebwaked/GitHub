@@ -5,50 +5,109 @@
 -->
 
 
-@model IEnumerable<MVC_Resume_MIO.Models.Post>
+@model PagedList<MVC_Resume_MIO.Models.Post>
+@using PagedList;
+@using PagedList.Mvc;
+
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Blog</h2>
+@*/*CSS*/*@
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<!-- Custom CSS -->
 
-@foreach (var item in Model)
-{
-    <div>
-        <div>
-            <p><b>Date Created</b></p>
-            <p>@*@Html.DisplayFor(modelItem => item.Created)*@ @item.Created.ToString("d")</p>
+    
+
+            <h1 class="page-header">
+                Eddie's Blog
+                <small>Insight to my time at Coder Foundry</small>
+            </h1>
+            <!-- Blog Post -->
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+<div class="row">
+    <div class="span8">
+        @foreach (var item in Model)
+        {
+            <h2>
+                <a href="@Url.Action( "Details", new { id = item.ID })" class="btn btn-primary">@item.Title</a>
+            </h2>
+            <p class="lead">
+                by <a>Edward Waked</a>
+            </p>
+            <p><span class="glyphicon glyphicon-time"></span>@item.Created.ToString("d")</p>
+            /// create a blog updated date stamp here
+            <hr>
+              <img class="img-responsive" src="@item.MediaURL" alt="image">
+            @*<img class="img-responsive" src="http://placehold.it/900x300" alt="">*@
+            <hr>
+            <div class="wordBreak">@Html.Raw(item.Body)</div>       
+            <button>@Html.ActionLink("Read More", "Details", new { id = item.ID })<span class="glyphicon glyphicon-chevron-right"></span></button>
+            <button>@Html.ActionLink("Delete", "Delete", new { id = item.ID }) <span class="glyphicon glyphicon-chevron-right"></span></button>
+            <hr>
+        }
+
+    </div>
+
+    <!-- Blog Search Well -->
+
+    <div class="span4">
+        <div class="well">
+            <h4>Blog Search</h4>
+            <div class="input-group">
+                <input type="text" class="form-control text-lowercase" />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
+            <!-- /.input-group -->
         </div>
-        <div>
-            <p><b>Date Updated</b></p>
-            <p>@Html.DisplayFor(modelItem => item.Updated)@item.Created.ToString("d")</p>
+        <!-- Blog Categories Well -->
+        <div class="well">
+            <h4>Blog Quick Links</h4>
+            <div class="row">
+                <div class="span6">
+                    <ul class="list-unstyled">
+                        @foreach (var item in Model)
+                        {
+                            <li>
+                                <button>
+                                    @Html.ActionLink(item.Title, "Details", new { id = item.ID })
+                                </button>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+            <!-- /.row -->
         </div>
-        <div>
-            <p><font size="6">@Html.DisplayFor(modelItem => item.Title)</font></p>
-        </div>
-        <div>
-            <p>@Html.DisplayFor(modelItem => item.Body)</p>
-        </div>
-        <div>
-            <p>@Html.DisplayFor(modelItem => item.MediaURL)</p>
+        <!-- Side Widget Well -->
+        <div class="well">
+            <h4>Side Widget Well</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
         </div>
     </div>
+</div>
+@*Pager*@
+<ul class="pager">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, ViewBag.Query }))
+</ul>
+
+
+@section Scripts {
+<script src="/Scripts/jquery.dotdotdot.min.js"></script>
+<script type="text/javaScript">
+$(document).ready(function() {
+	$(".wordBreak").dotdotdot({
+	    //	configuration goes here
+        watch: true
+	});
+});
+</script>
 }
-
-
-
-
-
-
-
-
-
-      
-
-
-                            
