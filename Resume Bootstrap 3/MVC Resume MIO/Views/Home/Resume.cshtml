@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Resume";
+}
+
+
+<div style="width: 60%; margin: 0px auto;">
+
+    <h2>Resume</h2>
+    <br />
+    <a class="media" href="~/Content/images/cv pdf.pdf">My Resume PDF</a>
+    <button type="button" value="Resume" onclick="download('/Content/images/cv pdf.pdf')">Download my Resume</button>
+    <br />
+    <br />
+    
+            <iframe width="800" height="600" src="~/Content/images/cv pdf.pdf">
+                #document
+                <body marginwidth="0" marginheight="0" style="background-color: rgb(38,38,38)">
+                    <embed width="30%" height="30%" name="plugin" src="http://jquery.malsup.com/media/guice.pdf" type="application/pdf">
+                </body>
+          
+        </iframe>
+</div>

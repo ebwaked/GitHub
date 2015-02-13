@@ -63,7 +63,7 @@
     </div>*@
     
 
-    <div class="navbar collapse navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
                 <!-- This will display when the page is viewed on a mobile device -->
@@ -72,8 +72,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>      
                 </button>
-                @*<a class="brand me-name">Edward Waked</a> This text displays when the screen has been scrolled*@
-                <div class="nav-collapse collapse pull-left navigation">
+                <a class="brand me-name">Edward Waked</a>
+                <div class="nav-collapse collapse pull-right navigation">
                     <ul class="nav">
                         <li class="active first">@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("Keypoints", "Keypoints", "Home")</li>
@@ -92,7 +92,7 @@
     <div class="container">
 
         @RenderBody()
-        @*@RenderBody("blogPost", false)*@
+       
     </div>
     <div>
         <footer>

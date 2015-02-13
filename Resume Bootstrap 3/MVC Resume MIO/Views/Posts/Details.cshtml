@@ -1,0 +1,93 @@
+﻿@model MVC_Resume_MIO.Models.Post
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="animated fadeInLeftBig">
+    <h1 class="page-header">
+        Eddie's Blog
+        <small>Insight to my time at Coder Foundry</small>
+    </h1>
+</div>
+<div class="row">
+    <div class="span8 animated zoomInDown">
+
+            <h2>
+                @Html.DisplayFor(model => model.Title)
+            </h2>
+            <p class="lead">
+                by <a>Edward Waked</a>
+            </p>
+            <dl>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Created)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Created)
+                </dd>
+            </dl>
+           @* /// create a blog updated date stamp here *@
+        <dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.Updated)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Updated)
+            </dd>
+        </dl>
+            <hr>
+            <img class="img-responsive" src="@Model.MediaURL" alt="image">
+            <hr>
+            <div class="wordBreak">@Html.Raw(Model.Body)</div>
+
+            @Html.ActionLink("Leave a Comment", "Create", "Comments")
+
+        <div>
+            @foreach (var comment in Model.Comment)
+            {
+                <div class="post-body">
+                    @*header>
+                            <span class="post-byline">
+                                <span class="author publisher-anchor-color"></span>
+                            </span>
+                            <span class="post-meta">
+                                <span class="bullet time-ago-bullet" aria-hidden="true">•</span>
+                            </span>
+                        </header>*@
+                    <div class="post-body-inner comment-width">
+                        <div class="post-message-container" data-role="message-container">
+                            <div class="publisher-anchor-color" data-role="message-content">
+                                <div class="post-message" data-role="message" dir="auto">
+                                    <p>@comment.Author.DisplayName</p>
+                                    <p class="fa-indent fa-2x">@Html.DisplayFor(modelComment => comment.Body)</p>
+                                </div>
+                                <span class="post-media"><ul data-role="post-media-list"></ul></span>
+                            </div>
+                        </div>
+                        <a class="see-more hidden" title="see more" data-action="see-more">see more</a>
+                    </div>
+                </div>
+            }
+
+            <button>@Html.ActionLink("Delete Post", "Delete", new { id = Model.ID }) <span class="glyphicon glyphicon-chevron-right"></span></button>
+            <hr>
+
+        </div>
+        <p>@Html.Partial("_CommentsPartial", Model.Comment)</p>
+
+    </div>
+
+    <!-- Blog Search Well -->
+
+    <div class="span4 animated rollIn">
+        @{Html.RenderPartial("_BlogSearchPartial");}
+    </div>
+
+</div>
+<p>
+    @Html.ActionLink("Edit the Blog Post", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to Blogs List", "Index")
+</p>

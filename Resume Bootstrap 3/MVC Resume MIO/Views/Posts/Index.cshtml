@@ -1,0 +1,72 @@
+﻿<!--
+    :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    :::::: Blog
+    :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-->
+@model PagedList<MVC_Resume_MIO.Models.Post>
+@using PagedList;
+@using PagedList.Mvc;
+
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="animated fadeInLeftBig">
+    <h1 class="page-header">
+        Eddie's Blog
+        <small>Insight to my time at Coder Foundry</small>
+    </h1>
+    <!-- Blog Post -->
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+</div>
+<div class="row">
+    <div class="span8 animated fadeInLeftBig">
+        @foreach (var item in Model)
+        {
+            <h2>
+                <a class="btn btn-primary" href="@Url.Action("Details", new { Slug = item.Slug })">@item.Title</a>
+            </h2>
+            <p class="lead">
+                by <a>Edward Waked</a>
+            </p>
+            <p><span class="glyphicon glyphicon-time"></span>@item.Created.ToString("d")</p>
+            /// create a blog updated date stamp here
+            <hr>
+            <img class="img-responsive" src="@item.MediaURL" alt="image">
+            @*<img class="img-responsive" src="http://placehold.it/900x300" alt="">*@
+            <hr>
+            <div class="wordBreak">@Html.Raw(item.Body)</div>
+            <button>@Html.ActionLink("Read More", "Details", new { Slug = item.Slug })<span class="glyphicon glyphicon-chevron-right"></span></button>
+            <button>@Html.ActionLink("Delete", "Delete", new { id = item.ID }) <span class="glyphicon glyphicon-chevron-right"></span></button>
+            <hr>
+            
+        }
+
+    </div>
+
+    <!-- Blog Search Well -->
+
+    <div class="span4 animated rollIn">
+        @{Html.RenderPartial("_BlogSearchPartial");}
+    </div>
+</div>
+
+@*Pager*@
+<ul class="pager">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, ViewBag.Query }))
+</ul>
+
+
+@section Scripts {
+<script src="/Scripts/jquery.dotdotdot.min.js"></script>
+<script type="text/javaScript">
+$(document).ready(function() {
+	$(".wordBreak").dotdotdot({
+	    //	configuration goes here
+        watch: true
+	});
+});
+</script>
+}
