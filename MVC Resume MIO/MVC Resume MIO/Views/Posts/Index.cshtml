@@ -3,8 +3,6 @@
     :::::: Blog
     :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 -->
-
-
 @model PagedList<MVC_Resume_MIO.Models.Post>
 @using PagedList;
 @using PagedList.Mvc;
@@ -13,27 +11,22 @@
 @{
     ViewBag.Title = "Index";
 }
-
-@*/*CSS*/*@
-
-<!-- Custom CSS -->
-
-    
-
-            <h1 class="page-header">
-                Eddie's Blog
-                <small>Insight to my time at Coder Foundry</small>
-            </h1>
-            <!-- Blog Post -->
-            <p>
-                @Html.ActionLink("Create New", "Create")
-            </p>
+<div class="animated fadeInLeftBig">
+    <h1 class="page-header">
+        Eddie's Blog
+        <small>Insight to my time at Coder Foundry</small>
+    </h1>
+    <!-- Blog Post -->
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+</div>
 <div class="row">
-    <div class="span8">
+    <div class="span8 animated fadeInLeftBig">
         @foreach (var item in Model)
         {
             <h2>
-                <a href="@Url.Action( "Details", new { id = item.ID })" class="btn btn-primary">@item.Title</a>
+                <a class="btn btn-primary" href="@Url.Action("Details", new { Slug = item.Slug })">@item.Title</a>
             </h2>
             <p class="lead">
                 by <a>Edward Waked</a>
@@ -41,59 +34,25 @@
             <p><span class="glyphicon glyphicon-time"></span>@item.Created.ToString("d")</p>
             /// create a blog updated date stamp here
             <hr>
-              <img class="img-responsive" src="@item.MediaURL" alt="image">
+            <img class="img-responsive" src="@item.MediaURL" alt="image">
             @*<img class="img-responsive" src="http://placehold.it/900x300" alt="">*@
             <hr>
-            <div class="wordBreak">@Html.Raw(item.Body)</div>       
-            <button>@Html.ActionLink("Read More", "Details", new { id = item.ID })<span class="glyphicon glyphicon-chevron-right"></span></button>
+            <div class="wordBreak">@Html.Raw(item.Body)</div>
+            <button>@Html.ActionLink("Read More", "Details", new { Slug = item.Slug })<span class="glyphicon glyphicon-chevron-right"></span></button>
             <button>@Html.ActionLink("Delete", "Delete", new { id = item.ID }) <span class="glyphicon glyphicon-chevron-right"></span></button>
             <hr>
+            
         }
 
     </div>
 
     <!-- Blog Search Well -->
 
-    <div class="span4">
-        <div class="well">
-            <h4>Blog Search</h4>
-            <div class="input-group">
-                <input type="text" class="form-control text-lowercase" />
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                </span>
-            </div>
-            <!-- /.input-group -->
-        </div>
-        <!-- Blog Categories Well -->
-        <div class="well">
-            <h4>Blog Quick Links</h4>
-            <div class="row">
-                <div class="span6">
-                    <ul class="list-unstyled">
-                        @foreach (var item in Model)
-                        {
-                            <li>
-                                <button>
-                                    @Html.ActionLink(item.Title, "Details", new { id = item.ID })
-                                </button>
-                            </li>
-                        }
-
-                    </ul>
-                </div>
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- Side Widget Well -->
-        <div class="well">
-            <h4>Side Widget Well</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
-        </div>
+    <div class="span4 animated rollIn">
+        @{Html.RenderPartial("_BlogSearchPartial");}
     </div>
 </div>
+
 @*Pager*@
 <ul class="pager">
     @Html.PagedListPager(Model, page => Url.Action("Index", new { page, ViewBag.Query }))

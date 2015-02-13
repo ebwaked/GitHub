@@ -15,15 +15,16 @@
     <link href="/Content/css/style.css" rel="stylesheet">
     <link href="/Content/Site.css" rel="stylesheet" />
     <link href="/Content/font-awesome.min.css" rel="stylesheet" />
+    
     <!-- More Css  -->
-
     <link href="/Content/css/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="/Content/css/reveal.css" rel="stylesheet" />
     <link href="/Content/css/StyleSheet1.css" rel="stylesheet" />
     <link href="/Styles/shCoreMidnight.css" rel="stylesheet" />
     <link href="/Styles/shCore.css" rel="stylesheet" />
     <link href="/Styles/shThemeDefault.css" rel="stylesheet" />
-    <link href="~/Content/BlogCSS/blog-home.css" rel="stylesheet">
+    <link href="/Content/BlogCSS/blog-home.css" rel="stylesheet">
+    <link href="/Content/css/animate.css" rel="stylesheet" />
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/Content/font-awesome.min.css">
@@ -62,7 +63,7 @@
     </div>*@
     
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar collapse navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
                 <!-- This will display when the page is viewed on a mobile device -->
@@ -83,7 +84,6 @@
                         <li>@Html.ActionLink("Skills", "Skills", "Home")</li>
                         <li>@Html.ActionLink("Blog", "Index", "Posts")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        <li>@Html.Partial("_LoginPartial")</li>
                     </ul>
                 </div><!-- nav-collapse -->
             </div><!-- container -->

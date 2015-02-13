@@ -21,10 +21,9 @@ namespace MVC_Resume_MIO.Models
         [AllowHtml]
         public string Body { get; set;}
         public string MediaURL { get; set;}
-        //public string Slug { get; set; }
+        public string Slug { get; set; }
 
         public virtual ICollection<Comment> Comment { get; set; }
-
 
     }
 
@@ -47,7 +46,7 @@ namespace MVC_Resume_MIO.Models
 
         public virtual Post ParentPost { get; set; }
         public virtual ApplicationUser Author { get; set; }
-        // Add comments to commentss
+        // Add comments to comments
         // public virtual Comment ParentComment { get; set; }
     }
 

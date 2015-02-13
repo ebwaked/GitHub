@@ -33,7 +33,7 @@ namespace MVC_Resume_MIO.Controllers
                 comment.AuthorID = User.Identity.Name; 
                 db.Comments.Add(comment);
                 db.SaveChanges();
-                return RedirectToAction("Details", new { id = comment.PostID});
+                return RedirectToAction("Details", new { Slug = comment.ParentPost.Slug});
             }
 
             comment.Created = DateTimeOffset.Now.Date;
@@ -47,7 +47,9 @@ namespace MVC_Resume_MIO.Controllers
         [Authorize(Roles="Admin")]
         public ActionResult AdminIndex()
         {
-            List<Post> model = db.Posts.ToList();
+            var posts = db.Posts.ToList();
+            posts.ForEach(p => p.Slug = StringUtilities.URLFriendly(p.Title));
+            //List<Post> model = db.Posts.ToList();
             return View(db.Posts.ToList());  // or return View(model);
         }
 
@@ -65,13 +67,13 @@ namespace MVC_Resume_MIO.Controllers
         }
 
         // GET: Posts/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(string Slug)
         {
-            if (id == null)
+            if (String.IsNullOrWhiteSpace(Slug))
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Posts.Find(id);
+            Post post = db.Posts.FirstOrDefault(p => p.Slug == Slug);
             if (post == null)
             {
                 return HttpNotFound();
@@ -99,6 +101,20 @@ namespace MVC_Resume_MIO.Controllers
         {
             if (ModelState.IsValid)
             {
+                var Slug = StringUtilities.URLFriendly(post.Title);
+
+                if (String.IsNullOrWhiteSpace(Slug))
+                {
+                    ModelState.AddModelError("Title", "Invalid Title.");
+                    return View(post);
+                }
+                
+                if( db.Posts.Any(p => p.Slug == Slug))
+                {
+                    ModelState.AddModelError("Title", "The title must be unique.");
+                    return View(post);
+                }
+
                 if (image != null)
                 {
                 if (image.ContentLength > 0)
@@ -123,7 +139,9 @@ namespace MVC_Resume_MIO.Controllers
                             return View(post);
                     }
                 }
-            }
+                }
+                ///create slug here
+                post.Slug = Slug;
                 db.Posts.Add(post);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -187,6 +187,7 @@
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\StringUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -195,6 +196,7 @@
     <Content Include="Content\BlogCSS\bootstrap.css" />
     <Content Include="Content\BlogCSS\bootstrap.min.css" />
     <Content Include="Content\BlogFonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\bootstrap-theme.min.css" />
     <Content Include="Content\css\reveal.css" />
     <Content Include="Content\css\StyleSheet1.css" />
@@ -544,6 +546,8 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.eot" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
+    <Content Include="Views\Shared\_BlogSearchPartial.cshtml" />
+    <Content Include="Views\Shared\_CommentsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

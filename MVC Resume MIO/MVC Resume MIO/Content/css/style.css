@@ -189,7 +189,7 @@ a.thumbnail:hover, a.thumbnail:focus{ border:solid 1px #e3e3e3; border-color:#e3
 box-shadow:inset 0px -22px 20px -10px  #0480be;}
 
 /* 4.3. Contact */
-input[type="text"]{ height:28px;  -webkit-border-radius:0px; -moz-border-radius: 0px; border-radius: 0px; }
+input[type="text"]{ -webkit-border-radius:0px; -moz-border-radius: 0px; border-radius: 0px; }
 textarea{ height:140px; -webkit-border-radius:0px; -moz-border-radius: 0px; border-radius: 0px;}
 .btn-submit{ background-color: #149bdf; -moz-box-shadow: inset 0px -22px 20px -10px #0480be; -webkit-box-shadow: inset 0px -22px 20px -10px #0480be;
 box-shadow: inset 0px -22px 20px -10px #0480be; color:#fff; border:none; height:38px; background-image: none;-webkit-border-radius:0px; -moz-border-radius: 0px; border-radius: 0px; text-shadow:none; color:#fff}
