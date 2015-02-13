@@ -72,12 +72,11 @@
                 </div>
             }
 
-        </div>
-        <p>@Html.Partial("_CommentsPartial")</p>
-
-            <button>@Html.ActionLink("Delete", "Delete", new { id = Model.ID }) <span class="glyphicon glyphicon-chevron-right"></span></button>
+            <button>@Html.ActionLink("Delete Post", "Delete", new { id = Model.ID }) <span class="glyphicon glyphicon-chevron-right"></span></button>
             <hr>
-        
+
+        </div>
+        <p>@Html.Partial("_CommentsPartial", Model.Comment)</p>
 
     </div>
 
@@ -89,6 +88,6 @@
 
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit the Blog Post", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to Blogs List", "Index")
 </p>
