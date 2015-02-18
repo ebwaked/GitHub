@@ -11,24 +11,24 @@
     </h1>
 </div>
 <div class="row">
-    <div class="span8 animated zoomInDown">
+    <div class="span8 animated fadeInLeftBig">
 
-            <h2>
-                @Html.DisplayFor(model => model.Title)
-            </h2>
-            <p class="lead">
-                by <a>Edward Waked</a>
-            </p>
-            <dl>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Created)
-                </dt>
+        <h2>
+            @Html.DisplayFor(model => model.Title)
+        </h2>
+        <p class="lead">
+            by <a>Edward Waked</a>
+        </p>
+        <dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.Created)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Created)
-                </dd>
-            </dl>
-           @* /// create a blog updated date stamp here *@
+            <dd>
+                @Html.DisplayFor(model => model.Created)
+            </dd>
+        </dl>
+        @* /// create a blog updated date stamp here *@
         <dl>
             <dt>
                 @Html.DisplayNameFor(model => model.Updated)
@@ -38,25 +38,17 @@
                 @Html.DisplayFor(model => model.Updated)
             </dd>
         </dl>
-            <hr>
-            <img class="img-responsive" src="@Model.MediaURL" alt="image">
-            <hr>
-            <div class="wordBreak">@Html.Raw(Model.Body)</div>
+        <hr>
+        <img class="img-responsive" src="@Model.MediaURL" alt="image">
+        <hr>
+        <div class="wordBreak">@Html.Raw(Model.Body)</div>
 
-            @Html.ActionLink("Leave a Comment", "Create", "Comments")
+        @Html.ActionLink("Leave a Comment", "Create", "Comments")
 
         <div>
             @foreach (var comment in Model.Comment)
             {
                 <div class="post-body">
-                    @*header>
-                            <span class="post-byline">
-                                <span class="author publisher-anchor-color"></span>
-                            </span>
-                            <span class="post-meta">
-                                <span class="bullet time-ago-bullet" aria-hidden="true">•</span>
-                            </span>
-                        </header>*@
                     <div class="post-body-inner comment-width">
                         <div class="post-message-container" data-role="message-container">
                             <div class="publisher-anchor-color" data-role="message-content">
@@ -67,16 +59,17 @@
                                 <span class="post-media"><ul data-role="post-media-list"></ul></span>
                             </div>
                         </div>
-                        <a class="see-more hidden" title="see more" data-action="see-more">see more</a>
                     </div>
                 </div>
+                @Html.ActionLink("Edit", "Edit", new { comment=comment.ID }) 
+                @Html.ActionLink("Details", "Details", new { comment=comment.ID }) 
             }
 
-            <button>@Html.ActionLink("Delete Post", "Delete", new { id = Model.ID }) <span class="glyphicon glyphicon-chevron-right"></span></button>
+            
             <hr>
 
         </div>
-        <p>@Html.Partial("_CommentsPartial", Model.Comment)</p>
+        @*<p>@Html.Partial("_CommentsPartial", Model.Comment)</p>*@
 
     </div>
 
@@ -84,10 +77,20 @@
 
     <div class="span4 animated rollIn">
         @{Html.RenderPartial("_BlogSearchPartial");}
+        <div class="well">
+            <ul>
+                <li><button>@Html.ActionLink("Back to Blogs List", "Index")<span class="glyphicon glyphicon-chevron-right"></span></button></li> <hr />
+                <li><button>@Html.ActionLink("Edit the Blog Post", "Edit", new { id = Model.ID })<span class="glyphicon glyphicon-chevron-right"></span></button></li> <hr />
+                <li><button>@Html.ActionLink("Delete Post", "Delete", new { id = Model.ID })<span class="glyphicon glyphicon-chevron-right"></span></button></li> <hr />
+            </ul>
+        </div>
     </div>
+
+   
+
 
 </div>
 <p>
-    @Html.ActionLink("Edit the Blog Post", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to Blogs List", "Index")
+   
+    
 </p>

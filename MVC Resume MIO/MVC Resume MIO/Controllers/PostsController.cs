@@ -53,18 +53,27 @@ namespace MVC_Resume_MIO.Controllers
             return View(db.Posts.ToList());  // or return View(model);
         }
 
+
         public ActionResult Index(int? page, string query)
         {
             var posts = db.Posts.AsQueryable();
             if (!String.IsNullOrWhiteSpace(query))
             {
-                posts = posts.Where(p => p.Title.Contains(query) || p.Body.Contains(query));
+                posts = posts.Where(p => p.Title.Contains(query) || p.Body.Contains(query))
+                .Union(db.Posts.Where(p => p.Comment.Any(c => c.Body.Contains(query))))
+                .Union(db.Posts.Where(p => p.Comment.Any(c => c.Author.DisplayName.Contains(query))))
+                .Union(db.Posts.Where(p => p.Comment.Any(c => c.Author.FirstName.Contains(query))))
+                .Union(db.Posts.Where(p => p.Comment.Any(c => c.UpdateReason.Contains(query))));
+
                 ViewBag.Query = query;
             }
             posts = posts.OrderByDescending(p => p.Created);
             return View(posts.ToPagedList(page ?? 1, 3));
             
         }
+
+        
+       
 
         // GET: Posts/Details/5
         public ActionResult Details(string Slug)
