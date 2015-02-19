@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<MVC_Resume_MIO.Models.Comment>
-
+@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Comments Page</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -15,12 +15,12 @@
             @Html.DisplayNameFor(model => model.Author.FirstName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ParentPost.Title)
+            Blog Post Title
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Body)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Created)
         </th>
         <th>
@@ -28,7 +28,7 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.UpdateReason)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -41,9 +41,9 @@
             @Html.DisplayFor(modelItem => item.ParentPost.Title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Body)
+            @Html.Raw(item.Body)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Created)
         </td>
         <td>
@@ -51,11 +51,18 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.UpdateReason)
-        </td>
+        </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Read More ", "Details", new { id = item.ID })
+            @if (User.Identity.GetUserId() == item.AuthorID)
+            {
+                <br />
+                @Html.ActionLink("Edit Comment ", "Edit", new { id=item.ID })
+            }
+            @if (User.IsInRole("Admin")) {
+                <br />
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            }
         </td>
     </tr>
 }

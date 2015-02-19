@@ -122,9 +122,7 @@
 
             <div class="form-group text-center">
                 Body <br />
-                    @Html.TextAreaFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2", style = "width: 500px; height: 300px;", id = "editor" }
-                    )
-
+                    @Html.TextAreaFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2", style = "width: 500px; height: 300px;", id = "editor" })
                 <div class="col-md-10" >
                     @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
                 </div>

@@ -156,8 +156,8 @@ namespace MVC_Resume_MIO.Controllers
                 return RedirectToAction("Index");
             }
 
-            post.Created = DateTimeOffset.Now.Date;
-            post.Updated = DateTimeOffset.Now.Date;
+            //post.Created = DateTime.Now;
+            //post.Updated = DateTimeOffset.Now.Date;
             return View(post);
         }
 

@@ -54,6 +54,26 @@ namespace MVC_Resume_MIO.Migrations
 		        manager.AddToRoles(user.Id, new string[] { "Admin", "Moderator"});
 			
 	        }
+
+            if (!context.Users.Any(u => u.Email == "admin123@gmail.com"))
+            {
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
+                var user = new ApplicationUser
+                {
+                    UserName = "admin123@gmail.com",
+                    Email = "admin123@gmail.com",
+                    FirstName = "Test",
+                    LastName = "Administrator",
+                    DisplayName = "Admin Tester"
+                };
+
+                manager.Create(user, "Abc123!");
+                // manager,AddToRole(user.Id, "Admin");
+                //manager.AddToRole(user.Id, "Moderator");
+                manager.AddToRoles(user.Id, new string[] { "Admin", "Moderator" });
+
+            }
 	
 	        if (!context.Users.Any(u => u.Email == "bdavis@coderfoundry.com"))
 	        {

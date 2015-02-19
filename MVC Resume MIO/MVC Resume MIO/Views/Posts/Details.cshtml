@@ -19,7 +19,7 @@
         <p class="lead">
             by <a>Edward Waked</a>
         </p>
-        <div>
+       @* <div>
             <p>
                 @Html.DisplayNameFor(model => model.Created)
             </p>
@@ -28,7 +28,7 @@
                 @Html.DisplayFor(model => model.Created)
             </p>
         </div>
-        @* /// create a blog updated date stamp here *@
+        /// create a blog updated date stamp here 
         <div>
             <p>
                 @Html.DisplayNameFor(model => model.Updated)
@@ -37,7 +37,7 @@
             <p>
                 @Html.DisplayFor(model => model.Updated)
             </p>
-        </div>
+        </div>*@
         <hr>
         <img class="img-responsive" src="@Model.MediaURL" alt="image">
         <hr>
@@ -63,8 +63,10 @@
                         </div>
                     </div>
                 </div>
+                if (User.IsInRole("Admin")) {
                 @Html.ActionLink("Edit /", "Edit", new { comment=comment.ID }) 
                 @Html.ActionLink(" Details", "Details", new { comment=comment.ID }) 
+                }
             }
 
             
@@ -97,10 +99,12 @@
         <div class="well">
             <ul>
                 <li><button>@Html.ActionLink("Back to Blogs List", "Index")<span class="glyphicon glyphicon-chevron-right"></span></button></li>
-                </br>
+                @if (User.IsInRole("Admin")) {
+                <br></br>
                 <li><button>@Html.ActionLink("Edit the Blog Post", "Edit", new { id = Model.ID })<span class="glyphicon glyphicon-chevron-right"></span></button></li>
-                </br>
+                <br></br>
                 <li><button>@Html.ActionLink("Delete Post", "Delete", new { id = Model.ID })<span class="glyphicon glyphicon-chevron-right"></span></button></li>
+                }
             </ul>
         </div>
     </div>

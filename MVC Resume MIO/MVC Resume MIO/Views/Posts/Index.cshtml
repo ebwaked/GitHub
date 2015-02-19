@@ -16,10 +16,11 @@
         Eddie's Blog
         <small>Insight to my time at Coder Foundry</small>
     </h1>
-    <!-- Blog Post -->
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
+        @if (User.IsInRole("Admin")) { 
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        }
 </div>
 <div class="row">
     <div class="span8 animated fadeInLeftBig">
@@ -31,7 +32,7 @@
             <p class="lead">
                 by <a>Edward Waked</a>
             </p>
-            <p><span class="glyphicon glyphicon-time"></span>@item.Created.ToString("d")</p>
+            //<p><span class="glyphicon glyphicon-time"></span>@item.Created.ToString("d")</p>
             /// create a blog updated date stamp here
             <hr>
             <img class="img-responsive" src="@item.MediaURL" alt="image">
@@ -39,7 +40,9 @@
             <hr>
             <div class="wordBreak">@Html.Raw(item.Body)</div>
             <button>@Html.ActionLink("Read More", "Details", new { Slug = item.Slug })<span class="glyphicon glyphicon-chevron-right"></span></button>
+            if (User.IsInRole("Admin")) { 
             <button>@Html.ActionLink("Delete", "Delete", new { id = item.ID }) <span class="glyphicon glyphicon-chevron-right"></span></button>
+            }
             <hr>
             
         }
