@@ -546,7 +546,6 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.eot" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
-    <Content Include="Views\Shared\_BlogSearchPartial.cshtml" />
     <Content Include="Views\Shared\_CommentsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>

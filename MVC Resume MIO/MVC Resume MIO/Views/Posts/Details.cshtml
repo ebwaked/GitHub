@@ -19,33 +19,35 @@
         <p class="lead">
             by <a>Edward Waked</a>
         </p>
-        <dl>
-            <dt>
+        <div>
+            <p>
                 @Html.DisplayNameFor(model => model.Created)
-            </dt>
+            </p>
 
-            <dd>
+            <p>
                 @Html.DisplayFor(model => model.Created)
-            </dd>
-        </dl>
+            </p>
+        </div>
         @* /// create a blog updated date stamp here *@
-        <dl>
-            <dt>
+        <div>
+            <p>
                 @Html.DisplayNameFor(model => model.Updated)
-            </dt>
+            </p>
 
-            <dd>
+            <p>
                 @Html.DisplayFor(model => model.Updated)
-            </dd>
-        </dl>
+            </p>
+        </div>
         <hr>
         <img class="img-responsive" src="@Model.MediaURL" alt="image">
         <hr>
-        <div class="wordBreak">@Html.Raw(Model.Body)</div>
+        <div>@Html.Raw(Model.Body)</div>
 
-        @Html.ActionLink("Leave a Comment", "Create", "Comments")
+      
 
         <div>
+            @Html.ActionLink("Leave a Comment", "Create", "Comments")
+
             @foreach (var comment in Model.Comment)
             {
                 <div class="post-body">
@@ -61,8 +63,8 @@
                         </div>
                     </div>
                 </div>
-                @Html.ActionLink("Edit", "Edit", new { comment=comment.ID }) 
-                @Html.ActionLink("Details", "Details", new { comment=comment.ID }) 
+                @Html.ActionLink("Edit /", "Edit", new { comment=comment.ID }) 
+                @Html.ActionLink(" Details", "Details", new { comment=comment.ID }) 
             }
 
             
@@ -74,21 +76,34 @@
     </div>
 
     <!-- Blog Search Well -->
-
     <div class="span4 animated rollIn">
-        @{Html.RenderPartial("_BlogSearchPartial");}
+        <div>
+            <p>@Html.Partial("_LoginPartial")</p>
+            <div class="well">
+                <h4>Blog Search</h4>
+                <div class="input-group">
+                    @using (Html.BeginForm("Index", "Posts", FormMethod.Get))
+                    {
+                        <input type="text" class="form-control" name="query" value="@ViewBag.Query" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    }
+                </div>
+            </div>
+        </div>
         <div class="well">
             <ul>
-                <li><button>@Html.ActionLink("Back to Blogs List", "Index")<span class="glyphicon glyphicon-chevron-right"></span></button></li> <hr />
-                <li><button>@Html.ActionLink("Edit the Blog Post", "Edit", new { id = Model.ID })<span class="glyphicon glyphicon-chevron-right"></span></button></li> <hr />
-                <li><button>@Html.ActionLink("Delete Post", "Delete", new { id = Model.ID })<span class="glyphicon glyphicon-chevron-right"></span></button></li> <hr />
+                <li><button>@Html.ActionLink("Back to Blogs List", "Index")<span class="glyphicon glyphicon-chevron-right"></span></button></li>
+                </br>
+                <li><button>@Html.ActionLink("Edit the Blog Post", "Edit", new { id = Model.ID })<span class="glyphicon glyphicon-chevron-right"></span></button></li>
+                </br>
+                <li><button>@Html.ActionLink("Delete Post", "Delete", new { id = Model.ID })<span class="glyphicon glyphicon-chevron-right"></span></button></li>
             </ul>
         </div>
     </div>
-
-   
-
-
 </div>
 <p>
    
