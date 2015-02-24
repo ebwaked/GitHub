@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
 
-namespace BugTracker.Models
+namespace Bug_Boss.Models
 {
     public class TicketHistory
     {

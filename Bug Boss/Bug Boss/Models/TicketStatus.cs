@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
 
-namespace BugTracker.Models
+namespace Bug_Boss.Models
 {
-    public class TicketType
+    public class TicketStatus
     {
-        public TicketType()
+        public TicketStatus()
         {
             this.Tickets = new HashSet<Ticket>();
         }
@@ -16,5 +16,4 @@ namespace BugTracker.Models
 
         public virtual ICollection<Ticket> Tickets { get; set; }
     }
-    
 }
