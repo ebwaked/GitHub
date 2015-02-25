@@ -188,7 +188,12 @@ namespace MVC_Resume_MIO.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(post).State = EntityState.Modified;
+                db.Posts.Attach(post);
+                db.Entry(post).Property(p => p.Title).IsModified = true;
+                db.Entry(post).Property(p => p.ID).IsModified = true;
+                db.Entry(post).Property(p => p.Updated).IsModified = true;
+                db.Entry(post).Property(p => p.Body).IsModified = true;
+                db.Entry(post).Property(p => p.MediaURL).IsModified = true;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

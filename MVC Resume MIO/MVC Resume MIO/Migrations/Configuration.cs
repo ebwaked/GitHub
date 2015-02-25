@@ -69,7 +69,7 @@ namespace MVC_Resume_MIO.Migrations
                 };
 
                 manager.Create(user, "Abc123!");
-                // manager,AddToRole(user.Id, "Admin");
+                //manager.AddToRole(user.Id, "Admin");
                 //manager.AddToRole(user.Id, "Moderator");
                 manager.AddToRoles(user.Id, new string[] { "Admin", "Moderator" });
 
