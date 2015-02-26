@@ -18,8 +18,11 @@
         </h2>
         <p class="lead">
             by <a>Edward Waked</a>
+            <br />
+            @Model.Created.ToString("dddd, dd MMM yyyy h:mm tt")
+        @*<p><span class="glyphicon glyphicon-time"></sp1an>@item.Created.ToString("dddd, dd MMM yyyy h:mm tt")</p>*@
         </p>
-       @* <div>
+       @* <div>s
             <p>
                 @Html.DisplayNameFor(model => model.Created)
             </p>

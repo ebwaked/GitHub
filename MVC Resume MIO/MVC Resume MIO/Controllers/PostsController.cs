@@ -152,12 +152,12 @@ namespace MVC_Resume_MIO.Controllers
                 ///create slug here
                 post.Slug = Slug;
                 db.Posts.Add(post);
+                post.Created = System.DateTimeOffset.Now;
+                post.Updated = System.DateTimeOffset.Now;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            //post.Created = DateTime.Now;
-            //post.Updated = DateTimeOffset.Now.Date;
             return View(post);
         }
 
@@ -199,6 +199,7 @@ namespace MVC_Resume_MIO.Controllers
             }
             return View(post);
         }
+
 
         // GET: Posts/Delete/5
         [Authorize(Roles = "Admin")]

@@ -1,86 +1,4 @@
-﻿@*@model MVC_Resume_MIO.Models.Post
-@{  ViewBag.Title = "Create";}
-
-<h2>Create</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    <br />    <br />     <br />
-    <div class="container">
-        <div class="form-horizontal">
-            <h4>Post</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Slug, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Slug, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Slug, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Created, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Created, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Created, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Updated, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Updated, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Updated, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Body, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.MediaURL, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.MediaURL, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.MediaURL, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Published, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model.Published)
-                        @Html.ValidationMessageFor(model => model.Published, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-    </div>
-}
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>*@
-
-
-
-
-
-
-@model MVC_Resume_MIO.Models.Post
+﻿@model MVC_Resume_MIO.Models.Post
 
     @{
         ViewBag.Title = "Create";
@@ -99,16 +17,7 @@
             <div class="form-group text-center">
                 @Html.LabelFor(model => model.Created, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Created, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Created, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group text-center">
-                @Html.LabelFor(model => model.Updated, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Updated, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Updated, "", new { @class = "text-danger" })
                 </div>
             </div>
 
@@ -137,14 +46,6 @@
                     @Html.ValidationMessage("image", new {  @class = "text-danger"})
                 </div>
             </div>
-
-            @*<div class="form-group text-center">
-        @Html.LabelFor(model => model.Slug, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Slug, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Slug, "", new { @class = "text-danger" })
-        </div>
-    </div>*@
 
             <div class="form-group text-center">
                 <div class="col-md-offset-2 col-md-10">
