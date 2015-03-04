@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Bug_Boss.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Bug_Boss
 {
@@ -63,6 +64,8 @@ namespace Bug_Boss
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+        
+        
         }
     }
 }

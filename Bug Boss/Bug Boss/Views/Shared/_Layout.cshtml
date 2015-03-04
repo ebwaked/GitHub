@@ -1,44 +1,116 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
+﻿<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - The Bug Boss</title>
+    <!-- BOOTSTRAP STYLES-->
+    <link href="/Content/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link href="/Content/font-awesome.css" rel="stylesheet" />
+    <!-- CUSTOM STYLES-->
+    <link href="/Content/css/custom.css" rel="stylesheet" />
+    <!-- GOOGLE FONTS-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+
+<div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a class="navbar-brand" @Url.Action("Index", "Home")>Bug Boss</a>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            <div style="color: white;
+                        padding: 0px;
+                        float:right;
+                        font-size: 16px;">
+                        @Html.Partial("_LoginPartial")
+            </div>
+        </nav> <!-- /. NAV TOP  -->
+
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li class="text-center">
+                        <img src="/Content/images/bugLogo.jpg" class="user-image img-responsive" alt="..." />
+                    </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                            if (User.IsInRole("Administrator"))
+                            {
+                    <li>
+                        <a><i class="fa fa-bolt fa-3x"></i> Administrator Settings<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                               @Html.ActionLink("Roles", "ListRoles", "RoleManagement")
+                            </li>
+                            <li>
+                               @Html.ActionLink("Manage Authentication", "Index", "Manage")
+                            </li>
+                        </ul>
+                    </li>
+                            }
+                    }
+
+                    <li>
+                        <a><i class="fa fa-desktop fa-3x"></i> Projects<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                @Html.ActionLink("List", "Index", "Projects")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Create", "Create", "Projects")
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a><i class="fa fa-edit fa-3x"></i> Tickets<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                @Html.ActionLink("List", "Index", "Tickets")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Create", "Create", "Tickets")
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
-                @Html.Partial("_LoginPartial")
             </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+                    <div class="col-md-12">
+                        @RenderBody()
+                    </div>
+                <hr />
+            </div> <!-- /. PAGE INNER  -->
+        </div><!-- /. PAGE WRAPPER  -->
+    <div>
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Bug Boss</p>
         </footer>
     </div>
-
+</div> // <!-- /. FULL PAGE WRAPPER -->
+<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/modernizr")
     @RenderSection("scripts", required: false)
-</body>
-</html>
+    <!-- BOOTSTRAP-->
+    <script src="/Scripts/bootstrap.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="/Scripts/jquery.metisMenu.js"></script>
+    <!-- CUSTOM SCRIPTS -->
+    <script src="/Scripts/custom.js"></script>
+    <!-- MORRIS SCRIPT -->
+    <script src="/Scripts/morris.js"></script>
+    <!-- RAPHAEL -->
+    <script src="/Scripts/raphael-2.1.0.min.js"></script>
+    <!-- DATATABLES -->
+    <script src="/Scripts/jquery.dataTables.js"></script>
