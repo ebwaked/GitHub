@@ -76,6 +76,18 @@
                             <li>
                                 @Html.ActionLink("Create", "Create", "Tickets")
                             </li>
+                            @if (User.Identity.IsAuthenticated) 
+                            {
+                                if (User.IsInRole("Administrator"))
+                                {
+                                 <li>
+                                     @Html.ActionLink("Ticket Priorities", "Index", "TicketPriorities")
+                                 </li>
+                                <li>
+                                    @Html.ActionLink("Create Ticket Priorities", "Create", "TicketPriorities")
+                                </li>
+                                }
+                            }
                         </ul>
                     </li>
                 </ul>
