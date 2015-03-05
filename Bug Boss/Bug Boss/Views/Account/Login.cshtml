@@ -50,11 +50,11 @@
                             </div>
                             <div class="form-group">
                                 <label class="checkbox-inline">
-                                   @Html.CheckBoxFor(m=>m.RememberMe) Remember me 
+                                    @*<input type="checkbox" /> Remember me*@
+                                   @Html.CheckBoxFor(m=>m.RememberMe) Remember me
                                 </label>
                                 <span class="pull-right">
-                                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                                    <!-- <a href="#" >Forget password ? </a>  -->
+                                    @Html.ActionLink("Forgot password?", "ForgotPassword")
                                 </span>
                             </div>
 

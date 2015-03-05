@@ -37,7 +37,6 @@ namespace MVC_Resume_MIO.Controllers
                 var credentials = new NetworkCredential(MyUsername, MyPassword);
                 var transportWeb = new Web(credentials);
                 transportWeb.Deliver(mail);
-
             }
 
             return View();
