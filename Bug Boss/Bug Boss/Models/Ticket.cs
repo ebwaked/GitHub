@@ -37,4 +37,35 @@ namespace Bug_Boss.Models
         public virtual TicketStatus TicketStatus { get; set; }
         public virtual TicketType TicketType { get; set; }
     }
+
+    public class TicketViewModel
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public System.DateTimeOffset Created { get; set; }
+        public Nullable<System.DateTimeOffset> Updated { get; set; }
+        public int ProjectId { get; set; }
+        public int TicketTypeId { get; set; }
+        public Nullable<int> TicketPriorityId { get; set; }
+        public int TicketStatusId { get; set; }
+        public string OwnerUserId { get; set; }
+        public string AssignedUserId { get; set; }
+
+            public TicketViewModel(Ticket ticket)
+            {
+                Id = ticket.Id;
+                Title = ticket.Title;
+                Description = ticket.Description;
+                Created = ticket.Created;
+                Updated = ticket.Updated;
+                ProjectId = ticket.ProjectId;
+                TicketTypeId = ticket.TicketTypeId;
+                TicketPriorityId = ticket.TicketPriorityId;
+                OwnerUserId = ticket.OwnerUserId;
+                AssignedUserId = ticket.AssignedUserId;
+
+            }
+    
+    }
 }

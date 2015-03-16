@@ -11,6 +11,7 @@ using Bug_Boss.Models;
 
 namespace Bug_Boss.Controllers
 {
+    [Authorize(Roles = "Submitter,Developer,Administrator,Project Manager")]
     public class ContactController : Controller
     {
         // GET: Contact

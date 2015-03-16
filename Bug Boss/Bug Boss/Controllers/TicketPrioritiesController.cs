@@ -10,6 +10,7 @@ using Bug_Boss.Models;
 
 namespace Bug_Boss.Controllers
 {
+    [Authorize(Roles = "Submitter,Developer,Administrator,Project Manager")]
     public class TicketPrioritiesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

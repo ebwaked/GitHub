@@ -10,6 +10,7 @@ using System.Data.Entity;
 
 namespace Bug_Boss.Controllers
 {
+    [Authorize(Roles = "Submitter,Developer,Administrator,Project Manager")]
     public class RoleManagementController : Controller
     {
         private ApplicationDbContext db;

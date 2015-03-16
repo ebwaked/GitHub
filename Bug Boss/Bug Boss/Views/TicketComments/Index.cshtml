@@ -9,43 +9,42 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
+    <div>
+        <p>
             @Html.DisplayNameFor(model => model.Ticket.Title)
-        </th>
-        <th>
+        </p>
+        <p>
             @Html.DisplayNameFor(model => model.User.LastName)
-        </th>
-        <th>
+        </p>
+        <p>
             @Html.DisplayNameFor(model => model.Comment)
-        </th>
-        <th>
+        </p>
+        <p>
             @Html.DisplayNameFor(model => model.Created)
-        </th>
-        <th></th>
-    </tr>
+        </p>
+        <p></p>
+    </div>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
+    <div>
+        <p>
             @Html.DisplayFor(modelItem => item.Ticket.Title)
-        </td>
-        <td>
+        </p>
+        <p>
             @Html.DisplayFor(modelItem => item.User.LastName)
-        </td>
-        <td>
+        </p>
+        <p>
             @Html.DisplayFor(modelItem => item.Comment)
-        </td>
-        <td>
+        </p>
+        <p>
             @Html.DisplayFor(modelItem => item.Created)
-        </td>
-        <td>
+        </p>
+        <p>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+        </p>
+    </div>
 }
+        
 
-</table>

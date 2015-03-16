@@ -29,9 +29,17 @@ namespace Bug_Boss.Migrations
             {
                 roleManager.Create(new IdentityRole("Administrator"));
             }
-            if (!roleManager.RoleExists("User"))
+            if (!roleManager.RoleExists("Project Manager"))
             {
-                roleManager.Create(new IdentityRole("User"));
+                roleManager.Create(new IdentityRole("Project Manager"));
+            }
+            if (!roleManager.RoleExists("Developer"))
+            {
+                roleManager.Create(new IdentityRole("Developer"));
+            }
+            if (!roleManager.RoleExists("Submitter"))
+            {
+                roleManager.Create(new IdentityRole("Submitter"));
             }
 
             var user = userManager.FindByName("admin@coderfoundry.com");
@@ -56,23 +64,63 @@ namespace Bug_Boss.Migrations
             if (!context.TicketStatuses.Any(t=>t.Name == "New"))
             {
                 context.TicketStatuses.Add(new TicketStatus { Name = "New" });
+                context.SaveChanges();
             }
-            if (!context.TicketPriorities.Any(t => t.Name == "New"))
+            if (!context.TicketStatuses.Any(t => t.Name == "In Progress"))
             {
-                context.TicketPriorities.Add(new TicketPriority { Name = "New" });
+                context.TicketStatuses.Add(new TicketStatus { Name = "In Progress" });
+                context.SaveChanges();
             }
-            if (!context.TicketTypes.Any(t => t.Name == "New"))
+            if (!context.TicketStatuses.Any(t => t.Name == "Not Assigned"))
             {
-                context.TicketTypes.Add(new TicketType { Name = "New" });
+                context.TicketStatuses.Add(new TicketStatus { Name = "Not Assigned" });
+                context.SaveChanges();
+            }
+            if (!context.TicketStatuses.Any(t => t.Name == "Closed"))
+            {
+                context.TicketStatuses.Add(new TicketStatus { Name = "Closed" });
+                context.SaveChanges();
             }
 
-            //
-            // The Big Lebowski Code 
-            //
+            if (!context.TicketPriorities.Any(t => t.Name == "High Priority"))
+            {
+                context.TicketPriorities.Add(new TicketPriority { Name = "High Priority" });
+                context.SaveChanges();
+            }
+            if (!context.TicketPriorities.Any(t => t.Name == "Medium Priority"))
+            {
+                context.TicketPriorities.Add(new TicketPriority { Name = "Medium Priority" });
+                context.SaveChanges();
+            }
+            if (!context.TicketPriorities.Any(t => t.Name == "Low Priority"))
+            {
+                context.TicketPriorities.Add(new TicketPriority { Name = "Low Priority" });
+                context.SaveChanges();
+            }
+
+            if (!context.TicketTypes.Any(t => t.Name == "Bug"))
+            {
+                context.TicketTypes.Add(new TicketType { Name = "Bug" });
+                context.SaveChanges();
+            }
+            if (!context.TicketTypes.Any(t => t.Name == "Feature Request"))
+            {
+                context.TicketTypes.Add(new TicketType { Name = "Feature Request" });
+                context.SaveChanges();
+            }
+            if (!context.TicketTypes.Any(t => t.Name == "Improvement"))
+            {
+                context.TicketTypes.Add(new TicketType { Name = "Improvement" });
+                context.SaveChanges();
+            }
+
+           // //
+           // // The Big Lebowski Code 
+           // //
 
             var userId = userManager.FindByEmail("admin@coderfoundry.com").Id;
 
-           var projects = new List<Project>
+            var projects = new List<Project>
            {
                 new Project { Name = "The Big Lebowski" },
                 new Project { Name = "Peterkin" },
@@ -80,50 +128,28 @@ namespace Bug_Boss.Migrations
                 new Project { Name = "Newman" },
                 new Project { Name = "Kramer" }
            };
-           if (!context.Projects.Any(r => r.Name == "The Big Lebowski"))
-           {
+            if (!context.Projects.Any(r => r.Name == "The Big Lebowski"))
+            {
                 projects.ForEach(p => context.Projects.Add(p));
                 context.SaveChanges();
-           }
-
-              var types = new List<TicketType>
-            {
-            new TicketType { Name = "Bug" },
-            new TicketType { Name = "Featue request" },
-            new TicketType { Name = "Improvement" }
-            };
-            if (!context.TicketTypes.Any(r => r.Name == "Bug"))
-            {
-                types.ForEach(t => context.TicketTypes.Add(t));
-                context.SaveChanges();
             }
-            var status = new List<TicketStatus>
+
+            var typeId = context.TicketTypes.Single(p => p.Name == "Bug").Id;
+            var statusId = context.TicketStatuses.Single(p => p.Name == "In progress").Id;
+            var project = context.Projects.Single(p => p.Name == "The Big Lebowski").Id;
+            var project2 = context.Projects.Single(p => p.Name == "Peterkin").Id;
+            var project3 = context.Projects.Single(p => p.Name == "Ferris").Id;
+            var project4 = context.Projects.Single(p => p.Name == "Newman").Id;
+            var project5 = context.Projects.Single(p => p.Name == "Kramer").Id;
+            if (!context.ProjectUsers.Any(r => r.UserId == userId))
             {
-            new TicketStatus { Name = "In progress" },
-            new TicketStatus { Name = "Not assigned" },
-            new TicketStatus { Name = "Closed" }
-            };
-                            if (!context.TicketStatuses.Any(r => r.Name == "Not assigned"))
-                            {
-                                status.ForEach(s => context.TicketStatuses.Add(s));
-                                context.SaveChanges();
-                            }
-                            var typeId = context.TicketTypes.Single(p => p.Name == "Bug").Id;
-                            var statusId = context.TicketStatuses.Single(p => p.Name == "In progress").Id;
-                            var project = context.Projects.Single(p => p.Name == "The Big Lebowski").Id;
-                            var project2 = context.Projects.Single(p => p.Name == "Peterkin").Id;
-                            var project3 = context.Projects.Single(p => p.Name == "Ferris").Id;
-                            var project4 = context.Projects.Single(p => p.Name == "Newman").Id;
-                            var project5 = context.Projects.Single(p => p.Name == "Kramer").Id;
-                            if (!context.ProjectUsers.Any(r => r.UserId == userId))
-                            {
-                                context.ProjectUsers.Add(new ProjectUser()
-                                {
-                                    ProjectId = project,
-                                    UserId = userId
-                                });
-                            }
-                            var tickets = new List<Ticket>
+                context.ProjectUsers.Add(new ProjectUser()
+                {
+                    ProjectId = project,
+                    UserId = userId
+                });
+            }
+            var tickets = new List<Ticket>
                 {
 
                 new Ticket {
@@ -227,15 +253,15 @@ namespace Bug_Boss.Migrations
                     AssignedUserId = userId
                     },
                 };
-                if (!context.Tickets.Any(r => r.ProjectId == project))
-                {
-                    tickets.ForEach(t => context.Tickets.Add(t));
-                    context.SaveChanges();
-                }
+            if (!context.Tickets.Any(r => r.ProjectId == project))
+            {
+                tickets.ForEach(t => context.Tickets.Add(t));
+                context.SaveChanges();
+            }
 
-            //
-            //  End of Big Lebowski Code
-            //
+           // //
+           // //  End of Big Lebowski Code
+           // //
 
         }
         

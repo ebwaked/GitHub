@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
@@ -42,9 +43,11 @@ namespace Bug_Boss.Models
         public string Name { get; set; }
         public int Id { get; set; }
 
-        public MultiSelectList PossibleUsersToAssign { get; set; }
+        [Display(Name = "Possible Users To Assign")]
+        public System.Web.Mvc.MultiSelectList PossibleUsersToAssign { get; set; }
         public string[] NewlyAssignedUsers { get; set; }
-        public MultiSelectList PossibleUsersToRemove { get; set; }
+        [Display(Name = "Possible Users To Remove")]
+        public System.Web.Mvc.MultiSelectList PossibleUsersToRemove { get; set; }
         public string[] NewlyRemovedUsers { get; set; }
     }
 }

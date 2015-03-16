@@ -172,7 +172,6 @@
     <Compile Include="Controllers\RoleManagementController.cs" />
     <Compile Include="Controllers\TicketAttachmentsController.cs" />
     <Compile Include="Controllers\TicketCommentsController.cs" />
-    <Compile Include="Controllers\TicketHistoriesController.cs" />
     <Compile Include="Controllers\TicketPrioritiesController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Controllers\TicketStatusController.cs" />
@@ -203,6 +202,9 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\custom.css" />
+    <Content Include="Content\css\jquery.dataTables.css" />
+    <Content Include="Content\css\jquery.dataTables.min.css" />
+    <Content Include="Content\css\jquery.dataTables_themeroller.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\images\1.png" />
@@ -210,6 +212,18 @@
     <Content Include="Content\images\3.png" />
     <Content Include="Content\images\4.png" />
     <Content Include="Content\images\bugLogo.jpg" />
+    <Content Include="Content\images\DatatableImages\back_disabled.png" />
+    <Content Include="Content\images\DatatableImages\back_enabled.png" />
+    <Content Include="Content\images\DatatableImages\back_enabled_hover.png" />
+    <Content Include="Content\images\DatatableImages\favicon.ico" />
+    <Content Include="Content\images\DatatableImages\forward_disabled.png" />
+    <Content Include="Content\images\DatatableImages\forward_enabled.png" />
+    <Content Include="Content\images\DatatableImages\forward_enabled_hover.png" />
+    <Content Include="Content\images\DatatableImages\sort_asc.png" />
+    <Content Include="Content\images\DatatableImages\sort_asc_disabled.png" />
+    <Content Include="Content\images\DatatableImages\sort_both.png" />
+    <Content Include="Content\images\DatatableImages\sort_desc.png" />
+    <Content Include="Content\images\DatatableImages\sort_desc_disabled.png" />
     <Content Include="Content\images\find_user.png" />
     <Content Include="Content\images\newBugBoss.jpg" />
     <Content Include="favicon.ico" />
@@ -224,6 +238,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\images\DatatableImages\Sorting icons.psd" />
     <None Include="Properties\PublishProfiles\ewaked-bugboss - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\ewaked-bugboss - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -234,6 +249,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.dataTables.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.metisMenu.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -294,11 +311,11 @@
     <Content Include="Views\TicketComments\Details.cshtml" />
     <Content Include="Views\TicketComments\Edit.cshtml" />
     <Content Include="Views\TicketComments\Index.cshtml" />
-    <Content Include="Views\TicketHistories\Create.cshtml" />
-    <Content Include="Views\TicketHistories\Delete.cshtml" />
-    <Content Include="Views\TicketHistories\Details.cshtml" />
-    <Content Include="Views\TicketHistories\Edit.cshtml" />
-    <Content Include="Views\TicketHistories\Index.cshtml" />
+    <Content Include="Views\Projects\Create.cshtml" />
+    <Content Include="Views\Projects\Delete.cshtml" />
+    <Content Include="Views\Projects\Details.cshtml" />
+    <Content Include="Views\Projects\Edit.cshtml" />
+    <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Tickets\Create.cshtml" />
     <Content Include="Views\Tickets\Delete.cshtml" />
     <Content Include="Views\Tickets\Details.cshtml" />
@@ -319,14 +336,10 @@
     <Content Include="Views\TicketTypes\Details.cshtml" />
     <Content Include="Views\TicketTypes\Edit.cshtml" />
     <Content Include="Views\TicketTypes\Index.cshtml" />
-    <Content Include="Views\Projects\Create.cshtml" />
-    <Content Include="Views\Projects\Delete.cshtml" />
-    <Content Include="Views\Projects\Details.cshtml" />
-    <Content Include="Views\Projects\Edit.cshtml" />
-    <Content Include="Views\Projects\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DataTables\" />
     <Folder Include="Views\Contact\" />
   </ItemGroup>
   <ItemGroup>

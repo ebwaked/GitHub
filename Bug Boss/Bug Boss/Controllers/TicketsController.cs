@@ -10,6 +10,7 @@ using Bug_Boss.Models;
 
 namespace Bug_Boss.Controllers
 {
+    [Authorize(Roles="Submitter,Developer,Administrator,Project Manager")]
     public class TicketsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -20,7 +21,7 @@ namespace Bug_Boss.Controllers
             var tickets = db.Tickets.Include(t => t.AssignedUser).Include(t => t.OwnerUser).Include(t => t.Project).Include(t => t.TicketPriority).Include(t => t.TicketStatus).Include(t => t.TicketType);
             return View(tickets.ToList());
         }
-
+        
         // GET: Tickets/Details/5
         public ActionResult Details(int? id)
         {
@@ -96,15 +97,34 @@ namespace Bug_Boss.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Admin, Developer, Submitter")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Title,Description,Created,Updated,ProjectId,TicketTypeId,TicketPriorityId,TicketStatusId,OwnerUserId,AssignedUserId")] Ticket ticket)
         {
             if (ModelState.IsValid)
             {
+                Ticket old_ticket = (Ticket)TempData["old_ticket"];
+                var userId = db.Users.Single(u => u.UserName == User.Identity.Name).Id;
+
+                if (old_ticket.Description != ticket.Description)
+                {
+                    db.TicketHistories.Add(new TicketHistory
+                        {
+                            Property = "Description",
+                            Changed = DateTimeOffset.Now,
+                            OldValue = old_ticket.Description,
+                            NewValue = ticket.Description,
+                            TicketId = ticket.Id,
+                            UserId = userId
+                        });
+                }
+
+                ticket.Updated = DateTimeOffset.Now;
                 db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             ViewBag.AssignedUserId = new SelectList(db.Users, "Id", "LastName", ticket.AssignedUserId);
             ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "LastName", ticket.OwnerUserId);
             ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Name", ticket.ProjectId);

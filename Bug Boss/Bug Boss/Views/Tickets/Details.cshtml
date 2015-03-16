@@ -9,90 +9,140 @@
 <div>
     <h4>Ticket</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AssignedUser.LastName)
-        </dt>
+        <div class="row">
+            <div class="col-md-6">
+                <i class="fa fa-bug"></i>
+                Asigned User
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.AssignedUser.LastName)
-        </dd>
+            <div class="col-md-6">
+                @Html.DisplayTextFor(model => model.AssignedUser.LastName)
+            </div>
+            <br />
+            <hr />
+            <div class="col-md-6"> 
+                <i class="fa fa-bug"></i>
+                Owner User
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OwnerUser.LastName)
-        </dt>
+            <div class="col-md-6">
+                @Html.DisplayTextFor(model => model.OwnerUser.LastName)
+            </div>
+            <br />
+            <hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.OwnerUser.LastName)
-        </dd>
+            <div class="col-md-6">
+                <i class="fa fa-bug"></i>
+                Project Name
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Project.Name)
-        </dt>
+            <div class="col-md-6">
+                @Html.DisplayTextFor(model => model.Project.Name)
+            </div>
+            <br />
+            <hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.Project.Name)
-        </dd>
+            <div class="col-md-6">
+                <i class="fa fa-bug"></i>
+                Ticket Priority
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TicketPriority.Name)
-        </dt>
+            <div class="col-md-6">
+                @Html.DisplayTextFor(model => model.TicketPriority.Name)
+            </div>
+            <br />
+            <hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.TicketPriority.Name)
-        </dd>
+            <div class="col-md-6">
+                <i class="fa fa-bug"></i>
+                Ticket Status
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TicketStatus.Name)
-        </dt>
+            <div class="col-md-6">
+                @Html.DisplayTextFor(model => model.TicketStatus.Name)
+            </div>
+            <br />
+            <hr />
+            <div class="col-md-6">
+                <i class="fa fa-bug"></i>
+                Ticket Type
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.TicketStatus.Name)
-        </dd>
+            <div class="col-md-6">
+                @Html.DisplayTextFor(model => model.TicketType.Name)
+            </div>
+            <br />
+            <hr />
+            <div class="col-md-6">
+                <i class="fa fa-bug"></i>
+                Ticket Title
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TicketType.Name)
-        </dt>
+            <div class="col-md-6">
+                @Html.DisplayTextFor(model => model.Title)
+            </div>
+            <br />
+            <hr />
+            <div class="col-md-6">
+                <i class="fa fa-bug"></i>
+                Ticket Desciption
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.TicketType.Name)
-        </dd>
+            <div class="col-md-6">
+                @Html.DisplayTextFor(model => model.Description)
+            </div>
+            <br />
+            <hr />
+            <div class="col-md-6">
+                <i class="fa fa-bug"></i>
+                Created Date
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+            <div class="col-md-6">
+                @Html.DisplayTextFor(model => model.Created)
+            </div>
+            <br />
+            <hr />
+            <div class="col-md-6">
+                <i class="fa fa-bug"></i>
+                Updated Date
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Created)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Created)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Updated)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Updated)
-        </dd>
-
-    </dl>
+            <div class="col-md-6">
+                @Html.DisplayTextFor(model => model.Updated)
+            </div>
+            <br />
+            <hr />
+        </div>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+<div>
+    @Html.ActionLink("Leave a Comment", "Create", "TicketComments")
+
+    @foreach (var comment in Model.TicketComments)
+    {
+        <div class="post-body">
+            <div class="post-body-inner comment-width">
+                <div class="post-message-container" data-role="message-container">
+                    <div class="publisher-anchor-color" data-role="message-content">
+                        <div class="post-message" data-role="message" dir="auto">
+                            <p>@comment.User.DisplayName</p>
+                            <p class="fa-indent fa-2x">@Html.DisplayFor(modelTicketComments => comment.Comment)</p>
+                        </div>
+                        <span class="post-media">< data-role="post-media-list"></></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        if (User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Edit /", "Edit", new { comment = comment.Id })
+            @Html.ActionLink(" Details", "Details", new { comment = comment.Id })
+        }
+    }
+    <hr>
+</div>
+

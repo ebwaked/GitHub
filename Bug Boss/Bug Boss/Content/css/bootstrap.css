@@ -118,6 +118,13 @@ textarea {
   font: inherit;
   color: inherit;
 }
+textareafordescription {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  width: 1131px; 
+  height: 217px;
+}
 button {
   overflow: visible;
 }
@@ -6357,4 +6364,3 @@ button.close {
     display: none !important;
   }
 }
-/*# sourceMappingURL=bootstrap.css.map */

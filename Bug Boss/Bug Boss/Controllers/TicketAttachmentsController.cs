@@ -10,11 +10,13 @@ using Bug_Boss.Models;
 
 namespace Bug_Boss.Controllers
 {
+    [Authorize(Roles = "Submitter,Developer,Administrator,Project Manager")]
     public class TicketAttachmentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: TicketAttachments
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
             var ticketAttachments = db.TicketAttachments.Include(t => t.Ticket).Include(t => t.User);
@@ -22,6 +24,7 @@ namespace Bug_Boss.Controllers
         }
 
         // GET: TicketAttachments/Details/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,10 +40,11 @@ namespace Bug_Boss.Controllers
         }
 
         // GET: TicketAttachments/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title");
-            ViewBag.UserId = new SelectList(db.ApplicationUsers, "Id", "LastName");
+            ViewBag.UserId = new SelectList(db.Users, "Id", "LastName");
             return View();
         }
 
@@ -49,6 +53,7 @@ namespace Bug_Boss.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create([Bind(Include = "Id,TicketId,UserId,FileUrl,FilePath,Description,Created")] TicketAttachment ticketAttachment)
         {
             if (ModelState.IsValid)
@@ -59,11 +64,12 @@ namespace Bug_Boss.Controllers
             }
 
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title", ticketAttachment.TicketId);
-            ViewBag.UserId = new SelectList(db.ApplicationUsers, "Id", "LastName", ticketAttachment.UserId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "LastName", ticketAttachment.UserId);
             return View(ticketAttachment);
         }
 
         // GET: TicketAttachments/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -76,7 +82,7 @@ namespace Bug_Boss.Controllers
                 return HttpNotFound();
             }
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title", ticketAttachment.TicketId);
-            ViewBag.UserId = new SelectList(db.ApplicationUsers, "Id", "LastName", ticketAttachment.UserId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "LastName", ticketAttachment.UserId);
             return View(ticketAttachment);
         }
 
@@ -85,6 +91,7 @@ namespace Bug_Boss.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "Id,TicketId,UserId,FileUrl,FilePath,Description,Created")] TicketAttachment ticketAttachment)
         {
             if (ModelState.IsValid)
@@ -94,11 +101,12 @@ namespace Bug_Boss.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title", ticketAttachment.TicketId);
-            ViewBag.UserId = new SelectList(db.ApplicationUsers, "Id", "LastName", ticketAttachment.UserId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "LastName", ticketAttachment.UserId);
             return View(ticketAttachment);
         }
 
         // GET: TicketAttachments/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -116,6 +124,7 @@ namespace Bug_Boss.Controllers
         // POST: TicketAttachments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult DeleteConfirmed(int id)
         {
             TicketAttachment ticketAttachment = db.TicketAttachments.Find(id);

@@ -10,6 +10,7 @@ using Bug_Boss.Models;
 
 namespace Bug_Boss.Controllers
 {
+    [Authorize(Roles = "Submitter,Developer,Administrator,Project Manager")]
     public class TicketCommentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -40,7 +41,7 @@ namespace Bug_Boss.Controllers
         public ActionResult Create()
         {
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title");
-            ViewBag.UserId = new SelectList(db.ApplicationUsers, "Id", "LastName");
+            ViewBag.UserId = new SelectList(db.Users, "Id", "LastName");
             return View();
         }
 
@@ -59,7 +60,7 @@ namespace Bug_Boss.Controllers
             }
 
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title", ticketComment.TicketId);
-            ViewBag.UserId = new SelectList(db.ApplicationUsers, "Id", "LastName", ticketComment.UserId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "LastName", ticketComment.UserId);
             return View(ticketComment);
         }
 
@@ -76,7 +77,7 @@ namespace Bug_Boss.Controllers
                 return HttpNotFound();
             }
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title", ticketComment.TicketId);
-            ViewBag.UserId = new SelectList(db.ApplicationUsers, "Id", "LastName", ticketComment.UserId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "LastName", ticketComment.UserId);
             return View(ticketComment);
         }
 
@@ -94,7 +95,7 @@ namespace Bug_Boss.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title", ticketComment.TicketId);
-            ViewBag.UserId = new SelectList(db.ApplicationUsers, "Id", "LastName", ticketComment.UserId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "LastName", ticketComment.UserId);
             return View(ticketComment);
         }
 

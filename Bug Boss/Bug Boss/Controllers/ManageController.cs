@@ -10,7 +10,7 @@ using Bug_Boss.Models;
 
 namespace Bug_Boss.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Submitter,Developer,Administrator,Project Manager")]
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;

@@ -10,6 +10,7 @@ using Bug_Boss.Models;
 
 namespace Bug_Boss.Controllers
 {
+    [Authorize(Roles = "Submitter,Developer,Administrator,Project Manager")]
     public class ProjectsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -78,7 +79,7 @@ namespace Bug_Boss.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(ProjectViewModel model)
+        public ActionResult Edit(Project id ,ProjectViewModel model)
         {
             var project = db.Projects.Find(model.Id);
             if (model.NewlyRemovedUsers != null)
@@ -99,7 +100,7 @@ namespace Bug_Boss.Controllers
                     var tempUser = new ApplicationUser();
                     tempUser.Id = userId;
                     db.Users.Attach(tempUser);
-                    project.ApplicationUsers.Remove(tempUser);
+                    project.ApplicationUsers.Add(tempUser);
                 }
             }
 
