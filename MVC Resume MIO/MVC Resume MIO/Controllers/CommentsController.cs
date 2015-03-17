@@ -58,6 +58,7 @@ namespace MVC_Resume_MIO.Controllers
             if (ModelState.IsValid)
             {
                 db.Comments.Add(comment);
+                comment.Created = System.DateTimeOffset.Now;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

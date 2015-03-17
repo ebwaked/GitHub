@@ -47,15 +47,17 @@ namespace Bug_Boss.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name")] Project project)
+        public ActionResult Create([Bind(Include = "Id,Name,Created")] Project project)
         {
             if (ModelState.IsValid)
             {
                 db.Projects.Add(project);
+                project.Created = DateTimeOffset.Now;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
+            
             return View(project);
         }
 
@@ -79,7 +81,7 @@ namespace Bug_Boss.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Project id ,ProjectViewModel model)
+        public ActionResult Edit([Bind(Include = "Id,Name,Created,Updated")]Project id, ProjectViewModel model)
         {
             var project = db.Projects.Find(model.Id);
             if (model.NewlyRemovedUsers != null)
@@ -103,7 +105,7 @@ namespace Bug_Boss.Controllers
                     project.ApplicationUsers.Add(tempUser);
                 }
             }
-
+            project.Updated = DateTimeOffset.Now;
             db.SaveChanges();
             return RedirectToAction("Edit", new { Id = model.Id });
 

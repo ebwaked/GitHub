@@ -19,19 +19,10 @@
         <p class="lead">
             by <a>Edward Waked</a>
             <br />
-            @Model.Created.ToString("dddd, dd MMM yyyy h:mm tt")
-        @*<p><span class="glyphicon glyphicon-time"></sp1an>@item.Created.ToString("dddd, dd MMM yyyy h:mm tt")</p>*@
+        <p><span class="glyphicon glyphicon-time"></span>@Model.Created.ToString("dddd, dd MMM yyyy h:mm tt")</p>
         </p>
-       @* <div>s
-            <p>
-                @Html.DisplayNameFor(model => model.Created)
-            </p>
 
-            <p>
-                @Html.DisplayFor(model => model.Created)
-            </p>
-        </div>
-        /// create a blog updated date stamp here 
+       @* /// create a blog updated date stamp here 
         <div>
             <p>
                 @Html.DisplayNameFor(model => model.Updated)
@@ -68,7 +59,8 @@
                 </div>
                 if (User.IsInRole("Admin")) {
                 @Html.ActionLink("Edit /", "Edit", new { comment=comment.ID }) 
-                @Html.ActionLink(" Details", "Details", new { comment=comment.ID }) 
+                @Html.ActionLink(" Details /", "Details", new { comment=comment.ID })
+                @Html.ActionLink(" Delete", "Delete", new { comment=comment.ID}) 
                 }
             }
 

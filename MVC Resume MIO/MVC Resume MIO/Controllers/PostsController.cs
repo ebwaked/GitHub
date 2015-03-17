@@ -36,8 +36,8 @@ namespace MVC_Resume_MIO.Controllers
                 return RedirectToAction("Details", new { Slug = comment.ParentPost.Slug});
             }
 
-            comment.Created = DateTimeOffset.Now.Date;
-            comment.Updated = DateTimeOffset.Now.Date;
+            comment.Created = DateTimeOffset.Now;
+            comment.Updated = DateTimeOffset.Now;
             return View(comment);
         }
 

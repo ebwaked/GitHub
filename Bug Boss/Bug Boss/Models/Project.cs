@@ -31,6 +31,8 @@ namespace Bug_Boss.Models
 
             public string Name { get; set; }
             public int Id { get; set; }
+            public DateTimeOffset Created { get; set; }
+            public Nullable<DateTimeOffset> Updated { get; set; }
 
             public virtual ICollection<Ticket> Tickets { get; set; }
             public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
@@ -42,6 +44,8 @@ namespace Bug_Boss.Models
     {
         public string Name { get; set; }
         public int Id { get; set; }
+        public DateTimeOffset Created { get; set; }
+        public Nullable<DateTimeOffset> Updated { get; set; }
 
         [Display(Name = "Possible Users To Assign")]
         public System.Web.Mvc.MultiSelectList PossibleUsersToAssign { get; set; }

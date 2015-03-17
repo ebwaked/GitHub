@@ -30,7 +30,7 @@ namespace MVC_Resume_MIO
             mail.From = new MailAddress("noreply@ewaked-resume.com");
             mail.AddTo(message.Destination);
             mail.Subject = message.Subject;
-            mail.Text = message.Body;
+            mail.Html = message.Body;
 
             var credentials = new NetworkCredential(MyUsername, MyPassword);
             var transportWeb = new Web(credentials);

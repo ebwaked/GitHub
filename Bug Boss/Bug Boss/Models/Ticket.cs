@@ -17,8 +17,8 @@ namespace Bug_Boss.Models
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public System.DateTimeOffset Created { get; set; }
-        public Nullable<System.DateTimeOffset> Updated { get; set; }
+        public DateTimeOffset Created { get; set; }
+        public Nullable<DateTimeOffset> Updated { get; set; }
         public int ProjectId { get; set; }
         public int TicketTypeId { get; set; }
         public Nullable<int> TicketPriorityId { get; set; }
@@ -43,8 +43,8 @@ namespace Bug_Boss.Models
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public System.DateTimeOffset Created { get; set; }
-        public Nullable<System.DateTimeOffset> Updated { get; set; }
+        public DateTimeOffset Created { get; set; }
+        public Nullable<DateTimeOffset> Updated { get; set; }
         public int ProjectId { get; set; }
         public int TicketTypeId { get; set; }
         public Nullable<int> TicketPriorityId { get; set; }
@@ -52,20 +52,20 @@ namespace Bug_Boss.Models
         public string OwnerUserId { get; set; }
         public string AssignedUserId { get; set; }
 
-            public TicketViewModel(Ticket ticket)
-            {
-                Id = ticket.Id;
-                Title = ticket.Title;
-                Description = ticket.Description;
-                Created = ticket.Created;
-                Updated = ticket.Updated;
-                ProjectId = ticket.ProjectId;
-                TicketTypeId = ticket.TicketTypeId;
-                TicketPriorityId = ticket.TicketPriorityId;
-                OwnerUserId = ticket.OwnerUserId;
-                AssignedUserId = ticket.AssignedUserId;
+        public TicketViewModel(Ticket ticket)
+        {
+            Id = ticket.Id;
+            Title = ticket.Title;
+            Description = ticket.Description;
+            Created = ticket.Created;
+            Updated = ticket.Updated;
+            ProjectId = ticket.ProjectId;
+            TicketTypeId = ticket.TicketTypeId;
+            TicketPriorityId = ticket.TicketPriorityId;
+            OwnerUserId = ticket.OwnerUserId;
+            AssignedUserId = ticket.AssignedUserId;
 
-            }
-    
+        }
+
     }
 }

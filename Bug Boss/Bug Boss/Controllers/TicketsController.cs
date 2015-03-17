@@ -59,6 +59,7 @@ namespace Bug_Boss.Controllers
             if (ModelState.IsValid)
             {
                 db.Tickets.Add(ticket);
+                ticket.Created = System.DateTimeOffset.Now;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
