@@ -52,7 +52,7 @@ namespace Bug_Boss.Controllers
             if (ModelState.IsValid)
             {
                 db.Projects.Add(project);
-                project.Created = DateTimeOffset.Now;
+                project.Created = System.DateTimeOffset.Now;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

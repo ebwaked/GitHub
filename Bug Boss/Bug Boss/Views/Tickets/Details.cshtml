@@ -113,6 +113,11 @@
             </div>
             <br />
             <hr />
+            <div>
+                @Html.ActionLink("Ticket Attachments", "TicketAttachments", "Create")
+                <a href="~/Views/TicketAttachments/Create.cshtml"></a>
+            </div>
+            
         </div>
 </div>
 <p>
@@ -144,5 +149,27 @@
         }
     }
     <hr>
+    <div class="col-md-6">
+        <div class="well">
+            <h4>Add Attachment</h4>
+            <form action="/Tickets/AddAttachment" method="post" enctype="multipart/form-data">
+                <div class="form-group col-md-12">
+                    @Html.Hidden("TicketId", Model.Id)
+                    @Html.AntiForgeryToken()
+                    <textarea class="form-control" name="Description"></textarea>
+                    <input type="file" name="image" />
+                </div>
+                <button type="submit" class="btn btn-primary">submit</button>
+            </form>
+        </div>
+        @foreach (var ticketAttachment in Model.TicketAttachments) 
+        {
+            <div class="media">
+                <div class="media-body">
+                    <img src="@ticketAttachment.FileUrl" class="img-responsive" />
+                </div>
+            </div>
+        }
+    </div>
 </div>
 

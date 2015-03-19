@@ -34,13 +34,13 @@
                 Name
             </th>
             <th>
-                Description
-            </th>
-            <th>
                 Created
             </th>
             <th>
                 Updated
+            </th>
+            <th>
+                View More Information
             </th>
             <th></th>
         </tr>
@@ -72,9 +72,6 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
                 @item.Created.ToString("dddd, dd MMM yyyy h:mm tt")
             </td>
             <td>
@@ -86,8 +83,9 @@
                
             </td>
             <td>
-                @Html.ActionLink("Ticket Details", "Details", new { id=item.Id }) 
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) 
             </td>
+            <td></td>
         </tr>
 }
     </tbody>
