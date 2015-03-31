@@ -36,16 +36,20 @@ namespace Bug_Boss.Controllers
             return View(project);
         }
 
+         
         // GET: Projects/Create
+        [Authorize(Roles = "Administrator,Project Manager")]
         public ActionResult Create()
         {
             return View();
         }
 
+        
         // POST: Projects/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Administrator,Project Manager")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Created")] Project project)
         {
@@ -62,6 +66,7 @@ namespace Bug_Boss.Controllers
         }
 
         // GET: Projects/Edit/5
+        [Authorize(Roles = "Administrator,Project Manager")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,12 +78,18 @@ namespace Bug_Boss.Controllers
             {
                 return HttpNotFound();
             }
-            return View(project);
+
+            var model = new ProjectViewModel { Id = project.Id, Name = project.Name };
+            model.PossibleUsersToRemove = new MultiSelectList(project.ApplicationUsers.ToList(), "Id", "UserName");
+            model.PossibleUsersToAssign = new MultiSelectList(db.Users.Where(u => !u.Projects.Any(p => p.Id == id)).ToList(), "Id", "UserName");
+
+            return View(model);
         }
 
         // POST: Projects/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Administrator,Project Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,Created,Updated")]Project id, ProjectViewModel model)
@@ -105,6 +116,7 @@ namespace Bug_Boss.Controllers
                     project.ApplicationUsers.Add(tempUser);
                 }
             }
+
             project.Updated = DateTimeOffset.Now;
             db.SaveChanges();
             return RedirectToAction("Edit", new { Id = model.Id });

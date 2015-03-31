@@ -1,175 +1,254 @@
 ﻿@model Bug_Boss.Models.Ticket
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Ticket Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Ticket</h4>
-    <hr />
-        <div class="row">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
             <div class="col-md-6">
-                <i class="fa fa-bug"></i>
-                Asigned User
+                <h2>Ticket Details</h2>
             </div>
-
             <div class="col-md-6">
-                @Html.DisplayTextFor(model => model.AssignedUser.LastName)
+                <h2>More Details</h2>
             </div>
-            <br />
-            <hr />
-            <div class="col-md-6"> 
-                <i class="fa fa-bug"></i>
-                Owner User
-            </div>
-
-            <div class="col-md-6">
-                @Html.DisplayTextFor(model => model.OwnerUser.LastName)
-            </div>
-            <br />
-            <hr />
-
-            <div class="col-md-6">
-                <i class="fa fa-bug"></i>
-                Project Name
-            </div>
-
-            <div class="col-md-6">
-                @Html.DisplayTextFor(model => model.Project.Name)
-            </div>
-            <br />
-            <hr />
-
-            <div class="col-md-6">
-                <i class="fa fa-bug"></i>
-                Ticket Priority
-            </div>
-
-            <div class="col-md-6">
-                @Html.DisplayTextFor(model => model.TicketPriority.Name)
-            </div>
-            <br />
-            <hr />
-
-            <div class="col-md-6">
-                <i class="fa fa-bug"></i>
-                Ticket Status
-            </div>
-
-            <div class="col-md-6">
-                @Html.DisplayTextFor(model => model.TicketStatus.Name)
-            </div>
-            <br />
-            <hr />
-            <div class="col-md-6">
-                <i class="fa fa-bug"></i>
-                Ticket Type
-            </div>
-
-            <div class="col-md-6">
-                @Html.DisplayTextFor(model => model.TicketType.Name)
-            </div>
-            <br />
-            <hr />
-            <div class="col-md-6">
-                <i class="fa fa-bug"></i>
-                Ticket Title
-            </div>
-
-            <div class="col-md-6">
-                @Html.DisplayTextFor(model => model.Title)
-            </div>
-            <br />
-            <hr />
-            <div class="col-md-6">
-                <i class="fa fa-bug"></i>
-                Ticket Desciption
-            </div>
-
-            <div class="col-md-6">
-                @Html.DisplayTextFor(model => model.Description)
-            </div>
-            <br />
-            <hr />
-            <div class="col-md-6">
-                <i class="fa fa-bug"></i>
-                Created Date
-            </div>
-
-            <div class="col-md-6">
-                @Html.DisplayTextFor(model => model.Created)
-            </div>
-            <br />
-            <hr />
-            <div class="col-md-6">
-                <i class="fa fa-bug"></i>
-                Updated Date
-            </div>
-
-            <div class="col-md-6">
-                @Html.DisplayTextFor(model => model.Updated)
-            </div>
-            <br />
-            <hr />
-            <div>
-                @Html.ActionLink("Ticket Attachments", "TicketAttachments", "Create")
-                <a href="~/Views/TicketAttachments/Create.cshtml"></a>
-            </div>
-            
         </div>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
-<div>
-    @Html.ActionLink("Leave a Comment", "Create", "TicketComments")
+        <br />
+        <hr />
+        <div>
+            <hr />
+            <div class="row col-md-6">
 
-    @foreach (var comment in Model.TicketComments)
-    {
-        <div class="post-body">
-            <div class="post-body-inner comment-width">
-                <div class="post-message-container" data-role="message-container">
-                    <div class="publisher-anchor-color" data-role="message-content">
-                        <div class="post-message" data-role="message" dir="auto">
-                            <p>@comment.User.DisplayName</p>
-                            <p class="fa-indent fa-2x">@Html.DisplayFor(modelTicketComments => comment.Comment)</p>
+                <div class="col-md-6">
+                    <i class="fa fa-bug"></i>
+                    Ticket Title
+                </div>
+                <div class="col-md-6">
+                    @Html.DisplayTextFor(model => model.Title)
+                </div>
+                <br />
+                <hr />
+
+                <div class="col-md-6">
+                    <i class="fa fa-bug"></i>
+                    Ticket Status
+                </div>
+                <div class="col-md-6">
+                    @Html.DisplayTextFor(model => model.TicketStatus.Name)
+                </div>
+                <br />
+                <hr />
+
+                <div class="col-md-6">
+                    <i class="fa fa-bug"></i>
+                    Ticket Priority
+                </div>
+                <div class="col-md-6">
+                    @Html.DisplayTextFor(model => model.TicketPriority.Name)
+                </div>
+                <br />
+                <hr />
+
+                <div class="col-md-6">
+                    <i class="fa fa-bug"></i>
+                    Ticket Type
+                </div>
+                <div class="col-md-6">
+                    @Html.DisplayTextFor(model => model.TicketType.Name)
+                </div>
+                <br />
+                <hr />
+
+                <div class="col-md-6">
+                    <i class="fa fa-bug"></i>
+                    Ticket Desciption
+                </div>
+                <div class="col-md-6">
+                    @Html.DisplayTextFor(model => model.Description)
+                </div>
+                <br /> <hr />
+                <p>
+                    @Html.ActionLink("Edit Ticket", "Edit", new { id = Model.Id }) |
+                    @Html.ActionLink("Back to List", "Index")
+                </p>
+            </div>
+
+            <div class="row col-md-6 pull-left">
+                <div class="col-md-6">
+                    <i class="fa fa-bug"></i>
+                    Assigned To
+                </div>
+                <div class="col-md-6">
+                    @Html.DisplayTextFor(model => model.AssignedUser.FirstName)
+                </div>
+                <br />
+                <hr />
+
+                <div class="col-md-6">
+                    <i class="fa fa-bug"></i>
+                    Assigned By
+                </div>
+                <div class="col-md-6">
+                    @Html.DisplayTextFor(model => model.OwnerUser.FirstName)
+                </div>
+                <br />
+                <hr />
+
+                <div class="col-md-6">
+                    <i class="fa fa-bug"></i>
+                    Project Name
+                </div>
+                <div class="col-md-6">
+                    @Html.DisplayTextFor(model => model.Project.Name)
+                </div>
+                <br />
+                <hr />
+
+                <div class="col-md-6">
+                    <i class="fa fa-bug"></i>
+                    Created Date
+                </div>
+                <div class="col-md-6">
+                    @Html.DisplayTextFor(model => model.Created)
+                </div>
+                <br />
+                <hr />
+
+                <div class="col-md-6">
+                    <i class="fa fa-bug"></i>
+                    Updated Date
+                </div>
+                <div class="col-md-6">
+                    @Html.DisplayTextFor(model => model.Updated)
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-12">
+            <div role="tabpanel">
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">Comments</a></li>
+                    <li role="presentation"><a href="#attachments" aria-controls="attachments" role="tab" data-toggle="tab">Attachments</a></li>
+                    <li role="presentation"><a href="#history" aria-controls="history" role="tab" data-toggle="tab">Histroy</a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+
+                    @*Comments Panel*@
+
+                    <div role="tabpanel" class="tab-pane active" id="comments">
+                        <div class="well">
+                            <div class="scroll">
+                                @foreach (var comment in Model.TicketComments)
+                                {
+                                    <div class="media">
+                                        <div class="comment">
+                                            <p>
+                                                @comment.User.UserName - @Model.Created.ToString("dddd, dd MMM yyyy h:mm tt")
+                                                <br />
+                                                @Html.Raw(comment.Comment)
+                                            </p>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <h4>Leave a Comment</h4>
+                            <form action="/Tickets/AddComment" method="post" enctype="multipart/form-data">
+                                <div class="form-group col-md-12">
+                                    @Html.Hidden("TicketId", Model.Id)
+                                    @Html.AntiForgeryToken()
+                                    <textarea class="form-control" name="Comment"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">submit</button>
+                            </form>
                         </div>
-                        <span class="post-media">< data-role="post-media-list"></></span>
+
+                    </div>
+
+                    @*Attachments Panel*@
+
+                    <div role="tabpanel" class="tab-pane" id="attachments">
+                        <div class="well">
+                            <div class="scroll">
+                                @foreach (var ticketAttachment in Model.TicketAttachments)
+                                {
+                        <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#@ticketAttachment.Id">
+                                        @ticketAttachment.Id
+                                    </button>
+
+                        <!-- Modal -->
+                                    <div class="modal fade" id="@ticketAttachment.Id" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="myModalLabel">More Details</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="media">
+                                                        <div class="media-body">
+                                                            Submitted by: @ticketAttachment.User.Email
+                                                            <br />
+                                                            Created: @ticketAttachment.Created.ToString("dddd, dd MMM yyyy h:mm tt")
+                                                            <br />
+                                                            Description: @ticketAttachment.Description
+                                                            <img src="@ticketAttachment.FileUrl" class="img-responsive" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <h4>Add attachment description</h4>
+                            <form action="/Tickets/AddAttachment" method="post" enctype="multipart/form-data">
+                                <div class="form-group col-md-12">
+                                    @Html.Hidden("TicketId", Model.Id)
+                                    @Html.AntiForgeryToken()
+                                    <textarea class="form-control" name="Description"></textarea>
+                                    <br />
+                                    <input type="file" name="image" />
+                                </div>
+                                <button type="submit" class="btn btn-primary">Add Attachment</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    @*History*@
+
+                    <div role="tabpanel" class="tab-pane" id="history">
+                        <div class="well">
+                            <h5>Histories</h5>
+                            @foreach (var item in Model.TicketHistories)
+                            {
+                                <div>
+                                   @item.Property was changed from @item.OldValue to @item.NewValue on @item.Changed by @item.User.Email
+                                    <br />
+                                </div>
+                            }
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
-        if (User.IsInRole("Admin"))
-        {
-            @Html.ActionLink("Edit /", "Edit", new { comment = comment.Id })
-            @Html.ActionLink(" Details", "Details", new { comment = comment.Id })
-        }
-    }
-    <hr>
-    <div class="col-md-6">
-        <div class="well">
-            <h4>Add Attachment</h4>
-            <form action="/Tickets/AddAttachment" method="post" enctype="multipart/form-data">
-                <div class="form-group col-md-12">
-                    @Html.Hidden("TicketId", Model.Id)
-                    @Html.AntiForgeryToken()
-                    <textarea class="form-control" name="Description"></textarea>
-                    <input type="file" name="image" />
-                </div>
-                <button type="submit" class="btn btn-primary">submit</button>
-            </form>
-        </div>
-        @foreach (var ticketAttachment in Model.TicketAttachments) 
-        {
-            <div class="media">
-                <div class="media-body">
-                    <img src="@ticketAttachment.FileUrl" class="img-responsive" />
-                </div>
-            </div>
-        }
     </div>
 </div>
-
+@section Scripts { 
+<script>
+    $('#myTab a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    })
+</script>
+}

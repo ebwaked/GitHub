@@ -83,13 +83,14 @@ namespace Bug_Boss.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Ticket ticket = db.Tickets.Find(id);
+            TempData["old_ticket"] = ticket;
             if (ticket == null)
             {
                 return HttpNotFound();
             }
             TempData["old_ticket"] = ticket;
-            ViewBag.AssignedUserId = new SelectList(db.Users, "Id", "LastName", ticket.AssignedUserId);
-            ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "LastName", ticket.OwnerUserId);
+            ViewBag.AssignedUserId = new SelectList(db.Users, "Id", "FirstName", ticket.AssignedUserId);
+            ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "FirstName", ticket.OwnerUserId);
             ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Name", ticket.ProjectId);
             ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name", ticket.TicketPriorityId);
             ViewBag.TicketStatusId = new SelectList(db.TicketStatuses, "Id", "Name", ticket.TicketStatusId);
@@ -101,7 +102,6 @@ namespace Bug_Boss.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = "Admin, Developer, Submitter")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Title,Description,Created,Updated,ProjectId,TicketTypeId,TicketPriorityId,TicketStatusId,OwnerUserId,AssignedUserId")] Ticket ticket)
         {
@@ -109,6 +109,7 @@ namespace Bug_Boss.Controllers
             {
                 Ticket old_ticket = (Ticket)TempData["old_ticket"];
                 var userId = db.Users.Single(u => u.UserName == User.Identity.Name).Id;
+
                 if (old_ticket.Description != ticket.Description)
                 {
                     db.TicketHistories.Add(new TicketHistory
@@ -120,21 +121,88 @@ namespace Bug_Boss.Controllers
                             TicketId = ticket.Id,
                             UserId = userId
                         });
+                }
 
-                    var assignedUsers = db.Users.Find(ticket.AssignedUserId);
-                    var projectName = db.Projects.Find(ticket.ProjectId).Name;
-                    var mailer = new EmailService();
-                    mailer.SendAsync(new IdentityMessage {
-                        Destination = assignedUsers.Email,
-                        Subject = "New Ticket Assignment", 
-                        Body = "You have been assigned to a new ticket for " + projectName + " .",
+                if (old_ticket.Description != ticket.Title)
+                {
+                    db.TicketHistories.Add(new TicketHistory
+                    {
+                        Property = "Title",
+                        Changed = DateTimeOffset.Now,
+                        OldValue = old_ticket.Title,
+                        NewValue = ticket.Title,
+                        TicketId = ticket.Id,
+                        UserId = userId
                     });
                 }
 
+                if (old_ticket.TicketTypeId != ticket.TicketTypeId)
+                {
+                    db.TicketHistories.Add(new TicketHistory
+                    {
+                        Property = "TicketTypeId",
+                        Changed = DateTimeOffset.Now,
+                        OldValue = old_ticket.TicketType.Name,
+                        NewValue = db.TicketTypes.FirstOrDefault(p=>p.Id == ticket.TicketTypeId).Name,
+                        TicketId = ticket.Id,
+                        UserId = userId
+                    });
+                }
+
+                if (old_ticket.TicketPriorityId != ticket.TicketPriorityId)
+                {
+                    db.TicketHistories.Add(new TicketHistory
+                    {
+                        Property = "TicketPriority",
+                        Changed = DateTimeOffset.Now,
+                        OldValue = old_ticket.TicketPriority.Name,
+                        NewValue = db.TicketPriorities.FirstOrDefault(p => p.Id == ticket.TicketPriorityId).Name,
+                        TicketId = ticket.Id,
+                        UserId = userId
+                    });
+                }
+
+                if (old_ticket.TicketStatusId != ticket.TicketStatusId)
+                {
+                    db.TicketHistories.Add(new TicketHistory
+                    {
+                        Property = "TicketStatusId",
+                        Changed = DateTimeOffset.Now,
+                        OldValue = old_ticket.TicketStatus.Name,
+                        NewValue = db.TicketStatuses.FirstOrDefault(p => p.Id == ticket.TicketStatusId).Name,
+                        TicketId = ticket.Id,
+                        UserId = userId
+                    });
+                }
+
+
+                if (old_ticket.AssignedUserId != ticket.AssignedUserId)
+                {
+                    
+                        var assignedUser = db.Users.Find(ticket.AssignedUserId);
+                        var projectName = db.Projects.Find(ticket.ProjectId).Name;
+                        var mailer = new EmailService();
+                        mailer.SendAsync(new IdentityMessage {Destination = assignedUser.Email, Subject = "New Ticket", Body = "You have been added to a ticket titled" + ticket.Title + "on project" + projectName + "."});
+
+                        db.TicketHistories.Add(new TicketHistory
+                        {
+
+                        Property = "AssignedUser",
+                        Changed = DateTimeOffset.Now,
+                        OldValue = old_ticket.AssignedUser.Email,
+                        NewValue = ticket.AssignedUser.Email,
+                        TicketId = ticket.Id,
+                        UserId = userId
+                    });
+                
+                }
+
+
                 ticket.Updated = DateTimeOffset.Now;
                 db.Entry(ticket).State = EntityState.Modified;
+                db.Entry(ticket).Property(p => p.Created).IsModified = false;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Tickets", new {id = ticket.Id});
             }
 
             ViewBag.AssignedUserId = new SelectList(db.Users, "Id", "LastName", ticket.AssignedUserId);
@@ -191,7 +259,7 @@ namespace Bug_Boss.Controllers
                     {
                         var fileName = Path.GetFileName(image.FileName);
                         var fileExtension = Path.GetExtension(fileName);
-                        if ((fileExtension == ".jpg") || (fileExtension == ".gif") || (fileExtension == ".png"))
+                        if ((fileExtension == ".jpg") || (fileExtension == ".gif") || (fileExtension == ".png") || (fileExtension == ".pdf") || (fileExtension == ".jpeg"))
                         {
                             var path = Server.MapPath("~/Uploads/Attachments/");
                             if (!Directory.Exists(path))
@@ -210,7 +278,7 @@ namespace Bug_Boss.Controllers
                         }
                         else
                         {
-                            TempData["AttachError"] = "Invalid image extension. Only .jpg, .gif, or .png";
+                            TempData["AttachError"] = "Invalid image extension. Only .jpg, .jpeg, .pdf, .gif, or .png";
                             return RedirectToAction("Details", new { Id = post.TicketId });
                         }
                     }
@@ -225,6 +293,23 @@ namespace Bug_Boss.Controllers
                 
            }
             return RedirectToAction("Details", new { Id = post.TicketId });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddComment([Bind(Include = "TicketId,Comment")] TicketComment addition)
+        {
+            if (ModelState.IsValid) 
+            {
+                addition.UserId = User.Identity.GetUserId();
+                addition.Created = System.DateTimeOffset.Now;
+                db.TicketComments.Add(addition);
+                db.SaveChanges();
+
+                return RedirectToAction("Details", new { Id = addition.TicketId });
+            }
+
+            return RedirectToAction("Details", new { Id = addition.TicketId });
         }
     }
 }

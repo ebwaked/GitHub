@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Bug_Boss.Models;
+using System.Data.Entity;
 
 namespace Bug_Boss.Controllers
 {
@@ -17,6 +18,8 @@ namespace Bug_Boss.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public AccountController()
         {
@@ -53,6 +56,49 @@ namespace Bug_Boss.Controllers
         }
 
         //
+        // GET: /Account/Edit Profile
+        public ActionResult ProfileEdit()
+        {
+            string username = User.Identity.Name;
+            
+            // Fetch the userprofile
+            ApplicationUser user = db.Users.FirstOrDefault(u => u.UserName.Equals(username));
+
+            // Construct the viewmodel
+            ProfileEditViewModel model = new ProfileEditViewModel();
+            model.FirstName = user.FirstName;
+            model.LastName = user.LastName;
+            model.DisplayName = user.DisplayName;
+
+            return View(model);
+        }
+
+        //
+        // POST: /Account/Edit Profile
+        [HttpPost]
+        public ActionResult ProfileEdit(RegisterViewModel userprofile)
+        {
+            if (ModelState.IsValid)
+            {
+                string username = User.Identity.Name;
+                // Get the userprofile
+                ApplicationUser user = db.Users.FirstOrDefault(u => u.UserName.Equals(username));
+
+                // Update fields
+                user.FirstName = userprofile.FirstName;
+                user.LastName = userprofile.LastName;
+
+                db.Entry(user).State = EntityState.Modified;
+
+                db.SaveChanges();
+
+                return RedirectToAction("Index", "Home"); // or whatever
+            }
+
+            return View(userprofile);
+        }
+
+        //
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -79,7 +125,9 @@ namespace Bug_Boss.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    if(!string.IsNullOrWhiteSpace(returnUrl))
+                        return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Index", "Home");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -151,7 +199,7 @@ namespace Bug_Boss.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PasswordHash = model.Password};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -161,7 +209,7 @@ namespace Bug_Boss.Controllers
                     // Send an email with this link
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a \"" + callbackUrl + "\">here</a>");
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking the following link. " + callbackUrl);
 
                     return RedirectToAction("Index", "Home");
                 }

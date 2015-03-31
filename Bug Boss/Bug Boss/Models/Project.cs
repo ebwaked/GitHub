@@ -39,6 +39,7 @@ namespace Bug_Boss.Models
         [Display(Name = "Possible Users To Remove")]
         public System.Web.Mvc.MultiSelectList PossibleUsersToRemove { get; set; }
         public string[] NewlyRemovedUsers { get; set; }
+
     }
 }
 

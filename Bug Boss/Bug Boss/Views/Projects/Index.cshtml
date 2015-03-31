@@ -1,14 +1,21 @@
 ﻿@model IEnumerable<Bug_Boss.Models.Project>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Projects";
 }
 
-<h2>Index</h2>
+<h2>Projects</h2>
+
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Administrator") || User.IsInRole("Developer") || User.IsInRole("Project Manager"))
+    {
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+    }
+}
 <table id="projectTable" class="table">
     <thead>
         <tr>
@@ -32,18 +39,17 @@
                     @item.Created.ToString("dddd, dd MMM yyyy h:mm tt")
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) 
                 </td>
             </tr>
         }
     </tbody>
 </table>
-@section Scripts {
-    <script>
-        $(document).ready(function () {
-            $('#projectTable').DataTable();
-        });
-    </script>
-}
+
+    @section Scripts {
+        <script>
+            $(document).ready(function () {
+                $('#projectTable').DataTable();
+            });
+        </script>
+    }

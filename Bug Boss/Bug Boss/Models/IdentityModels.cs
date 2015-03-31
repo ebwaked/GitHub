@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 
 namespace Bug_Boss.Models
 {
@@ -22,6 +23,8 @@ namespace Bug_Boss.Models
         public string FirstName { get; set; }
 
         public string DisplayName { get; set; }
+
+        public virtual ICollection<Project> Projects { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

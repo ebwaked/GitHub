@@ -24,7 +24,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" @Url.Action("Index", "Home")>Bug Boss</a>
+                <a class="navbar-brand" @Html.ActionLink("Bug Boss", "Index", "Home")
             </div>
             <div style="color: white;
                         padding: 0px;
@@ -39,6 +39,7 @@
                 <ul class="nav" id="main-menu">
                     <li class="text-center">
                         <img src="/Content/images/bugLogo.jpg" class="user-image img-responsive" alt="..." />
+                        
                     </li>
                     @if (User.Identity.IsAuthenticated)
                     {
@@ -53,10 +54,29 @@
                             <li>
                                @Html.ActionLink("Manage Authentication", "Index", "Manage")
                             </li>
+                            <li>
+                               @Html.ActionLink("Edit Profile", "ProfileEdit", "Account")
+                            </li>
                         </ul>
                     </li>
                             }
                     }
+                    
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Developer") || User.IsInRole("Project Manager") || User.IsInRole("Submitter"))
+                        {
+                            <li>
+                                <a><i class="fa fa-bolt fa-3x"></i> Account Settings<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        @Html.ActionLink("Edit Profile", "ProfileEdit", "Account")
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                    }
+
                     @if (User.Identity.IsAuthenticated)
                     {
                         if (User.IsInRole("Administrator") || User.IsInRole("Developer") || User.IsInRole("Project Manager") || User.IsInRole("Submitter"))
@@ -67,9 +87,15 @@
                                 <li>
                                     @Html.ActionLink("List", "Index", "Projects")
                                 </li>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    if (User.IsInRole("Administrator") || User.IsInRole("Project Manager"))
+                                    {
                                 <li>
                                     @Html.ActionLink("Create", "Create", "Projects")
                                 </li>
+                                    }
+                                }
                             </ul>
                         </li>
                         <li>
@@ -81,21 +107,8 @@
                                 <li>
                                     @Html.ActionLink("Create", "Create", "Tickets")
                                 </li>
-                            
-                            @if (User.Identity.IsAuthenticated) 
-                            {
-                                if (User.IsInRole("Administrator"))
-                                {
-                                 <li>
-                                     @Html.ActionLink("Ticket Priorities", "Index", "TicketPriorities")
-                                 </li>
-                                <li>
-                                    @Html.ActionLink("Create Ticket Priorities", "Create", "TicketPriorities")
-                                </li>
-                                }
-                            }
-                        </ul>
-                    </li>
+                            </ul>
+                        </li>
                         }
                     }
                 </ul>

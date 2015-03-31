@@ -42,10 +42,17 @@ namespace Bug_Boss.Migrations
                 roleManager.Create(new IdentityRole("Submitter"));
             }
 
-            var user = userManager.FindByName("admin@coderfoundry.com");
+            var user = userManager.FindByName("admin@bugboss.com");
             if (user == null)
             {
-                user = new ApplicationUser { UserName = "admin@coderfoundry.com", Email = "admin@coderfoundry.com" };
+                user = new ApplicationUser { 
+                    UserName = "admin@bugboss.com", 
+                    Email = "admin@bugboss.com",
+                    FirstName = "Admin",
+                    LastName = "BugBoss",
+                    DisplayName = "Admin"
+ 
+                };
                 var result = userManager.Create(user, "Password-1");
 
                 if (result.Succeeded)
@@ -59,6 +66,57 @@ namespace Bug_Boss.Migrations
                 {
                     userManager.AddToRole(user.Id, "Administrator");
                 }
+            }
+
+            if (!context.Users.Any(u => u.Email == "projectmanager@bugboss.com"))
+            {
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
+                var demoUser = new ApplicationUser
+                {
+                    UserName = "projectmanager@bugboss.com",
+                    Email = "projectmanager@bugboss.com",
+                    FirstName = "Project Manager",
+                    LastName = "BugBoss",
+                    DisplayName = "Project_Manager"
+                };
+
+                manager.Create(demoUser, "Password-1");
+                manager.AddToRole(demoUser.Id, "Project Manager");
+            }
+
+            if (!context.Users.Any(u => u.Email == "developer@bugboss.com"))
+            {
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
+                var demoUser = new ApplicationUser
+                {
+                    UserName = "developer@bugboss.com",
+                    Email = "developer@bugboss.com",
+                    FirstName = "Developer",
+                    LastName = "BugBoss",
+                    DisplayName = "Developer"
+                };
+
+                manager.Create(demoUser, "Password-1");
+                manager.AddToRole(demoUser.Id, "Developer");
+            }
+
+            if (!context.Users.Any(u => u.Email == "submitter@bugboss.com"))
+            {
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
+                var demoUser = new ApplicationUser
+                {
+                    UserName = "submitter@bugboss.com",
+                    Email = "submitter@bugboss.com",
+                    FirstName = "Submitter",
+                    LastName = "BugBoss",
+                    DisplayName = "Submitter"
+                };
+
+                manager.Create(demoUser, "Password-1");
+                manager.AddToRole(demoUser.Id, "Submitter");
             }
 
             if (!context.TicketStatuses.Any(t=>t.Name == "New"))
@@ -113,156 +171,6 @@ namespace Bug_Boss.Migrations
                 context.TicketTypes.Add(new TicketType { Name = "Improvement" });
                 context.SaveChanges();
             }
-
-           // //
-           // // The Big Lebowski Code 
-           // //
-
-            var userId = userManager.FindByEmail("admin@coderfoundry.com").Id;
-
-            var projects = new List<Project>
-           {
-                new Project { Name = "The Big Lebowski" },
-                new Project { Name = "Peterkin" },
-                new Project { Name = "Ferris" },
-                new Project { Name = "Newman" },
-                new Project { Name = "Kramer" }
-           };
-            if (!context.Projects.Any(r => r.Name == "The Big Lebowski"))
-            {
-                projects.ForEach(p => context.Projects.Add(p));
-                context.SaveChanges();
-            }
-
-            var typeId = context.TicketTypes.Single(p => p.Name == "Bug").Id;
-            var statusId = context.TicketStatuses.Single(p => p.Name == "In progress").Id;
-            var project = context.Projects.Single(p => p.Name == "The Big Lebowski").Id;
-            var project2 = context.Projects.Single(p => p.Name == "Peterkin").Id;
-            var project3 = context.Projects.Single(p => p.Name == "Ferris").Id;
-            var project4 = context.Projects.Single(p => p.Name == "Newman").Id;
-            var project5 = context.Projects.Single(p => p.Name == "Kramer").Id;
-            if (!context.ProjectUsers.Any(r => r.UserId == userId))
-            {
-                context.ProjectUsers.Add(new ProjectUser()
-                {
-                    ProjectId = project,
-                    UserId = userId
-                });
-            }
-            var tickets = new List<Ticket>
-                {
-
-                new Ticket {
-                    Title = "Search is broken",
-                    Description = "The search never returns results",
-                    Created = System.DateTimeOffset.Now,
-                    ProjectId = project,
-                    TicketTypeId = typeId,
-                    TicketStatusId = statusId,
-                    OwnerUserId = userId,
-                    AssignedUserId = userId
-                },
-                new Ticket {
-                    Title = "Can't attach a file to a ticket",
-                    Description = "I get an error undefined everytinme",
-                    Created = System.DateTimeOffset.Now,
-                    ProjectId = project2,
-                    TicketTypeId = typeId,
-                    TicketStatusId = statusId,
-                    OwnerUserId = userId,
-                    AssignedUserId = userId
-                },
-                new Ticket {
-                    Title = "Can't reassign a ticket",
-                    Description = "The drop down of users doesn't populate",
-                    Created = System.DateTimeOffset.Now,
-                    ProjectId = project3,
-                    TicketTypeId = typeId,
-                    TicketStatusId = statusId,
-                    OwnerUserId = userId,
-                    AssignedUserId = userId
-                },
-                new Ticket {
-                    Title = "Can't change status of a ticket",
-                    Description = "Error every time",
-                    Created = System.DateTimeOffset.Now,
-                    ProjectId = project4,
-                    TicketTypeId = typeId,
-                    TicketStatusId = statusId,
-                    OwnerUserId = userId,
-                    AssignedUserId = userId
-                },
-                new Ticket {
-                    Title = "Can't create a new project",
-                    Description = "Validation error",
-                    Created = System.DateTimeOffset.Now,
-                    ProjectId = project5,
-                    TicketTypeId = typeId,
-                    TicketStatusId = statusId,
-                    OwnerUserId = userId,
-                    AssignedUserId = userId
-                },
-                new Ticket {
-                    Title = "Can't assign users to a ticket",
-                    Description = "Drop down list doesn't populate",
-                    Created = System.DateTimeOffset.Now,
-                    ProjectId = project5,
-                    TicketTypeId = typeId,
-                    TicketStatusId = statusId,
-                    OwnerUserId = userId,
-                    AssignedUserId = userId
-                },
-                new Ticket {
-                    Title = "Sorting of rows not working",
-                    Description = "When you click on a row nothing happens",
-                    Created = System.DateTimeOffset.Now,
-                    ProjectId = project4,
-                    TicketTypeId = typeId,
-                    TicketStatusId = statusId,
-                    OwnerUserId = userId,
-                    AssignedUserId = userId
-                },
-                new Ticket {
-                    Title = "Create new ticket",
-                    Description = "Need a textarea for description",
-                    Created = System.DateTimeOffset.Now,
-                    ProjectId = project3,
-                    TicketTypeId = typeId,
-                    TicketStatusId = statusId,
-                    OwnerUserId = userId,
-                    AssignedUserId = userId
-                },
-                new Ticket {
-                    Title = "Timestamps are editable",
-                    Description = "Really? How convenient",
-                    Created = System.DateTimeOffset.Now,
-                    ProjectId = project2,
-                    TicketTypeId = typeId,
-                    TicketStatusId = statusId,
-                    OwnerUserId = userId,
-                    AssignedUserId = userId
-                },
-                new Ticket {
-                    Title = "Save after editing broken",
-                    Description = "More validation errors",
-                    Created = System.DateTimeOffset.Now,
-                    ProjectId = project,
-                    TicketTypeId = typeId,
-                    TicketStatusId = statusId,
-                    OwnerUserId = userId,
-                    AssignedUserId = userId
-                    },
-                };
-            if (!context.Tickets.Any(r => r.ProjectId == project))
-            {
-                tickets.ForEach(t => context.Tickets.Add(t));
-                context.SaveChanges();
-            }
-
-           // //
-           // //  End of Big Lebowski Code
-           // //
-
         }
         
     }
