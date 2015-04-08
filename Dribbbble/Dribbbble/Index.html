@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html ng-app="dribbbleScorer">
+    <head>
+            <title>Dribbble Scoreboard</title>
+            <link href="Content/bootstrap.min.css" rel="stylesheet" />
+            <!--<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">-->
+            <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular.min.js"></script>-->
+</head>
+    <body>
+        <!-- Add our DribbbleController -->
+        <div ng-controller="DribbbleController">
+            <div class="container">
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><h1>Dribbble Player Scoreboard</h1></div>
+                        <div class="panel-body">
+                            <p><h4>Add Dribbble players to see how they rank:</h4></p>
+                            <div class="form-inline">
+                                <input class="form-control" type="text" ng-model="newPlayer" />
+                                <button class="btn btn-default" ng-click="addPlayer(newPlayer)">Add</button>
+                            </div>
+                            <br />
+                            <ul>
+                                <li>Likes score is determined by likes recieved minus user likes on other users content.</li>
+                                <li>Comment score is determined by comments recieved minus user comments on other users content.</li>
+                            </ul>
+                        </div>
+                        <ul class="list-group">
+                            <!-- Loop over players using ng-repeat -->
+                            <li class="list-group-item" ng-repeat="player in players">
+                                <!-- We use player.name here instead of just player -->
+                                {{player.name}} L: {{player.likeScore()}} C:{{player.commentScore()}}
+                                <a href="" ng-click="removePlayer(player)">
+                                    <i class="glyphicon glyphicon-remove pull-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div> <!-- END OF ROW -->
+            </div> <!-- END OF CONTAINER-->
+        </div>
+        <script src="Scripts/angular.min.js"></script>
+        <script src="Scripts/app.js"></script>
+    </body>
+
+
+</html>
