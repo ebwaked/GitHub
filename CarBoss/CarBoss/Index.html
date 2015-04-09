@@ -1,61 +1,75 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <title>The Car Boss</title>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
 </head>
-<body ng-app="app">
-<h2>Welcome to the Numbers Boss</h2>
-
-    <div ng-controller="numbersCtrl as num">
-        <select ng-model="num.current" ng-options="n for n in num.numbers"></select>
-        <input ng-model="num.current" type="number" />
-        <button ng-click="num.pickRandom()" class="btn btn-danger btn-xs">Random</button>
-        <br />
-        {{num.current}}
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Number:</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="n in num.numbers">
-                    <td>{{n}}</td>
-                </tr>   
-            </tbody>
-        </table>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="page-header text-center">
+                <h1>The Car Boss</h1>
+            </div>
+        </div>
+        <div ng-app="carBossApp" ng-cloak>
+            <div ng-controller="CarsController as cars">
+                <div class="row">
+                    <div class="col-xs-2 col-sm-3 col-md-3 col-lg-3">
+                        <select ng-model="cars.selectedYear" ng-options="y for y in cars.years" ng-change="cars.getMakes()"></select>
+                    </div>
+                    <div class="col-xs-2 col-sm-3 col-md-3 col-lg-3">
+                        <select ng-model="cars.selectedMake" ng-options="m for m in cars.makes" ng-change="cars.getModels()"></select>
+                    </div>
+                    <div class="col-xs-2 col-sm-3 col-md-3 col-lg-3">
+                        <select ng-model="cars.selectedModel" ng-options="md for md in cars.models" ng-change="cars.getTrims()"></select>
+                    </div>
+                    <div class="col-xs-2 col-sm-3 col-md-3 col-lg-3">
+                        <select ng-model="cars.selectedTrim" ng-options="t for t in cars.trims" ng-change="cars.getCars()"></select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1 col-md-3 col-lg-3"></div>
+                    <div class="col-xs-10 col-sm-10 col-md-6 col-lg-6">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Make</th>
+                                    <th>Model</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="c in cars.cars">
+                                    <td>{{c.make}}</td>
+                                    <td>{{c.model}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-xs-1 col-sm-1 col-md-3 col-lg-3"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <h2>Welcome to the Car Finer</h2>
-    <div ng-controller="=">
-
-    </div>
-
+    <!-- ANGULAR AND JQUERY -->
     <script src="Scripts/jquery-2.1.3.min.js"></script>
     <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
     <script src="Scripts/angular-ui/ui-bootstrap.min.js"></script>
     <script src="Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
 
+    <!--APP -->
+    <script src="MyApps/app.js"></script>
 
+    <!-- SERVICES -->
+    <script src="MyApps/Services/carSvc.js"></script>
 
-    <script>
-        angular.module('app', []);
+    <!-- CONTRLLERS -->
+    <script src="MyApps/Controllers/carsController.js"></script>
+    <!-- DIRECTIVES -->
 
-            numbersCtrl = function() {
-            var scope = this;
-            scope.numbers = [1, 2, 3, 4, 5];
-            scope.current = 0;
-
-            scope.pickRandom = function () {
-            scope.current = Math.floor((Math.random() * 5)+1);
-            }
-        }
-
-        angular.module('app').controller('numbersCtrl', numbersCtrl);
-    </script>
+    <!-- FILTERS -->
 
 </body>
 </html>
-

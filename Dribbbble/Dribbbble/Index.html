@@ -1,11 +1,9 @@
 ﻿<!DOCTYPE html>
 <html ng-app="dribbbleScorer">
     <head>
-            <title>Dribbble Scoreboard</title>
-            <link href="Content/bootstrap.min.css" rel="stylesheet" />
-            <!--<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">-->
-            <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular.min.js"></script>-->
-</head>
+        <title>Dribbble Scoreboard</title>
+        <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    </head>
     <body>
         <!-- Add our DribbbleController -->
         <div ng-controller="DribbbleController">
@@ -29,7 +27,7 @@
                             <!-- Loop over players using ng-repeat -->
                             <li class="list-group-item" ng-repeat="player in players">
                                 <!-- We use player.name here instead of just player -->
-                                {{player.name}} L: {{player.likeScore()}} C:{{player.commentScore()}}
+                                {{player.name}} L: {{player.likeScore()}} C: {{player.commentScore()}}
                                 <a href="" ng-click="removePlayer(player)">
                                     <i class="glyphicon glyphicon-remove pull-right"></i>
                                 </a>

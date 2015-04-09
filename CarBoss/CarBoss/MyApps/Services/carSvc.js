@@ -10,29 +10,34 @@
         factory.getMakes = function (year) {
             var options = { params: { year: year } };
 
-            return $http.get('/api/cars/getMakes')
+            return $http.get('/api/cars/getMakes', options)
                 .then(function (response) { return response.data });
         };
 
-        factory.getMakes = function (year, make) {
+        factory.getModels = function (year, make) {
             var options = { params: { year: year, make: make } };
 
-            return $http.get('/api/cars/getMakes')
+            return $http.get('/api/cars/getModels', options)
                 .then(function (response) { return response.data });
         };
 
-        return factory;
-    }]);
+        factory.getTrims = function (year, make, model) {
+            var options = { params: { year: year, make: make, model: model } };
 
-angular.module('carBossApp')
-    .controller('CarsController', ['carSvc', function (carSvc) {
-        var scope = this;
-        scope.selectedYear = '';
-        scopre.years = [];
-
-        scope.getYears = function () {
-            carSvc.getYears().then(function (data) { scope.years = data; })
+            return $http.get('/api/cars/getTrims', options)
+                .then(function (response) { return response.data });
         };
-        // To get it going
-        scope.getYears();
+
+        factory.getCars = function (year, make, model, trim) {
+            var options = { params: { year: year, make: make, model: model, trim: trim } };
+
+            return $http.get('/api/cars/getCars', options)
+                .then(function (response) { return response.data });
+        };
+
+        factory.getRecalls = function (year, make, model) {
+            var options = { params: { year: year, make: make, model: model } }
+            return $http.get('/api/cars/getRecalls', options), then(function (response) { return response.data });
+        }
+        return factory;
     }]);

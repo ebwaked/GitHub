@@ -9,7 +9,8 @@ app.controller("DribbbleController", function ($scope, DribbblePlayer) {
     $scope.addPlayer = function (player) {
         // We can push a new DribbblePlayer instance into the list
         $scope.players.push(new DribbblePlayer(player));
-        $scope.newPlayer = null;
+        //$scope.newPlayer = null;
+        console.log($scope.players.likes_count);
     };
 
     //Removes Player

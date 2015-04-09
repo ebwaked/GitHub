@@ -232,6 +232,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Index.html" />
+    <Content Include="MyApps\app.js" />
+    <Content Include="MyApps\Controllers\carsController.js" />
+    <Content Include="NumberBossIndex.html" />
     <Content Include="MyApps\Services\carSvc.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
@@ -1065,7 +1068,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="MyApps\Controllers\" />
     <Folder Include="MyApps\Directives\" />
     <Folder Include="MyApps\Templates\" />
   </ItemGroup>

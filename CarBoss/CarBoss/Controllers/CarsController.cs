@@ -58,5 +58,27 @@ namespace CarBoss.Controllers
         {
             return Ok(await db.GetCars(year, make, model, trim));
         }
+
+        [HttpGet, HttpPost, Route("getRecalls")]
+        public async Task<IHttpActionResult> getRecalls(int year, string make, string model)
+        {
+            HttpResponseMessage response;
+            string content = "";
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://www.nhtsa.gov/");
+                try
+                {
+                   response  = await client.GetAsync("webapi/api/Recalls/vehicle/modelyear/" + year.ToString() + "/make/" + make + "/model/" + model + "?format=json");
+                    content = await response.Content.ReadAsStringAsync();
+                }
+                catch(Exception e)
+                {
+                    return InternalServerError(e);
+                }
+            }
+
+            return Ok(content);
+        }
     }
 }
