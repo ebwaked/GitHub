@@ -34,14 +34,18 @@
                         <table>
                             <thead>
                                 <tr>
+                                    <th>Year</th>
                                     <th>Make</th>
                                     <th>Model</th>
+                                    <th>Trim</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="c in cars.cars">
+                                    <td>{{c.year}}</td>
                                     <td>{{c.make}}</td>
                                     <td>{{c.model}}</td>
+                                    <td>{{c.trim}}</td>
                                 </tr>
                             </tbody>
                         </table>
