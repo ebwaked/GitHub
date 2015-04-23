@@ -1,1 +1,1 @@
-﻿angular.module('carBossApp', [])
+﻿angular.module('carBossApp', ['ui.bootstrap', 'ui.grid', 'ui.grid.edit', 'ui.grid.pagination'])

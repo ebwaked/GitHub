@@ -2,78 +2,228 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>The Car Boss</title>
+
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/Site.css" rel="stylesheet" />
+
+    <!-- UI GRID-->
+    <link href="Content/ui-grid-unstable.css" rel="stylesheet" />
+
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="page-header text-center">
+        
+            <div class="title" style="text-align: center">
                 <h1>The Car Boss</h1>
             </div>
-        </div>
+ 
+    <br />
+
+    <div class="container">
         <div ng-app="carBossApp" ng-cloak>
             <div ng-controller="CarsController as cars">
                 <div class="row">
-                    <div class="col-xs-2 col-sm-3 col-md-3 col-lg-3">
-                        <select ng-model="cars.selectedYear" ng-options="y for y in cars.years" ng-change="cars.getMakes()"></select>
-                    </div>
-                    <div class="col-xs-2 col-sm-3 col-md-3 col-lg-3">
-                        <select ng-model="cars.selectedMake" ng-options="m for m in cars.makes" ng-change="cars.getModels()"></select>
-                    </div>
-                    <div class="col-xs-2 col-sm-3 col-md-3 col-lg-3">
-                        <select ng-model="cars.selectedModel" ng-options="md for md in cars.models" ng-change="cars.getTrims()"></select>
-                    </div>
-                    <div class="col-xs-2 col-sm-3 col-md-3 col-lg-3">
-                        <select ng-model="cars.selectedTrim" ng-options="t for t in cars.trims" ng-change="cars.getCars()"></select>
+
+                        <script type="text/ng-template" id="detailsModal.html">
+                            <div class="modal-header ">
+                                <h3 class="modal-title">{{car.Car.year}} {{ car.Car.make}}&nbsp;{{car.Car.model}}</h3>
+                            </div>
+                            <div class="modal-body">
+                                <div class="img-responsive">
+                                    <img src="{{car.Image}}" class="img-responsive"/>
+                                </div>
+
+                                <tabset justified="true">
+                                    <tab heading="Car Info">
+                                        <div class="col-md-6">
+                                            <br />
+                                            Year: {{car.Car.year}} <br />
+                                            Make: {{car.Car.make}} <br />
+                                            Model: {{car.Car.model}} <br />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <br />
+                                            Trim: {{car.Car.trim}} <br />
+                                            Body Style: {{car.Car.bodystyle}} <br />
+                                            Engine Cylinders: {{car.Car.engine_num_cyl}} <br />
+                                        </div>
+                                    </tab>
+
+                                    <tab heading="Detailed Car Specs">
+                                        <div class="col-md-6">
+                                            <br />
+                                            About the Engine: <br />
+                                            Top Speed (Kph): {{car.Car.top_speed_kph}} <br />
+                                            0 to 100 Kph (in seconds): {{car.Car.zero_100_kph}} <br />
+                                            Drive Type: {{car.Car.drive_type}} <br />
+                                            Engine Fuel: {{car.Car.engine_fuel}} <br />
+                                            Fuel Capacity: {{car.Car.fuel_capacity_l}} <br />
+                                            Engine Type: {{car.Car.engine_type}} <br />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <br />
+                                            Miscellaneous: <br />
+                                            Doors: {{car.Car.doors}} <br />
+                                            Transmission Type: {{car.Car.transmission_type}} <br />
+                                            Seats: {{car.Car.seats}} <br />
+                                            Weight in Kg: {{car.Car.weight_kg}} <br />
+                                            Cars sold in USA: {{car.Car.sold_in_us}} <br />
+                                        </div>
+                                      
+                                    </tab>
+
+                                    <tab heading="Recall Data">
+                                        {{arrayRecall[current].ModelYear}} <br />
+                                        {{arrayRecall[current].Make}}
+                                        {{arrayRecall[current].Model}}
+                                        {{arrayRecall[current].Manufacturer}}
+                                        {{arrayRecall[current].NHTSACampaignNumber}}
+                                        {{arrayRecall[current].NHTSAActionNumber}}
+                                        {{arrayRecall[current].Component}}
+                                        {{arrayRecall[current].Summary}}
+                                        {{arrayRecall[current].Conequence}}
+                                        {{arrayRecall[current].Remedy}}
+                                        {{arrayRecall[current].Notes}}    
+                                        <div class="col-md-12">
+                                            <button ng-click="next()">next</button>
+                                            <button ng-click="previous()">previous</button>
+                                        </div> 
+                                    </tab>
+                                </tabset>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" ng-click="ok()">OK</button>
+                                <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                            </div>
+                        </script>
+
+                   
+
+                    <!-- Get Years -->
+                    <!--<div class="btn-group col-md-3" dropdown>
+                        <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
+                            {{cars.selectedYear < 1920 ? 'Pick a Year' : cars.selectedYear}}&nbsp;<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li ng-repeat="year in cars.years" ng-click="cars.selectedYear = year">
+                              {{year}}
+                            </li>
+                        </ul>
+                        <br />
+                    </div>-->
+                    
+                    <!-- Get Makes -->
+                    <!--<div class="btn-group col-md-3" dropdown>
+                        <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
+                            {{cars.selectedMake == null ? "Get Makes" : cars.selectedMake}}<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li ng-repeat="make in cars.makes" ng-click="cars.selectedMakes = make">
+                                {{make}}
+                            </li>
+                        </ul>
+                    </div>-->
+
+                    <!-- Get Models -->
+                    <!--<div class="btn-group col-md-3" dropdown>
+                        <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
+                            {{cars.selectedModel == null ? "Get Models" : cars.selectedModel}}<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li ng-repeat="model in cars.models" ng-click="cars.selectedModel = model">
+                                {{model}}
+                            </li>
+                        </ul>
+                    </div>-->
+
+                    <!-- Get Trims -->
+                    <!--<div class="btn-group col-md-3" dropdown>
+                        <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
+                            {{cars.selectedTrim == null ? "Get Trims" : cars.selectedTrim}}<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li ng-repeat="trim in cars.trims" ng-click="cars.selectedTrim = trim">
+                                {{trim}}
+                            </li>
+                        </ul>
+                    </div>-->
+                    
+                    <br />
+                    
+                    <!-- Working Drop Down -->
+                    <div class="row">
+                        <div class="col-xs-2 col-sm-3 col-md-3 col-lg-3">
+                            <select ng-model="cars.selectedYear" ng-options="y for y in cars.years" ng-change="cars.getMakes()"></select>
+                        </div>
+                        <div class="col-xs-2 col-sm-3 col-md-3 col-lg-3">
+                            <select ng-model="cars.selectedMake" ng-options="m for m in cars.makes" ng-change="cars.getModels()"></select>
+                        </div>
+                        <div class="col-xs-2 col-sm-3 col-md-3 col-lg-3">
+                            <select ng-model="cars.selectedModel" ng-options="md for md in cars.models" ng-change="cars.getTrims()"></select>
+                        </div>
+                        <div class="col-xs-2 col-sm-3 col-md-3 col-lg-3">
+                            <select ng-model="cars.selectedTrim" ng-options="t for t in cars.trims" ng-change="cars.getCars()"></select>
+                        </div>
                     </div>
                 </div>
+
+               
+
+                <hr />
+                <br />
                 <div class="row">
-                    <div class="col-xs-1 col-sm-1 col-md-3 col-lg-3"></div>
-                    <div class="col-xs-10 col-sm-10 col-md-6 col-lg-6">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Year</th>
-                                    <th>Make</th>
-                                    <th>Model</th>
-                                    <th>Trim</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="c in cars.cars">
-                                    <td>{{c.year}}</td>
-                                    <td>{{c.make}}</td>
-                                    <td>{{c.model}}</td>
-                                    <td>{{c.trim}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-xs-1 col-sm-1 col-md-3 col-lg-3"></div>
+                    <div class="col-md-12">
+                        <div class="text-center">
+
+                            <div ui-grid="cars.gridOptions" external-scopes="cars.gridFunctions" ui-grid-pagination class="myGrid"></div>
+
+                            <!--<table align="center">
+                                <thead>
+                                    <tr>
+                                        <th>Year</th>
+                                        <th>Make</th>
+                                        <th>Model</th>
+                                        <th>Trim</th>
+                                        <th>More Car Info</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="c in cars.cars">
+                                        <td>{{c.year}}</td>
+                                        <td>{{c.make}}</td>
+                                        <td>{{c.model}}</td>
+                                        <td>{{c.trim}}</td>
+                                        <td> <button ng-click="cars.open(c.id)"> More Car Info</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>-->
+
+                        </div>
+                    </div> <!-- END OF Col 12 -->
                 </div>
             </div>
         </div>
     </div>
+            <!-- ANGULAR AND JQUERY -->
+            <script src="Scripts/jquery-2.1.3.min.js"></script>
+            <script src="Scripts/angular.min.js"></script>
+            <script src="Scripts/angular-route.min.js"></script>
+            <script src="Scripts/angular-ui/ui-bootstrap.min.js"></script>
+            <script src="Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
 
-    <!-- ANGULAR AND JQUERY -->
-    <script src="Scripts/jquery-2.1.3.min.js"></script>
-    <script src="Scripts/angular.min.js"></script>
-    <script src="Scripts/angular-route.min.js"></script>
-    <script src="Scripts/angular-ui/ui-bootstrap.min.js"></script>
-    <script src="Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+            <!-- UI GRID -->
+            <script src="Scripts/ui-grid-unstable.js"></script>
 
-    <!--APP -->
-    <script src="MyApps/app.js"></script>
+            <!--APP -->
+            <script src="MyApps/app.js"></script>
 
-    <!-- SERVICES -->
-    <script src="MyApps/Services/carSvc.js"></script>
+            <!-- SERVICES -->
+            <script src="MyApps/Services/carSvc.js"></script>
 
-    <!-- CONTRLLERS -->
-    <script src="MyApps/Controllers/carsController.js"></script>
-    <!-- DIRECTIVES -->
-
-    <!-- FILTERS -->
+            <!-- CONTRLLERS -->
+            <script src="MyApps/Controllers/carsController.js"></script>
+            <!-- DIRECTIVES -->
+            <!-- FILTERS -->
 
 </body>
 </html>

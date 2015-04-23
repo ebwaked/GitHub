@@ -10,6 +10,10 @@ using System.Data.SqlClient;
 using System.Threading.Tasks;
 using System.Web;
 using CarBoss.Models.DataInterfaces;
+using CarBoss.Models;
+using Newtonsoft.Json.Linq;
+using Bing;
+using System.Web.Helpers;
 
 namespace CarBoss.Controllers
 {
@@ -58,27 +62,65 @@ namespace CarBoss.Controllers
         {
             return Ok(await db.GetCars(year, make, model, trim));
         }
-
-        [HttpGet, HttpPost, Route("getRecalls")]
-        public async Task<IHttpActionResult> getRecalls(int year, string make, string model)
+        
+        [HttpGet, HttpPost, Route("getCar")]
+        public async Task<IHttpActionResult> getCar(int Id)
         {
             HttpResponseMessage response;
             string content = "";
+            var car = new carViewModel
+            {
+                Car = await db.GetCar(Id),
+                Recalls = content,
+                Image = ""
+
+            };
+
+            //Get recall Data
+
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://www.nhtsa.gov/");
                 try
                 {
-                   response  = await client.GetAsync("webapi/api/Recalls/vehicle/modelyear/" + year.ToString() + "/make/" + make + "/model/" + model + "?format=json");
+                    response = await client.GetAsync("webapi/api/Recalls/vehicle/modelyear/" + car.Car.year.ToString() + "/make/" + car.Car.make + "/model/" + car.Car.model + "?format=json");
                     content = await response.Content.ReadAsStringAsync();
+                    
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     return InternalServerError(e);
                 }
             }
 
-            return Ok(content);
+            car.Recalls = content;
+            var image = new BingSearchContainer(
+            new Uri("https://api.datamarket.azure.com/Bing/search/"));
+            image.Credentials = new NetworkCredential("accountKey", "jbeD0u+Fvif+Jp1LEXiGplA8MneCDgWE8zcZCbvdq3I");
+            var marketData = image.Composite(
+                "image",
+                car.Car.year + " " + car.Car.make + " " + car.Car.model + " " + car.Car.trim,
+                null,
+                null,                
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+                ).Execute();
+
+            car.Image = marketData.First().Image.First().MediaUrl;
+
+            return Ok(car);
+
+            //Get ImageUrl
+            // carViewModel.imageData = ImageUrl;
         }
     }
 }

@@ -14,12 +14,14 @@ input,
 select,
 textarea {
     max-width: 280px;
+    min-width: 200px;
 }
 
 table, th , td {
   border: 1px solid grey;
   border-collapse: collapse;
   padding: 5px;
+  min-width: 200px;
 }
 table tr:nth-child(odd) {
   background-color: #f1f1f1;
@@ -27,3 +29,11 @@ table tr:nth-child(odd) {
 table tr:nth-child(even) {
   background-color: #ffffff;
 }
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+title {
+    margin: 0 auto !important;
+    width: 50% !important;
+}
+
