@@ -72,21 +72,39 @@
                                     </tab>
 
                                     <tab heading="Recall Data">
-                                        {{arrayRecall[current].ModelYear}} <br />
-                                        {{arrayRecall[current].Make}}
-                                        {{arrayRecall[current].Model}}
-                                        {{arrayRecall[current].Manufacturer}}
-                                        {{arrayRecall[current].NHTSACampaignNumber}}
-                                        {{arrayRecall[current].NHTSAActionNumber}}
-                                        {{arrayRecall[current].Component}}
-                                        {{arrayRecall[current].Summary}}
-                                        {{arrayRecall[current].Conequence}}
-                                        {{arrayRecall[current].Remedy}}
-                                        {{arrayRecall[current].Notes}}    
-                                        <div class="col-md-12">
-                                            <button ng-click="next()">next</button>
-                                            <button ng-click="previous()">previous</button>
-                                        </div> 
+                                        <div class="ng-hide" ng-hide="{{count == 0}}">
+                                            <span style="color:red">Year:</span> {{arrayRecall[current].ModelYear}}
+                                            <span style="color:red">Make:</span> {{arrayRecall[current].Make}}
+                                            <span style="color:red">Model:</span> {{arrayRecall[current].Model}}
+                                            <span style="color:red">Manufacturer:</span> {{arrayRecall[current].Manufacturer}} <br />
+                                            <span style="color:red">NHTSA Campaign Number:</span> {{arrayRecall[current].NHTSACampaignNumber}} <br />
+                                            <span style="color:red">NHTSA Action Number:</span> {{arrayRecall[current].NHTSAActionNumber}} <br />
+                                            <span style="color:red">Component:</span> {{arrayRecall[current].Component}} <br />
+                                            <span style="color:red">Summary:</span> {{arrayRecall[current].Summary}} <br />
+                                            <span style="color:red">Concequence:</span>  {{arrayRecall[current].Conequence}}<br />
+                                            <span style="color:red">Remedy:</span> {{arrayRecall[current].Remedy}} <br />
+                                            <span style="color:red">Notes:</span> {{arrayRecall[current].Notes}} <br />
+                                            <div class="ui-grid-footer">
+                                                &nbsp; <br />
+                                                <div class="text-center">
+                                                    <button class="btn btn-primary" ng-click="previous()">previous</button>
+                                                    <button class="btn btn-primary" ng-click="next()">next</button>
+                                                </div>  &nbsp;<br />
+                                                <div class="text-center">
+                                                    <span style="color:red">Page:</span> {{current + 1}} of {{count}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="show text-center" ng-show="{{count == 0}}">
+                                            &nbsp; <br />
+                                           <span style="color: red">
+                                            There are no known recalls for the 
+                                            </span> 
+                                            {{arrayRecall[current].ModelYear}} {{arrayRecall[current].Make}} {{arrayRecall[current].Model}} 
+                                            <span style="color: red">
+                                                in this database at this time.
+                                            </span>
+                                        </div>
                                     </tab>
                                 </tabset>
 
