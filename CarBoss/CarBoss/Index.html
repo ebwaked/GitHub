@@ -72,7 +72,7 @@
                                     </tab>
 
                                     <tab heading="Recall Data">
-                                        <div class="ng-hide" ng-hide="{{count == 0}}">
+                                        <div ng-hide="{{count == 0}}">
                                             <span style="color:red">Year:</span> {{arrayRecall[current].ModelYear}}
                                             <span style="color:red">Make:</span> {{arrayRecall[current].Make}}
                                             <span style="color:red">Model:</span> {{arrayRecall[current].Model}}
@@ -89,7 +89,8 @@
                                                 <div class="text-center">
                                                     <button class="btn btn-primary" ng-click="previous()">previous</button>
                                                     <button class="btn btn-primary" ng-click="next()">next</button>
-                                                </div>  &nbsp;<br />
+                                                </div> 
+                                                 &nbsp;<br />
                                                 <div class="text-center">
                                                     <span style="color:red">Page:</span> {{current + 1}} of {{count}}
                                                 </div>
@@ -100,7 +101,7 @@
                                            <span style="color: red">
                                             There are no known recalls for the 
                                             </span> 
-                                            {{arrayRecall[current].ModelYear}} {{arrayRecall[current].Make}} {{arrayRecall[current].Model}} 
+                                            {{car.Car.year}} {{car.Car.make}} {{car.Car.model}} 
                                             <span style="color: red">
                                                 in this database at this time.
                                             </span>
@@ -191,32 +192,14 @@
                 <br />
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="text-center">
-
-                            <div ui-grid="cars.gridOptions" external-scopes="cars.gridFunctions" ui-grid-pagination class="myGrid"></div>
-
-                            <!--<table align="center">
-                                <thead>
-                                    <tr>
-                                        <th>Year</th>
-                                        <th>Make</th>
-                                        <th>Model</th>
-                                        <th>Trim</th>
-                                        <th>More Car Info</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="c in cars.cars">
-                                        <td>{{c.year}}</td>
-                                        <td>{{c.make}}</td>
-                                        <td>{{c.model}}</td>
-                                        <td>{{c.trim}}</td>
-                                        <td> <button ng-click="cars.open(c.id)"> More Car Info</button></td>
-                                    </tr>
-                                </tbody>
-                            </table>-->
-
+                        <div ng-show="cars.selectedYear">
+                            <div class="text-center">
+                                <div ui-grid="cars.gridOptions" external-scopes="cars.gridFunctions" ui-grid-pagination class="myGrid"></div>
+                            </div>
                         </div>
+                    <div ng-show="cars.selectedYear == ''">
+                        Please select a year to get started.
+                    </div>
                     </div> <!-- END OF Col 12 -->
                 </div>
             </div>

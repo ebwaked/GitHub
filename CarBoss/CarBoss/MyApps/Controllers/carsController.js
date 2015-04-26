@@ -108,17 +108,22 @@ angular.module('carBossApp').controller('ModalInstanceCtrl', function ($scope, $
     $scope.count = car.Recalls.Count;
 
     $scope.previous = function () {
-        if ($scope.current && $scope.count > 1) {
+        if ($scope.current <= 0) {
+            $scope.current = $scope.count - 1;
+        }
+        else {
             $scope.current = $scope.current - 1;
         }
     }
 
     $scope.next = function () {
-        if ($scope.current < $scope.count - 1) {
+        if ($scope.current >= $scope.count - 1) {
+            $scope.current = 0;
+        }
+        else {
             $scope.current = $scope.current + 1;
         }
     }
-
 
     $scope.ok = function () {
         $modalInstance.close();
