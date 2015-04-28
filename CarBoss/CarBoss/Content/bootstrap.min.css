@@ -1850,7 +1850,8 @@ pre {
 
 @media (min-width:1200px) {
     .container {
-        width: 1170px;
+        width: auto;
+        height: auto;
     }
 }
 
@@ -3456,14 +3457,14 @@ select[multiple].form-group-lg .form-control, textarea.form-group-lg .form-contr
 
 .btn-primary {
     color: #fff;
-    background-color: #337ab7;
-    border-color: #2e6da4;
+    background-color: green;
+    border-color: green;
 }
 
     .btn-primary.active, .btn-primary.focus, .btn-primary:active, .btn-primary:focus, .btn-primary:hover, .open > .dropdown-toggle.btn-primary {
         color: #fff;
-        background-color: #286090;
-        border-color: #204d74;
+        background-color: green;
+        border-color: green;
     }
 
     .btn-primary.active, .btn-primary:active, .open > .dropdown-toggle.btn-primary {
@@ -3534,8 +3535,8 @@ select[multiple].form-group-lg .form-control, textarea.form-group-lg .form-contr
 
 .btn-warning {
     color: #fff;
-    background-color: #f0ad4e;
-    border-color: #eea236;
+    background-color: red;
+    border-color: red;
 }
 
     .btn-warning.active, .btn-warning.focus, .btn-warning:active, .btn-warning:focus, .btn-warning:hover, .open > .dropdown-toggle.btn-warning {
@@ -4229,9 +4230,9 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
             }
 
         .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
-            color: #555;
+            color: yellow;
             cursor: default;
-            background-color: #fff;
+            background-color: #ec971f;
             border: 1px solid #ddd;
             border-bottom-color: transparent;
         }
@@ -4277,12 +4278,12 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
 
 @media (min-width:768px) {
     .nav-tabs.nav-justified > li > a {
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid yellow;
         border-radius: 4px 4px 0 0;
     }
 
     .nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:focus, .nav-tabs.nav-justified > .active > a:hover {
-        border-bottom-color: #fff;
+        border-bottom-color: yellow;
     }
 }
 
@@ -6124,6 +6125,8 @@ button.close {
 
 .modal-open {
     overflow: hidden;
+    background-color: yellow;
+    color: black;
 }
 
 .modal {
