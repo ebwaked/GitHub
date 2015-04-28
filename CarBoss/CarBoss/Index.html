@@ -26,8 +26,8 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
-                    <i class="fa fa-play-circle"></i>  <span class="light">Re-start your engines!
-                    &nbsp; <br /></span>
+                    <i class="fa fa-chevron-circle-up"></i>  <span class="light">Re-start your engines!
+                    &nbsp; <br />   </span>
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -56,6 +56,7 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="brand-heading">Car Boss</h1>
+                        &nbsp;<br />
                         <p class="intro-text">Find the car you're looking for!<br>Created by Edward Waked</p>
                         <a href="#about" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
@@ -75,7 +76,11 @@
                 <p>It is used to search for cars by using the year, make, model and trim available. The ability to sort and filter results makes finding your car incredibly simple!</p>
                 <p>This application acceses the NHSA's car recall database using the provided WebAPI to how car recalls</p>
                 <p>Includes images found using Bing's Search WebAPI. The application dynamically formats itself based on available content / device screen size.</p>
+                <a href="#carBoss" class="btn btn-circle page-scroll">
+                    <i class="fa fa-angle-double-down animated"></i>
+                </a>
             </div>
+            
         </div>
     </section>
    
@@ -86,11 +91,7 @@
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2 style="color:white">The Car Boss Application</h2>
                     <p style="color:white">Find your car!</p>
-              
-
                     <br />
-
-                    
                         <div ng-app="carBossApp" ng-cloak>
                             <div ng-controller="CarsController as cars">
                                 <div class="row">
@@ -153,7 +154,7 @@
                                                         <span style="color:red">NHTSA Action Number:</span> {{arrayRecall[current].NHTSAActionNumber}} <br />
                                                         <span style="color:red">Component:</span> {{arrayRecall[current].Component}} <br />
                                                         <span style="color:red">Summary:</span> {{arrayRecall[current].Summary}} <br />
-                                                        <span style="color:red">Concequence:</span>  {{arrayRecall[current].Conequence}}<br />
+                                                        <span style="color:red">Consequence:</span>  {{arrayRecall[current].Conequence}}<br />
                                                         <span style="color:red">Remedy:</span> {{arrayRecall[current].Remedy}} <br />
                                                         <span style="color:red">Notes:</span> {{arrayRecall[current].Notes}} <br />
                                                         <div class="ui-grid-footer">
@@ -244,22 +245,22 @@
                                         <div class="col-xs-2 col-sm-3 col-md-3 col-lg-3">
                                             <select ng-model="cars.selectedYear" ng-options="y for y in cars.years" ng-change="cars.getMakes()"></select>
                                             &nbsp;<br />
-                                            <div class="col-md-12" style="color: white">Years</div>
+                                            <div class="col-md-12" style="color: white">Year</div>
                                         </div>
                                         <div class="col-xs-2 col-sm-3 col-md-3 col-lg-3">
                                             <select ng-model="cars.selectedMake" ng-options="m for m in cars.makes" ng-change="cars.getModels()"></select>
                                             &nbsp;<br />
-                                            <div class="col-md-12" style="color: white">Makes</div>
+                                            <div class="col-md-12" style="color: white">Make</div>
                                         </div>
                                         <div class="col-xs-2 col-sm-3 col-md-3 col-lg-3">
                                             <select ng-model="cars.selectedModel" ng-options="md for md in cars.models" ng-change="cars.getTrims()"></select>
                                             &nbsp;<br />
-                                            <div class="col-md-12" style="color: white">Models</div>
+                                            <div class="col-md-12" style="color: white">Model</div>
                                         </div>
                                         <div class="col-xs-2 col-sm-3 col-md-3 col-lg-3">
                                             <select ng-model="cars.selectedTrim" ng-options="t for t in cars.trims" ng-change="cars.getCars()"></select>
                                             &nbsp;<br />
-                                            <div class="col-md-12" style="color: white">Trims</div>
+                                            <div class="col-md-12" style="color: white">Trim</div>
                                         </div>
                                     </div>
                                 </div>
@@ -275,7 +276,7 @@
                                                 <div ui-grid="cars.gridOptions" external-scopes="cars.gridFunctions" ui-grid-pagination class="myGrid"></div>
                                             </div>
                                         </div>
-                                        <div ng-show="cars.selectedYear == ''">
+                                        <div ng-show="cars.selectedYear == ''" style="color: white">
                                             Please select a year to get started.
                                         </div>
                                     </div> <!-- END OF Col 12 -->

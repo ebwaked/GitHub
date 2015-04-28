@@ -63,8 +63,8 @@
                 { field: 'model' },
                 { field: 'trim' },
                 {
-                    name: 'Action',
-                    cellTemplate: '<button class="btn btn-xs btn-primary" ng-click="getExternalScopes().open(row.entity.id)">View</button>'
+                    name: 'More Info',
+                    cellTemplate: '<button class="btn btn-xs btn-primary" ng-click="getExternalScopes().open(row.entity.id)">Go</button>'
                 },
             ],
             
