@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title -Budget Boss</title>
+    
+    <!-- Moderinzer CSS -->
+    @Scripts.Render("~/bundles/modernizr")
+    <!-- Bootstrap Core CSS -->
+    @Styles.Render("~/Content/css")
+    <!-- Custom CSS -->
+    <link href="/Content/CSS/sb-admin.css" rel="stylesheet" />
+    <!-- Morris Charts CSS -->
+    <link href="/Content/CSS/morris.css" rel="stylesheet" />
+    <!-- Custom Fonts -->
+    <link href="/Content/font-awesome.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/Home/Index">Budget Boss</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                
+                <li class="dropdown" style="padding-right: 25px">
+                    @Html.Partial("_LoginPartial")
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="/Home/Dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="/HouseholdAccounts/Index"><i class="fa fa-fw fa-bar-chart-o"></i> Accounts</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#household"><i class="fa fa-fw fa-edit"></i> Households <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="household" class="collapse">
+                            <li>
+                                <a href="/Households/Index"> Index</a>
+                            </li>
+                            <li>
+                                <a href="/Households/Create"> Create</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#transaction"><i class="fa fa-fw fa-table"></i> Transactions <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="transaction" class="collapse">
+                            <li>
+                                <a href="/Transactions/Index"> Transactions</a>
+                            </li>
+                            <li>
+                                <a href="/Transactions/Create"> Create</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/Manage/Index"><i class="fa fa-fw fa-wrench"></i> Settings</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            The Budget Boss <small> Manage your finances. Manage your life.</small>
+                        </h1>
+                    </div>
+                </div>
+                <!-- /.row -->
+               
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    @RenderBody()
+
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Budget Boss", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - The Budget Boss Application</p>
+        </footer>
+    </div>*@
+
+    <!-- jQuery -->
+    @Scripts.Render("~/bundles/jquery")
+    <!-- Bootstrap Core JavaScript -->
+    @Scripts.Render("~/bundles/bootstrap")
+    <!-- Morris Charts JavaScript -->
+    <script src="/Scripts/Morris/raphael.min.js"></script>
+    <script src="/Scripts/Morris/morris.min.js"></script>
+    <script src="/Scripts/Morris/morris-data.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
