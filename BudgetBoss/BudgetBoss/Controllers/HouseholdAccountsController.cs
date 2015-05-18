@@ -6,6 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using BudgetBoss.Models;
 
 namespace BudgetBoss.Controllers
@@ -53,6 +56,9 @@ namespace BudgetBoss.Controllers
             if (ModelState.IsValid)
             {
                 db.HouseholdAccounts.Add(householdAccount);
+                var user = db.Users.Find(User.Identity.GetUserId());
+                var accountName = new HouseholdAccount() { Name = user.FirstName + user.LastName + "'s Account" };
+                db.HouseholdAccounts.Add(accountName);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
