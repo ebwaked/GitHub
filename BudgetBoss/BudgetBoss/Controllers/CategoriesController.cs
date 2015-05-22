@@ -6,122 +6,117 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
 using BudgetBoss.Models;
-
 
 namespace BudgetBoss.Controllers
 {
     [RequireHousehold]
-    public class HouseholdAccountsController : Controller
+    public class CategoriesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: HouseholdAccounts
+        // GET: Categories
         public ActionResult Index()
         {
-            var householdAccounts = db.HouseholdAccounts.Include(h => h.Household);
-            return View(householdAccounts.ToList());
+            var categories = db.Categories.Include(c => c.Household);
+            return View(categories.ToList());
         }
 
-        // GET: HouseholdAccounts/Details/5
+        // GET: Categories/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HouseholdAccount householdAccount = db.HouseholdAccounts.Find(id);
-            if (householdAccount == null)
+            Category category = db.Categories.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            return View(householdAccount);
+            return View(category);
         }
 
-        // GET: HouseholdAccounts/Create
+        // GET: Categories/Create
         public ActionResult Create()
         {
             ViewBag.HouseholdId = new SelectList(db.Households, "Id", "Name");
             return View();
         }
 
-        // POST: HouseholdAccounts/Create
+        // POST: Categories/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Balance,ReconciledBalance")] HouseholdAccount householdAccount)
+        public ActionResult Create([Bind(Include = "Id,HouseholdId,Name")] Category category)
         {
             if (ModelState.IsValid)
             {
-                db.HouseholdAccounts.Add(householdAccount);
-                var user = db.Users.Find(User.Identity.GetUserId());
+                db.Categories.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.HouseholdId = new SelectList(db.Households, "Id", "Name", householdAccount.HouseholdId);
-            return View(householdAccount);
+            ViewBag.HouseholdId = new SelectList(db.Households, "Id", "Name", category.HouseholdId);
+            return View(category);
         }
 
-        // GET: HouseholdAccounts/Edit/5
+        // GET: Categories/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HouseholdAccount householdAccount = db.HouseholdAccounts.Find(id);
-            if (householdAccount == null)
+            Category category = db.Categories.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.HouseholdId = new SelectList(db.Households, "Id", "Name", householdAccount.HouseholdId);
-            return View(householdAccount);
+            ViewBag.HouseholdId = new SelectList(db.Households, "Id", "Name", category.HouseholdId);
+            return View(category);
         }
 
-        // POST: HouseholdAccounts/Edit/5
+        // POST: Categories/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Balance,ReconciledBalance,HouseholdId")] HouseholdAccount householdAccount)
+        public ActionResult Edit([Bind(Include = "Id,HouseholdId,Name")] Category category)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(householdAccount).State = EntityState.Modified;
+                db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.HouseholdId = new SelectList(db.Households, "Id", "Name", householdAccount.HouseholdId);
-            return View(householdAccount);
+            ViewBag.HouseholdId = new SelectList(db.Households, "Id", "Name", category.HouseholdId);
+            return View(category);
         }
 
-        // GET: HouseholdAccounts/Delete/5
+        // GET: Categories/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HouseholdAccount householdAccount = db.HouseholdAccounts.Find(id);
-            if (householdAccount == null)
+            Category category = db.Categories.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            return View(householdAccount);
+            return View(category);
         }
 
-        // POST: HouseholdAccounts/Delete/5
+        // POST: Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            HouseholdAccount householdAccount = db.HouseholdAccounts.Find(id);
-            db.HouseholdAccounts.Remove(householdAccount);
+            Category category = db.Categories.Find(id);
+            db.Categories.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

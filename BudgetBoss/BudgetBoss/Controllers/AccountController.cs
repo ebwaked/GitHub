@@ -12,7 +12,6 @@ using BudgetBoss.Models;
 
 namespace BudgetBoss.Controllers
 {
-    [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -153,11 +152,12 @@ namespace BudgetBoss.Controllers
             
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var house = new Household() { Name = model.Email + "'s Household"};
-                db.Households.Add(house);
-                db.SaveChanges();
-                user.HouseholdId = house.Id;
+                var user = new ApplicationUser { 
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Email = model.Email,
+                    UserName = model.Email
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -171,7 +171,6 @@ namespace BudgetBoss.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
-                db.Households.Remove(house);
                 db.SaveChanges();
                 AddErrors(result);
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BudgetBoss.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,22 +13,14 @@ namespace BudgetBoss.Controllers
         {
             return View();
         }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
+        
+        [RequireHousehold]
         public ActionResult Dashboard()
+        {
+            return View();
+        }
+
+        public ActionResult GettingStarted()
         {
             return View();
         }

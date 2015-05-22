@@ -6,13 +6,27 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using BudgetBoss.Models;
+using System.Threading.Tasks;
 
 namespace BudgetBoss.Controllers
 {
+    [Authorize]
     public class HouseholdsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> LeaveHousehold()
+        {
+            var user = db.Users.Find(User.Identity.GetUserId());
+            user.HouseholdId = null;
+            db.SaveChanges();
+            await ControllerContext.HttpContext.RefreshAuthentication(user);
+            return RedirectToAction("Create", "Household");
+        }
 
         // GET: Households
         public ActionResult Index()
@@ -46,12 +60,29 @@ namespace BudgetBoss.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name")] Household household)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name")] Household household)
         {
             if (ModelState.IsValid)
             {
                 db.Households.Add(household);
                 db.SaveChanges();
+                // Basic Categories for Household
+                var categories = new List<Category>
+                {
+                new Category { Name = "Food" },
+                new Category { Name = "Travel" },
+                new Category { Name = "Rent" },
+                new Category { Name = "Mortgage" },
+                new Category { Name = "Education" },
+                new Category { Name = "Misc. Expenses" },
+                new Category { Name = "Savings" },
+                new Category { Name = "Medical" },
+                new Category { Name = "Child Care" },
+                };
+                var user = db.Users.Find(User.Identity.GetUserId());
+                user.HouseholdId = household.Id;
+                db.SaveChanges();
+                await ControllerContext.HttpContext.RefreshAuthentication(user);
                 return RedirectToAction("Index");
             }
 

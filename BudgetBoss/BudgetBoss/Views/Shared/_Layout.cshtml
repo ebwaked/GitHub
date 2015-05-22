@@ -45,13 +45,21 @@
                         <a href="/Home/Dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="/HouseholdAccounts/Index"><i class="fa fa-fw fa-bar-chart-o"></i> Accounts</a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#account"><i class="fa fa-fw fa-bank"></i> Accounts <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="account" class="collapse">
+                            <li>
+                                <a href="/HouseholdAccounts/Index"> Accounts</a>
+                            </li>
+                            <li>
+                                <a href="/HouseholdAccounts/Create"> Create</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#household"><i class="fa fa-fw fa-edit"></i> Households <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="household" class="collapse">
                             <li>
-                                <a href="/Households/Index"> Index</a>
+                                <a href="/Households/Index"> Households</a>
                             </li>
                             <li>
                                 <a href="/Households/Create"> Create</a>
@@ -59,13 +67,24 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#transaction"><i class="fa fa-fw fa-table"></i> Transactions <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#transaction"><i class="fa fa-fw fa-bar-chart-o"></i> Transactions <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="transaction" class="collapse">
                             <li>
                                 <a href="/Transactions/Index"> Transactions</a>
                             </li>
                             <li>
                                 <a href="/Transactions/Create"> Create</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#category"><i class="fa fa-fw fa-archive"></i> Categories <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="category" class="collapse">
+                            <li>
+                                <a href="/Categories/Index"> Categories</a>
+                            </li>
+                            <li>
+                                <a href="/Categories/Create"> Create</a>
                             </li>
                         </ul>
                     </li>
@@ -94,35 +113,8 @@
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
-    @RenderBody()
 
-    @*<div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Budget Boss", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - The Budget Boss Application</p>
-        </footer>
-    </div>*@
+    @RenderBody()
 
     <!-- jQuery -->
     @Scripts.Render("~/bundles/jquery")
