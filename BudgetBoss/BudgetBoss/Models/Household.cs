@@ -15,7 +15,7 @@ namespace BudgetBoss.Models
             this.Categories = new HashSet<Category>();
         }
 
-        public int? Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
 
         public virtual ICollection<Invitation> Invitations { get; set; }

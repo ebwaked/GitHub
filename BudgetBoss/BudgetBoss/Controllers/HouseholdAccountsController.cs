@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BudgetBoss.Models;
+using System.Threading.Tasks;
 
 
 namespace BudgetBoss.Controllers
@@ -53,13 +54,16 @@ namespace BudgetBoss.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Balance,ReconciledBalance")] HouseholdAccount householdAccount)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Balance,ReconciledBalance")] HouseholdAccount householdAccount)
         {
             if (ModelState.IsValid)
             {
+                householdAccount.HouseholdId = Int32.Parse(User.Identity.GetHouseholdId());
+                var houseId = Int32.Parse(User.Identity.GetHouseholdId());
                 db.HouseholdAccounts.Add(householdAccount);
                 var user = db.Users.Find(User.Identity.GetUserId());
                 db.SaveChanges();
+                await ControllerContext.HttpContext.RefreshAuthentication(user);
                 return RedirectToAction("Index");
             }
 

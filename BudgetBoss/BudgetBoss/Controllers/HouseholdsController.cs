@@ -66,21 +66,64 @@ namespace BudgetBoss.Controllers
             {
                 db.Households.Add(household);
                 db.SaveChanges();
-                // Basic Categories for Household
-                var categories = new List<Category>
-                {
-                new Category { Name = "Food" },
-                new Category { Name = "Travel" },
-                new Category { Name = "Rent" },
-                new Category { Name = "Mortgage" },
-                new Category { Name = "Education" },
-                new Category { Name = "Misc. Expenses" },
-                new Category { Name = "Savings" },
-                new Category { Name = "Medical" },
-                new Category { Name = "Child Care" },
-                };
                 var user = db.Users.Find(User.Identity.GetUserId());
                 user.HouseholdId = household.Id;
+                db.SaveChanges();
+                // Basic Categories for Household
+                var food = new Category
+                {
+                    Name = "Food",
+                    HouseholdId = household.Id
+                };
+                db.Categories.Add(food);
+                var travel = new Category
+                {   
+                    Name = "Travel",
+                    HouseholdId = household.Id
+                };
+                db.Categories.Add(travel);
+                var rent = new Category
+                {
+                    Name = "Rent",
+                    HouseholdId = household.Id
+                };
+                db.Categories.Add(rent);
+                var mortgage = new Category
+                {
+                    Name = "Mortgage",
+                    HouseholdId = household.Id
+                };
+                db.Categories.Add(mortgage);
+                var education = new Category
+                {
+                    Name = "Education",
+                    HouseholdId = household.Id
+                };
+                db.Categories.Add(education);
+                var miscExprenses = new Category
+                {
+                    Name = "Misc. Expenses",
+                    HouseholdId = household.Id
+                };
+                db.Categories.Add(miscExprenses);
+                var savings = new Category
+                {
+                    Name = "Savings",
+                    HouseholdId = household.Id
+                };
+                db.Categories.Add(savings);
+                var medical = new Category
+                {
+                    Name = "Medical",
+                    HouseholdId = household.Id
+                };
+                db.Categories.Add(medical);
+                var childCare = new Category
+                {
+                    Name = "Child Care",
+                    HouseholdId = household.Id
+                };
+                db.Categories.Add(childCare);
                 db.SaveChanges();
                 await ControllerContext.HttpContext.RefreshAuthentication(user);
                 return RedirectToAction("Index");
