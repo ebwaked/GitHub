@@ -23,7 +23,8 @@ namespace BudgetBoss.Controllers
         // GET: HouseholdAccounts
         public ActionResult Index()
         {
-            var householdAccounts = db.HouseholdAccounts.Include(h => h.Household);
+            var user = db.Users.Find(User.Identity.GetUserId());
+            var householdAccounts = db.HouseholdAccounts.Include(h => h.Household).Where(c => c.HouseholdId == user.HouseholdId);
             return View(householdAccounts.ToList());
         }
 
@@ -59,7 +60,6 @@ namespace BudgetBoss.Controllers
             if (ModelState.IsValid)
             {
                 householdAccount.HouseholdId = Int32.Parse(User.Identity.GetHouseholdId());
-                var houseId = Int32.Parse(User.Identity.GetHouseholdId());
                 db.HouseholdAccounts.Add(householdAccount);
                 var user = db.Users.Find(User.Identity.GetUserId());
                 db.SaveChanges();

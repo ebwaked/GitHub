@@ -11,12 +11,13 @@ using BudgetBoss.Models;
 namespace BudgetBoss.Controllers
 {
     [RequireHousehold]
+    [RoutePrefix("Accounts")]
     public class TransactionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Transactions
-        [Route("~/Accounts/{accountId}/Transactions", Name="transaction")] 
+        [Route("{accountId}/Transactions", Name="transaction")] 
         public ActionResult Index(int accountId)
         {
             ViewBag.HouseholdAccountId = accountId; 
@@ -25,22 +26,22 @@ namespace BudgetBoss.Controllers
         }
 
         //Search for Transactions 
-        public ActionResult Index(int? page, string query)
-        {
-            var transactions = db.Transactions.AsQueryable();
-            if (!String.IsNullOrWhiteSpace(query))
-            {
-                transactions = transactions.Where(p => p.Category.Equals(query) || p.Amount.Equals(query) || 
-                    p.AbsAmount.Equals(query) || p.AbsReconciledAmount.Equals(query) || p.Description.Contains(query) 
-                    || p.ReconciledAmount.Equals(query));
+        //public ActionResult Index(int? page, string query)
+        //{
+        //    var transactions = db.Transactions.AsQueryable();
+        //    if (!String.IsNullOrWhiteSpace(query))
+        //    {
+        //        transactions = transactions.Where(p => p.Category.Equals(query) || p.Amount.Equals(query) || 
+        //            p.AbsAmount.Equals(query) || p.AbsReconciledAmount.Equals(query) || p.Description.Contains(query) 
+        //            || p.ReconciledAmount.Equals(query));
 
-                ViewBag.Query = query;
-            }
-            return View(transactions.ToList());
-        }
+        //        ViewBag.Query = query;
+        //    }
+        //    return View(transactions.ToList());
+        //}
 
         // GET: Transactions/Details/5
-        [Route("~/Accounts/{accountId}/Transactions/{transactionId}", Name = "transactionDetails")]
+        [Route("{accountId}/Transactions/{transactionId}", Name = "transactionDetails")]
         public ActionResult Details(int? id, int accountId)
         {
             if (id == null)
@@ -56,7 +57,7 @@ namespace BudgetBoss.Controllers
         }
 
         // GET: Transactions/Create
-        [Route("~/Accounts/{accountId}/Transactions/Create", Name = "transactionCreate")]
+        [Route("{accountId}/Transactions/Create", Name = "transactionCreate")]
         public ActionResult Create(int accountId)
         {
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
@@ -70,14 +71,19 @@ namespace BudgetBoss.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("~/Accounts/{accountId}/Transactions/Create")]
+        [Route("{accountId}/Transactions/Create")]
         public ActionResult Create([Bind(Include = "Id,HouseholdAccountId,Amount,AbsAmount,ReconciledAmount,AbsReconciledAmount,Date,Description,Updated,UpdatedUserId,CategoryId")] Transaction transaction, int accountId)
         {
             if (ModelState.IsValid)
             {
+                var account = db.Households.Find(Int32.Parse(User.Identity.GetHouseholdId())).HouseholdAccounts.FirstOrDefault(a => a.Id == accountId);
+
+                if (account == null)
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                transaction.HouseholdAccountId = accountId;
                 db.Transactions.Add(transaction);
-                var account = db.HouseholdAccounts.Find(transaction.HouseholdAccountId);
                 account.Balance += transaction.Amount;
+                transaction.Date = DateTimeOffset.Now;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -87,7 +93,7 @@ namespace BudgetBoss.Controllers
         }
 
         // GET: Transactions/Edit/5
-        [Route("~/Accounts/{accountId}/Transactions/Edit/{transactionId}")]
+        [Route("{accountId}/Transactions/Edit/{transactionId}")]
         public ActionResult Edit(int? transactionId, int accountId)
         {
             if (transactionId == null)
@@ -108,7 +114,7 @@ namespace BudgetBoss.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("~/Accounts/{accountId}/Transactions/Edit/{transactionId}")]
+        [Route("{accountId}/Transactions/Edit/{transactionId}")]
         public ActionResult Edit([Bind(Include = "Id,HouseholdAccountId,Amount,AbsAmount,ReconciledAmount,AbsReconciledAmount,Date,Description,Updated,UpdatedUserId,CategoryId")] Transaction transaction, int accountId)
         {
             if (ModelState.IsValid)
@@ -128,7 +134,7 @@ namespace BudgetBoss.Controllers
         }
 
         // GET: Transactions/Delete/5
-        [Route("~/Accounts/{accountId}/Transactions/Delete/{transactionId}")]
+        [Route("{accountId}/Transactions/Delete/{transactionId}")]
         public ActionResult Delete(int? transactionId, int accountId)
         {
             if (transactionId == null)
@@ -146,7 +152,7 @@ namespace BudgetBoss.Controllers
         // POST: Transactions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Route("~/Accounts/{accountId}/Transactions/Delete/{transactionId}")]
+        [Route("{accountId}/Transactions/Delete/{transactionId}")]
         public ActionResult DeleteConfirmed(int transactionId, int accountId)
         {
             Transaction transaction = db.Transactions.Find(transactionId);

@@ -1,136 +1,126 @@
 ﻿@{
     ViewBag.Title = "Demo Login";
 }
-
-<div class="jumbotron text-center">
-    <h1>Bug Boss</h1>
-    <h4>Don't be pestered by problems - find solutions</h4>
-</div>
-
-
-
-@if (!User.Identity.IsAuthenticated)
-{
-    if (!User.IsInRole("Administrator") || !User.IsInRole("Developer") || !User.IsInRole("Project Manager") || !User.IsInRole("Submitter"))
-    {
-        <div class="row">
-            <div class="text-center">
-                <div>
-                    <p>You can view the different ways this issue tracking and management software works for various users below.</p>
-                </div>
-                <br />
-                <div>
-                    <p>Pick a user role and see what priveledges they are allowed within the software.</p>
-                </div>
-                <br />
-                <div>
-                    <p>*To try a different user please log out first. You will be redirected to this screen*</p>
-                </div>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="jumbotron text-center">
+            <h1>Bug Boss</h1>
+            <h4>Don't be pestered by problems - find solutions</h4>
         </div>
+    </div>
 
-<div class="row col-md-12">
-
-    @*Admin*@
-
-    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-    {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="panel-body col-md-3">
-            <form role="form">
-                <div class="form-group input-group">
-                    @Html.Hidden("Email", "admin@bugboss.com", new { @class = "form-control" })
-                </div>
-                <div class="form-group input-group">
-                    <div>
-                        @Html.Hidden("Password", "Password-1", new { @class = "form-control" })
+        @if (!User.Identity.IsAuthenticated)
+        {
+            if (!User.IsInRole("Administrator") || !User.IsInRole("Developer") || !User.IsInRole("Project Manager") || !User.IsInRole("Submitter"))
+            {
+                <div class="row">
+                    <div class="text-center">
+                        <div>
+                            <p>You can view the different ways this issue tracking and management software works for various users below.</p>
+                        </div>
+                        <br />
+                        <div>
+                            <p>Pick a user role and see what priveledges they are allowed within the software.</p>
+                        </div>
+                        <br />
+                        <div>
+                            <p>* To try a different user please log out first. You will be redirected to this screen *</p>
+                        </div>
                     </div>
                 </div>
-                <div class="button">
-                    <button class="btn btn-lg center-block" type="submit">
-                        Demo Administrator
-                    </button>
-                </div>
-            </form>
+            <br />
+    <div class="row container" style="text-align:center">
+        @*Admin*@
+
+        <div class="panel-body col-md-3">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <form role="form">
+                    @Html.Hidden("Email", "admin@bugboss.com", new { @class = "form-control" })
+
+                    @Html.Hidden("Password", "Password-1", new { @class = "form-control" })
+
+                    <div class="button">
+                        <button class="btn btn-lg center-block" type="submit">
+                            Administrator
+                        </button>
+                    </div>
+                </form>
+            }
         </div>
-    }
 
-    @*Project Manager*@
+        @*Project Manager*@
 
-    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-    {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="panel-body col-md-3">
-        <form role="form">
-            <div class="form-group input-group">
-                @Html.Hidden("Email", "projectmanager@bugboss.com", new { @class = "form-control" })
-            </div>
-            <div class="form-group input-group">
-                <div>
+        <div class="panel-body col-md-3">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <form role="form">
+                    @Html.Hidden("Email", "projectmanager@bugboss.com", new { @class = "form-control" })
+
                     @Html.Hidden("Password", "Password-1", new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="button">
-                <button class="btn btn-lg center-block" type="submit">
-                    Demo Project Manager
-                </button>
-            </div>
-        </form>
-    </div>
-    }
 
-    @*Developer*@
+                    <div class="button">
+                        <button class="btn btn-lg center-block" type="submit">
+                            Project Manager
+                        </button>
+                    </div>
+                </form>
+            }
+        </div>
 
-    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-    {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="panel-body col-md-3">
-        <form role="form">
-            <div class="form-group input-group">
-                @Html.Hidden("Email", "developer@bugboss.com", new { @class = "form-control" })
-            </div>
-            <div class="form-group input-group">
-                <div>
+        @*Developer*@
+
+        <div class="panel-body col-md-3">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <form role="form">
+
+                    @Html.Hidden("Email", "developer@bugboss.com", new { @class = "form-control" })
+
                     @Html.Hidden("Password", "Password-1", new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="button">
-                <button class="btn btn-lg center-block" type="submit">
-                    Demo Developer
-                </button>
-            </div>
-        </form>
-    </div>
-    }
 
-    @*Submitter*@
+                    <div class="button">
+                        <button class="btn btn-lg center-block" type="submit">
+                            Developer
+                        </button>
+                    </div>
+                </form>
+            }
+        </div>
 
-    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-    {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="panel-body col-md-3">
-        <form role="form">
-            <div class="form-group input-group">
-                @Html.Hidden("Email", "submitter@bugboss.com", new { @class = "form-control" })
-            </div>
-            <div class="form-group input-group">
-                <div>
+        @*Submitter*@
+
+        <div class="panel-body col-md-3">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <form role="form">
+
+                    @Html.Hidden("Email", "submitter@bugboss.com", new { @class = "form-control" })
+
                     @Html.Hidden("Password", "Password-1", new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="button">
-                <button class="btn btn-lg center-block" type="submit">
-                    Demo Submitter
-                </button>
-            </div>
-            <hr />
-        </form>
+
+                    <div class="button">
+                        <button class="btn btn-lg center-block" type="submit">
+                            Submitter
+                        </button>
+                    </div>
+                </form>
+            }
+        </div>
     </div>
-    }
+            }
+        }
+    
 </div>
-                        }   
-                }
