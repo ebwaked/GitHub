@@ -31,7 +31,8 @@ namespace BudgetBoss.Controllers
         // GET: Households
         public ActionResult Index()
         {
-            return View(db.Households.ToList());
+            var household = db.Households.Find(Int32.Parse(User.Identity.GetHouseholdId()));
+            return View(household);
         }
 
         // GET: Households/Details/5
@@ -175,7 +176,11 @@ namespace BudgetBoss.Controllers
             {
                 return HttpNotFound();
             }
-            return View(household);
+            if (household.Users.Count() == 1)
+            {
+                return View(household);
+            }
+            return RedirectToAction("Index");
         }
 
         // POST: Households/Delete/5

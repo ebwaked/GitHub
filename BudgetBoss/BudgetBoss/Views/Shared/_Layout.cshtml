@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using BudgetBoss.Models;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -15,6 +16,8 @@
     <link href="/Content/CSS/morris.css" rel="stylesheet" />
     <!-- Custom Fonts -->
     <link href="/fonts/fonts/font-awesome.min.css" rel="stylesheet" />
+    <!-- JQuery Datatables CSS -->
+    <link href="/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />
     <!-- Moderinzer CSS -->
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -42,46 +45,63 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                        <a href="/Home/Dashboard"><i class="fa fa-fw fa-bank"></i> Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#account"><i class="fa fa-fw fa-bar-chart-o"></i> Accounts <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="account" class="collapse">
+                    @if (User.Identity.IsInHousehold())
+                    {
+                        <li class="active">
+                            <a href="/Home/Dashboard"><i class="fa fa-fw fa-bank"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#account"><i class="fa fa-fw fa-bar-chart-o"></i> Accounts <i class="fa fa-fw fa-caret-down"></i></a>
+                            <ul id="account" class="collapse">
+                                <li>
+                                    <a href="/HouseholdAccounts/Index"> Accounts</a>
+                                </li>
+                                <li>
+                                    <a href="/HouseholdAccounts/Create"> Create</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#household"><i class="fa fa-fw fa-edit"></i> Households <i class="fa fa-fw fa-caret-down"></i></a>
+                            <ul id="household" class="collapse">
+                                <li>
+                                    <a href="/Households/Index"> Household Settings</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#category"><i class="fa fa-fw fa-archive"></i> Categories <i class="fa fa-fw fa-caret-down"></i></a>
+                            <ul id="category" class="collapse">
+                                <li>
+                                    <a href="/Categories/Index"> Categories</a>
+                                </li>
+                                <li>
+                                    <a href="/Categories/Create"> Create</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/Manage/Index"><i class="fa fa-fw fa-wrench"></i> Settings</a>
+                        </li>
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    { 
+                        if (!User.Identity.IsInHousehold())
+                        {
                             <li>
-                                <a href="/HouseholdAccounts/Index"> Accounts</a>
+                                <a href="javascript:;" data-toggle="collapse" data-target="#household"><i class="fa fa-fw fa-edit"></i><span style="color:yellow"> Start Here</span><i class="fa fa-fw fa-caret-down"></i></a>
+                                <ul id="household" class="collapse">
+                                    <li>
+                                        <a href="/Households/Create"> Create a Household</a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li>
-                                <a href="/HouseholdAccounts/Create"> Create</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#household"><i class="fa fa-fw fa-edit"></i> Households <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="household" class="collapse">
-                            <li>
-                                <a href="/Households/Index"> Households</a>
-                            </li>
-                            <li>
-                                <a href="/Households/Create"> Create</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#category"><i class="fa fa-fw fa-archive"></i> Categories <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="category" class="collapse">
-                            <li>
-                                <a href="/Categories/Index"> Categories</a>
-                            </li>
-                            <li>
-                                <a href="/Categories/Create"> Create</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="/Manage/Index"><i class="fa fa-fw fa-wrench"></i> Settings</a>
-                    </li>
+                        }
+                    }
                 </ul>
+
+
+
             </div>
             <!-- /.navbar-collapse -->
         </nav>
@@ -114,6 +134,8 @@
     <script src="/Scripts/Morris/raphael.min.js"></script>
     <script src="/Scripts/Morris/morris.min.js"></script>
     <script src="/Scripts/Morris/morris-data.js"></script>
+    <!-- Datatables JQuery-->
+    <script src="/Scripts/DataTables/jquery.dataTables.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

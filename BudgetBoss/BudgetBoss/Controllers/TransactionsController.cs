@@ -72,7 +72,7 @@ namespace BudgetBoss.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("{accountId}/Transactions/Create")]
-        public ActionResult Create([Bind(Include = "Id,HouseholdAccountId,Amount,AbsAmount,ReconciledAmount,AbsReconciledAmount,Date,Description,Updated,UpdatedUserId,CategoryId")] Transaction transaction, int accountId)
+        public ActionResult Create([Bind(Include = "Id,HouseholdAccountId,Amount,AbsAmount,ReconciledAmount,AbsReconciledAmount,Date,Description,Updated,UpdatedUserId,CategoryId")] Transaction transaction, int accountId, string transactionType)
         {
             if (ModelState.IsValid)
             {
@@ -82,10 +82,19 @@ namespace BudgetBoss.Controllers
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 transaction.HouseholdAccountId = accountId;
                 db.Transactions.Add(transaction);
-                account.Balance += transaction.Amount;
+                if (transactionType == "Income")
+                {
+                    account.Balance += transaction.Amount;
+                    account.Balance += transaction.Amount;
+                }
+                else 
+                {
+                    account.Balance -= transaction.Amount;
+                    account.ReconciledBalance -= transaction.ReconciledAmount;
+                }
                 transaction.Date = DateTimeOffset.Now;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "HouseholdAccounts", new { id = accountId});
             }
 
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", transaction.CategoryId);

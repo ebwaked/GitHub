@@ -7,6 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BudgetBoss.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 
 namespace BudgetBoss.Controllers
 {
@@ -18,7 +21,8 @@ namespace BudgetBoss.Controllers
         // GET: Categories
         public ActionResult Index()
         {
-            var categories = db.Categories.Include(c => c.Household);
+            var user = db.Users.Find(User.Identity.GetUserId());
+            var categories = db.Categories.Include(c => c.Household).Where(c => c.HouseholdId == user.HouseholdId);
             return View(categories.ToList());
         }
 

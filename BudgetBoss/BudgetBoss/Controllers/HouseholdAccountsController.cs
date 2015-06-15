@@ -23,8 +23,8 @@ namespace BudgetBoss.Controllers
         // GET: HouseholdAccounts
         public ActionResult Index()
         {
-            var user = db.Users.Find(User.Identity.GetUserId());
-            var householdAccounts = db.HouseholdAccounts.Include(h => h.Household).Where(c => c.HouseholdId == user.HouseholdId);
+            var householdId = Int32.Parse(User.Identity.GetHouseholdId());
+            var householdAccounts = db.HouseholdAccounts.Include(h => h.Household).Where(c => c.HouseholdId == householdId);
             return View(householdAccounts.ToList());
         }
 

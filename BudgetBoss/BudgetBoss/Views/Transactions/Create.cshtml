@@ -20,6 +20,11 @@
                         <hr />
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                  
+                       <div>
+                            <input type="radio" name="transactionType" value="Expense">Expense<br>
+                           <input type="radio" name="transactionType" value="Income">Income
+                        </div>
+
                         <div class="form-group">
                             @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
