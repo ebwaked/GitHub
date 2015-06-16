@@ -1,4 +1,5 @@
 ﻿@model BudgetBoss.Models.Household
+@using BudgetBoss.Models
 
 @{
     ViewBag.Title = "Index";
@@ -8,11 +9,15 @@
         <div class="container-fluid">
             <!-- Page Heading -->
             <div class="row">
-                <h2>Households</h2>
+                <h2> My Household</h2>
 
-                <p>
-                    @Html.ActionLink("Create New Household", "Create")
-                </p>
+                    @if (!User.Identity.IsInHousehold())
+                    {
+                        <p>
+                            @Html.ActionLink("Create New Household", "Create")
+                        </p>
+                    }
+                
                 <table class="table">
                     <tr>
                         <th>
