@@ -18,40 +18,30 @@
 
                 <div class="jumbotron">
                     <div class="row">
-                        <div class="col-md-6">
-                            <img src="/Content/Images/New BB Logo.jpg" alt="Budget Boss Logo">
+                        <div class="col-md-6" style="float: right">
+                            <img src="/Content/Images/budgetBossHipster.png" alt="Budget Boss Logo">
                         </div>
                         <div class="col-md-6">
                             <h1 class="page-header">Budget Boss</h1>
                             <p class="lead">Be the boss of your budget!</p>
-                            <p><a href="/Account/Login" class="btn btn-primary btn-lg">Login Here »</a></p>
-                            <p></p>
+                            @if (!User.Identity.IsAuthenticated)
+                            {
+                                <p><a href="/Account/Login" class="btn btn-primary btn-lg">Login Here »</a></p>
+                            }
+                                <p></p>
+                                <h3>Learn About Budgets</h3>
+                                <h4>
+                                    The Budget Boss gives you a powerful tool to build dynamic budgets that
+                                    enables a clean course of action for your household and gives you full control
+                                    over financial decisions for enjoyable living.
+                                </h4>
+                                <h4><a class="btn btn-default" href="/Home/GettingStarted">Learn More &raquo;</a></h4>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-md-4">
-                        <h2>Learn About Budgets</h2>
-                        <p>
-                            The Budget Boss gives you a powerful tool to build dynamic budgets that
-                            enables a clean course of action for your household and gives you full control
-                            over financial decisions for enjoyable living.
-                        </p>
-                        <p><a class="btn btn-default" href="/Home/GettingStarted">Learn More &raquo;</a></p>
-                    </div>
-                    <div class="col-md-4">
-                        <h2>Get more Monies</h2>
-                        <p>The Budget Boss is a free application that makes it easy to add, remove, and update transactions in accounts with many tools available to your household.</p>
-                        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Control More &raquo;</a></p>
-                    </div>
-                    <div class="col-md-4">
-                        <h2>Household Overview</h2>
-                        <p>You can easily find transactions within your household and we offer the right mix of features and price for your needs.</p>
-                        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">DON'T Spend more &raquo;</a></p>
-                    </div>
+
                 </div>
             </div>
         </div>
     </div>
-</div>

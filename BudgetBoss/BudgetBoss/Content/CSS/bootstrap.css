@@ -3041,9 +3041,9 @@ fieldset[disabled] .btn {
   opacity: .65;
 }
 .btn-default {
-  color: #333;
-  background-color: #fff;
-  border-color: #ccc;
+  color: black;
+  background-color: orange;
+  border-color: #204d74;
 }
 .btn-default:hover,
 .btn-default:focus,
@@ -4883,7 +4883,7 @@ a.badge:focus {
 @media screen and (min-width: 768px) {
   .jumbotron {
     padding: 48px 0;
-    background-color: lavender;
+    background-color: lightblue;
   }
   .container .jumbotron,
   .container-fluid .jumbotron {

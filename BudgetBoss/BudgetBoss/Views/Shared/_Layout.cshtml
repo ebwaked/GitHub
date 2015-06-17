@@ -93,7 +93,7 @@
                         </li>
                     }
                     @if (User.Identity.IsAuthenticated)
-                    { 
+                    {
                         if (!User.Identity.IsInHousehold())
                         {
                             <li>
@@ -106,7 +106,25 @@
                             </li>
                         }
                     }
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#household"><i class="fa fa-fw fa-edit"></i><span style="color:yellow"> Begin Here</span><i class="fa fa-fw fa-caret-down"></i></a>
+                            <ul id="household" class="collapse">
+                                <li>
+                                    <a href="/Account/Login"> Login</a>
+                                </li>
+                                <li>
+                                    <a href="/Account/Register"> Register</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
                 </ul>
+
+
+
+
 
 
 

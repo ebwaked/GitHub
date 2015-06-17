@@ -257,6 +257,7 @@
     <Content Include="Content\DataTables\images\xls_hover.png" />
     <Content Include="Content\DataTables\swf\copy_csv_xls.swf" />
     <Content Include="Content\DataTables\swf\copy_csv_xls_pdf.swf" />
+    <Content Include="Content\Images\budgetBossHipster.png" />
     <Content Include="Content\Images\New BB Logo.jpg" />
     <Content Include="fonts\fonts\font-awesome.css" />
     <Content Include="fonts\fonts\font-awesome.min.css" />
