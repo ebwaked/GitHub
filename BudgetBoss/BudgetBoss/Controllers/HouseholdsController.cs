@@ -202,5 +202,58 @@ namespace BudgetBoss.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public async Task<ActionResult> SendInvitation(string ToEmail)
+        {
+            var user = db.Users.Find(User.Identity.GetUserId());
+            var hId = Int32.Parse(User.Identity.GetHouseholdId());
+            var charSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var rndm = new Random();
+            var code = new string(Enumerable.Range(1,6).Select(n => charSet[rndm.Next(charSet.Length -1)]).ToArray());
+            var invite = new Invitation()
+            {
+                HouseholdId = hId,
+                ToEmail = ToEmail,
+                FromUserId = User.Identity.GetUserId(),
+                Code = code
+            };
+
+            db.Invitaions.Add(invite);
+            db.SaveChanges();
+            var mailer = new EmailService();
+            mailer.Send(new IdentityMessage() 
+            {
+                Destination = ToEmail,
+                Subject = "Join " + user.FirstName + " " + user.LastName + "'s household",
+                Body = "You have been invited to join the household by " + user.FirstName + " " + user.LastName + ". Use the following code to join the household after registering."
+            });
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Join()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Join (string code)
+        {
+            var user = db.Users.Find(User.Identity.GetUserId());
+            var invite = db.Invitaions.Where(i => i.Code == code && i.ToEmail == user.Email).FirstOrDefault();
+
+            if (invite != null)
+            {
+                user.HouseholdId = invite.HouseholdId;
+                db.SaveChanges();
+                await HttpContext.RefreshAuthentication(user);
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("Code", "Invalid Code");
+
+            return View(new Invitation() { Code = code });
+        }
     }
 }

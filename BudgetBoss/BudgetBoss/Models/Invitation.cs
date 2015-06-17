@@ -11,6 +11,7 @@ namespace BudgetBoss.Models
         public string FromUserId { get; set; }
         public string ToEmail { get; set; }
         public int HouseholdId { get; set; }
+        public string Code { get; set; }
 
         public virtual Household Household { get; set; }
     }
