@@ -1,0 +1,43 @@
+﻿@model BudgetBoss.Models.Invitation
+@using BudgetBoss.Models
+
+@{
+    ViewBag.Title = "Invitations";
+}
+
+<div id="wrapper">
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <!-- Page Heading -->
+            <div class="row">
+                <h2>Invitations</h2>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @using (Html.BeginForm("SendInvitation", "Household", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <h4>Hello @User.Identity.Name! If you would like to invite someone to join your household please enter their email below.</h4>
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.ToEmail, new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(m => m.ToEmail, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.ToEmail, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            }
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Invite" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

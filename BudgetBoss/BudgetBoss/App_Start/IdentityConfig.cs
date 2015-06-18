@@ -11,6 +11,10 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using BudgetBoss.Models;
+using System.Configuration;
+using SendGrid;
+using System.Net.Mail;
+using System.Net;
 
 namespace BudgetBoss
 {
@@ -19,6 +23,20 @@ namespace BudgetBoss
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
+            var MyAddress = ConfigurationManager.AppSettings["ContactEmail"];
+            var MyUsername = ConfigurationManager.AppSettings["Username"];
+            var MyPassword = ConfigurationManager.AppSettings["Password"];
+
+            SendGridMessage mail = new SendGridMessage();
+            mail.From = new MailAddress("noreply@budgetBoss.com");
+            mail.AddTo(message.Destination);
+            mail.Subject = message.Subject;
+            mail.Html = message.Body;
+
+            var credentials = new NetworkCredential(MyUsername, MyPassword);
+            var transportWeb = new Web(credentials);
+            transportWeb.DeliverAsync(mail);
+
             return Task.FromResult(0);
         }
     }

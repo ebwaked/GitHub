@@ -25,10 +25,11 @@ namespace BudgetBoss.Controllers
             user.HouseholdId = null;
             db.SaveChanges();
             await ControllerContext.HttpContext.RefreshAuthentication(user);
-            return RedirectToAction("Create", "Household");
+            return RedirectToAction("Create", "Households");
         }
 
         // GET: Households
+        [RequireHousehold]
         public ActionResult Index()
         {
             var household = db.Households.Find(Int32.Parse(User.Identity.GetHouseholdId()));
@@ -36,6 +37,7 @@ namespace BudgetBoss.Controllers
         }
 
         // GET: Households/Details/5
+        [RequireHousehold]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -134,6 +136,7 @@ namespace BudgetBoss.Controllers
         }
 
         // GET: Households/Edit/5
+        [RequireHousehold]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -165,6 +168,7 @@ namespace BudgetBoss.Controllers
         }
 
         // GET: Households/Delete/5
+        [RequireHousehold]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -220,18 +224,21 @@ namespace BudgetBoss.Controllers
 
             db.Invitaions.Add(invite);
             db.SaveChanges();
+            await ControllerContext.HttpContext.RefreshAuthentication(user);
             var mailer = new EmailService();
             mailer.Send(new IdentityMessage() 
             {
                 Destination = ToEmail,
                 Subject = "Join " + user.FirstName + " " + user.LastName + "'s household",
-                Body = "You have been invited to join the household by " + user.FirstName + " " + user.LastName + ". Use the following code to join the household after registering."
+                Body = "You have been invited to join a household by " + user.FirstName + " " + user.LastName + ". Use the following code to join the household after registering." + code
+
             });
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Dashboard", "Home");
         }
 
         [HttpGet]
+        [RequireHousehold]
         public ActionResult Join()
         {
             return View();

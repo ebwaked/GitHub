@@ -11,13 +11,13 @@
             <div class="row">
                 <h2> My Household</h2>
 
-                    @if (!User.Identity.IsInHousehold())
-                    {
-                        <p>
-                            @Html.ActionLink("Create New Household", "Create")
-                        </p>
-                    }
-                
+                @if (!User.Identity.IsInHousehold())
+                {
+                    <p>
+                        @Html.ActionLink("Create New Household", "Create")
+                    </p>
+                }
+
                 <table class="table">
                     <tr>
                         <th>
@@ -26,19 +26,37 @@
                         <th></th>
                     </tr>
 
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.Name)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
-                            </td>
-                        </tr>
-                    
-
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Name)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
+                        </td>
+                    </tr>
                 </table>
-                </div>
+                    <form method="post" action="@Url.Action("SendInvitation", "Households")">
+                        Hello <span style="color:red "> @User.Identity.Name!</span> If you would like to invite someone to join your household please enter their email below.
+                        <br /> &nbsp; <br />
+                        <input type="email" name="ToEmail" placeholder="Email" />
+                        <input type="submit" value="Send Invitaton" onclick="SendInvitation">
+                    </form>
+                If you would like to leave your household.
+                <br /> &nbsp; <br />
+                @using (Html.BeginForm("LeaveHousehold", "Households", FormMethod.Post, new { id="leaveForm" }))
+                { 
+                    @Html.AntiForgeryToken()
+                    <button type="button" onclick="checkLeave()">Leave Household</button>
+                }
+                <script>
+                    function checkLeave()
+                    {
+                        if (confirm("Are you sure you want to leave this household? You will NOT be able to re-join!"))
+                            $('#leaveForm').submit();
+                    }
+                </script>
             </div>
         </div>
     </div>
+</div>
