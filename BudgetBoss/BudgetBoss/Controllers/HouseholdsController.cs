@@ -230,7 +230,7 @@ namespace BudgetBoss.Controllers
             {
                 Destination = ToEmail,
                 Subject = "Join " + user.FirstName + " " + user.LastName + "'s household",
-                Body = "You have been invited to join a household by " + user.FirstName + " " + user.LastName + ". Go to http://www.ewaked-budgetboss.azurewebsites.net/households/join or login and click join household. Use the following code to join the household after registering or logging in. " + code
+                Body = "You have been invited to join a household by " + user.FirstName + " " + user.LastName + ". Go to http://ewaked-budgetboss.azurewebsites.net/Households/Join or login and click join household. Use the following code to join the household after registering or logging in. " + code
                 
             });
 
@@ -261,5 +261,6 @@ namespace BudgetBoss.Controllers
 
             return View(new Invitation() { Code = code });
         }
+
     }
 }

@@ -7,6 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BudgetBoss.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 
 namespace BudgetBoss.Controllers
 {
@@ -60,7 +63,10 @@ namespace BudgetBoss.Controllers
         [Route("{accountId}/Transactions/Create", Name = "transactionCreate")]
         public ActionResult Create(int accountId)
         {
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
+            var user = db.Users.Find(User.Identity.GetUserId());
+            var categories = db.Categories.Include(c => c.Household).Where(c => c.HouseholdId == user.HouseholdId);
+
+            ViewBag.CategoryId = new SelectList(categories, "Id", "Name");
             ViewBag.HouseholdAccountId = accountId; 
 
             return View();
@@ -81,6 +87,8 @@ namespace BudgetBoss.Controllers
                 if (account == null)
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 transaction.HouseholdAccountId = accountId;
+                //FIX THIS CODE!
+
                 db.Transactions.Add(transaction);
                 if (transactionType == "Income")
                 {

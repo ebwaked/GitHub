@@ -187,6 +187,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AuthExtensions.cs" />
+    <Compile Include="Models\DashboardViewModel.cs" />
     <Compile Include="Models\HouseholdAccount.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BudgetItem.cs" />
@@ -283,6 +284,8 @@
     <Content Include="Content\DataTables\css\dataTables.jqueryui.scss" />
     <None Include="Properties\PublishProfiles\ewaked-budgetBoss.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
     <Content Include="Scripts\DataTables\dataTables.autoFill.js" />
     <Content Include="Scripts\DataTables\dataTables.autoFill.min.js" />
     <Content Include="Scripts\DataTables\dataTables.bootstrap.js" />

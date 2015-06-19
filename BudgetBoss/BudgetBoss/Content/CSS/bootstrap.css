@@ -4843,7 +4843,7 @@ a.badge:focus {
 }
 .list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
-  color: #337ab7;
+  color: white;
   background-color: #fff;
 }
 .list-group-item > .badge {
@@ -4859,7 +4859,7 @@ a.badge:focus {
   padding: 30px 15px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #eee;
+  background-color: #eee !important;
 }
 .jumbotron h1,
 .jumbotron .h1 {
@@ -4883,7 +4883,7 @@ a.badge:focus {
 @media screen and (min-width: 768px) {
   .jumbotron {
     padding: 48px 0;
-    background-color: lightblue;
+    background-color: white;
   }
   .container .jumbotron,
   .container-fluid .jumbotron {
@@ -6583,3 +6583,10 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+.dashboardBox {
+    width: auto;
+    padding: 25px;
+    border: 25px solid navy;
+    margin: 25px;
+}

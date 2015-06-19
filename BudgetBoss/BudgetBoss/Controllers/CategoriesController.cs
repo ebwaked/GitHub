@@ -57,6 +57,7 @@ namespace BudgetBoss.Controllers
         {
             if (ModelState.IsValid)
             {
+                category.HouseholdId = Int32.Parse(User.Identity.GetHouseholdId());
                 db.Categories.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
