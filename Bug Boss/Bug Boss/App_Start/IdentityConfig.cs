@@ -35,7 +35,7 @@ namespace Bug_Boss
 
             var credentials = new NetworkCredential(MyUsername, MyPassword);
             var transportWeb = new Web(credentials);
-            transportWeb.Deliver(mail);
+            transportWeb.DeliverAsync(mail);
 
 
             return Task.FromResult(0);
