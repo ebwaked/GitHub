@@ -60,15 +60,15 @@
                             <li>
                                @Html.ActionLink("Manage Authentication", "Index", "Manage")
                             </li>
-                            <li>
+                            @*<li>
                                @Html.ActionLink("Edit Profile", "ProfileEdit", "Account")
-                            </li>
+                            </li>*@
                         </ul>
                     </li>
                             }
                     }
                     
-                    @if (User.Identity.IsAuthenticated)
+                    @*@if (User.Identity.IsAuthenticated)
                     {
                         if (User.IsInRole("Developer") || User.IsInRole("Project Manager") || User.IsInRole("Submitter"))
                         {
@@ -81,7 +81,7 @@
                                 </ul>
                             </li>
                         }
-                    }
+                    }*@
 
                     @if (User.Identity.IsAuthenticated)
                     {
