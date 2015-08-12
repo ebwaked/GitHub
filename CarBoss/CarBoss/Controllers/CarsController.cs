@@ -96,7 +96,7 @@ namespace CarBoss.Controllers
             car.Recalls = content;
             var image = new BingSearchContainer(
             new Uri("https://api.datamarket.azure.com/Bing/search/"));
-            image.Credentials = new NetworkCredential("accountKey", "jbeD0u+Fvif+Jp1LEXiGplA8MneCDgWE8zcZCbvdq3I");
+            image.Credentials = new NetworkCredential("accountKey", "5u/0CzVmYrTKDOjlxPePfPkh/G8llMIfVJ7QC/oNEvQ");
             var marketData = image.Composite(
                 "image",
                 car.Car.year + " " + car.Car.make + " " + car.Car.model + " " + car.Car.trim,
