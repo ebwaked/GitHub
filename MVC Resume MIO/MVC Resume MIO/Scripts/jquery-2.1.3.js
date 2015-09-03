@@ -5422,7 +5422,8 @@ jQuery.fn.extend({
 							!data_priv.access( node, "globalEval" ) && jQuery.contains( doc, node ) ) {
 
 							if ( node.src ) {
-								// Optional AJAX dependency, but won't run scripts if not present
+								// Optional 
+ dependency, but won't run scripts if not present
 								if ( jQuery._evalUrl ) {
 									jQuery._evalUrl( node.src );
 								}
